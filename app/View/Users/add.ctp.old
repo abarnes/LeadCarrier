@@ -1,0 +1,13 @@
+<h3>Add User</h3>
+<span style="font-size:.8em;"><a href="/users">Back to Admin Page</a></span>
+<br/><br/>
+    
+    <?php echo $this->Form->create('User', array('action' => 'add/'.$id)); ?>
+    <?php echo $this->Form->input('username', array( 'label' => 'Username: ')); ?>
+    <?php echo $this->Form->input('email', array( 'label' => 'Email: ')); ?>
+    <?php echo $this->Form->input('password', array('label'=>'Password: ','value'=>'')); ?>
+    <?php echo $this->Form->input('password2', array('type'=>'password','value'=>'','label'=>'Retype Password: ')); ?>
+    <?php echo $this->Form->end('Add User'); ?>
+
+
+    

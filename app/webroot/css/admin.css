@@ -1,0 +1,184 @@
+body {
+    font-family:'Calibri','Arial',sans-serif;
+}
+.out {
+    width:900px;
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom:20px;
+}
+.main {
+    border:2px solid black;
+    padding:10px;
+    width:876px;
+    float:left;
+}
+.link {
+    border-top:2px solid black;
+    border-left:2px solid black;
+    float:left;
+    padding:10px;
+    text-align:center;
+}
+
+.link-end {
+    border-right:2px solid black;
+    border-left:2px solid black;
+    border-top:2px solid black;
+    float:left;
+    padding:10px;
+    text-align:center;
+}
+.left-link {
+    border-right:2px solid black;
+    border-left:2px solid black;
+    border-top:2px solid black;
+    float:right;
+    padding:10px;
+    text-align:center;
+    margin-right:0px;
+}
+.atop {
+    color:black;
+    text-decoration:none;
+}
+.down {
+    background-color: rgb(85,147,204);
+    color: #ffffff;
+}
+
+.dateform{
+    font-size:1em;
+    float:right;
+    width:400px;
+}
+.dateform ul {
+    
+}
+.dateform input{
+    width:80px;
+    height:18px;
+    background-color:rgb(85,147,204);
+    color:#ffffff;
+    border:1px solid black;
+}
+.subm {
+    background: rgb(191,77,74) !important;
+    color: #ffffff !important;
+    height: 24px !important;
+}
+.in{
+    padding:20px;
+}
+.big {
+    font-size:1.3em;
+}
+.inv {
+    border:0px;
+    background-color:#ffffff;
+}
+/*table style-----------*/
+.grid {
+    width:880px;
+    margin-right:auto;
+    margin-left:auto;
+}
+.grid th {
+    color:#ffffff;
+    font-size:.8em;
+    text-align:left;
+    padding:4px;
+    background: rgb(85,147,204);
+    height:20px;
+}
+.grid td {
+    font-size: .8em;
+    height: 16px;
+    padding:5px;
+}
+.grid th a {
+    color:#ffffff;
+    text-decoration:none;
+}
+.row1 {
+    background: rgb(216,223,238);
+}
+.row2 {
+    background: rgb(237,241,247);
+}
+/*--------*/
+.approved {
+    height:24px;
+    width:140px;
+    text-align:center;
+    margin-bottom:8px;
+    float:left;
+}
+.approved p{
+    color:#ffffff;
+    margin-top:3px;
+    margin-bottom:0px;
+    text-decoration:none;
+}
+.but {
+    height:22px;
+    width:70px;
+    text-align:center;
+    margin-bottom:0px;
+    float:left;
+    margin-right:5px;
+    background-color:rgb(85,147,204);
+    border:2px solid rgb(80,125,168);
+}
+.but p{
+    color:#ffffff;
+    margin-top:3px;
+    margin-bottom:0px;
+    text-decoration:none;
+}
+.but2 {
+    height:22px;
+    width:60px;
+    text-align:center;
+    margin-bottom:0px;
+    float:left;
+    margin-right:5px;
+    background-color:rgb(85,147,204);
+    border:2px solid rgb(80,125,168);
+}
+.but2 p{
+    color:#ffffff;
+    margin-top:3px;
+    margin-bottom:0px;
+    text-decoration:none;
+}
+.ap {
+    background:rgb(162,202,102);
+}
+.re {
+    background:rgb(217,91,88);
+}
+.nav {
+    font-size:.8em;
+}
+.info {
+    border:1px solid black;
+    width:600px;
+    padding:5px;
+    margin:8px;
+}
+.info h4 {
+    margin:0px;
+}
+.info p {
+    font-size:.8em;
+}
+.input {
+    font-size:.8em;
+}
+.info input[type="text"] {
+    width:200px;
+}
+.hid {
+    background:#ffffff !important;
+}

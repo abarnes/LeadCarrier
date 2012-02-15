@@ -1,0 +1,15 @@
+#slidecaption h1, #team h5, .bigtitle h1
+{ padding-top:2px; padding-bottom:2px;}
+
+ul#menu li a, .tabbutton1 h1, .tabbutton2 h1, .tabbutton3 h1, .tabbutton1 p, .tabbutton2 p, .tabbutton3 p, .minibutton, .minibutton2, .popupcontact input[type="submit"], .footercategories h2, .footerportfolio h2, .footersocial h2, .middlebutton, .bigtitle h1, .minibutton-black, .filter ul li a
+{text-shadow: -1px -1px 0px #000;filter: none;}
+
+.minibutton:hover, .advert h1, .middlebutton:hover, .bigtitle h2, .minibutton-black:hover, .filter ul li a:hover
+{text-shadow: 1px 1px 0px #000;filter: none;}
+
+#slidecaption h1, #slidecaption h2
+{text-shadow: 2px 2px 2px #000;filter: none;}
+
+.bloglist-nav2 { position:absolute; width:38px; height:30px; margin:430px 0px 0px 0px; opacity:0.9; z-index:1000; -moz-border-radius-top-right:12px;border-top-right-radius:12px;-moz-border-radius-bottomleft:12px;border-bottom-left-radius:12px;}
+
+.bloglist-nav { position:absolute; width:38px; height:30px; margin:190px 0px 0px 0px; opacity:0.9; z-index:1000; -moz-border-radius-top-right:12px;border-top-right-radius:12px;-moz-border-radius-bottomleft:12px;border-bottom-left-radius:12px;}

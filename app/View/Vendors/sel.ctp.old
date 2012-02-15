@@ -1,0 +1,10 @@
+<h3>Add Vendor</h3>
+  
+<div style="width:100%;float:left;">    
+    
+    <?php echo $this->Form->create('Vendor', array('action' => 'sel')); ?>
+    <?php echo $this->Form->input('category_id', array( 'label' => 'Select Category: ')); ?>
+    <?php echo $this->Form->end('Continue'); ?>
+
+</div>
+    

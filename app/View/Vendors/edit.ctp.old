@@ -1,0 +1,32 @@
+<h3>Edit Vendor</h3>
+        
+        <div class="link">
+        <?php
+            echo $this->Html->link('<< Manage Vendors',array('controller'=>'vendors','action'=>'index'));
+        ?>
+        </div><br/>
+
+<div style="width:100%;float:left;">    
+    
+    <div class="label">
+    <?php echo $this->Form->create('Vendor', array('action' => 'edit/'.$id)); ?>
+    <?php echo $this->Form->input('name', array( 'label' => 'Name: ')); ?>
+    <?php echo $this->Form->input('category_id', array( 'label' => 'Category: ')); ?>
+    <?php echo $this->Form->input('phone', array( 'label' => 'Phone: ')); ?>
+    <?php echo $this->Form->input('email', array( 'label' => 'Email: ')); ?>
+    <?php echo $this->Form->input('address1', array( 'label' => 'Address 1: ')); ?>
+    <?php echo $this->Form->input('address2', array( 'label' => 'Address 2: ')); ?>
+    <?php echo $this->Form->input('city', array( 'label' => 'City: ')); ?>
+    <?php echo $this->Form->input('state', array( 'label' => 'State: ')); ?>
+    <?php echo $this->Form->input('zip', array( 'label' => 'Zip Code: ')); ?>
+    <?php echo $this->Form->input('contact_name', array( 'label' => 'Contact Name: ')); ?>
+    <?php echo $this->Form->input('notes', array( 'label' => 'Notes: ')); ?>
+    <?php if (!empty($ranges)) { ?>
+    <?php echo $this->Form->input('Range', array( 'label' => 'Price Ranges: <br/>','multiple'=>'checkbox')); ?>
+    <?php } ?>
+    <?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>
+    <?php echo $this->Form->end('Update Vendor'); ?>
+    </div>
+
+</div>
+    

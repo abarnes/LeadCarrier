@@ -1,0 +1,11 @@
+<h3>Edit Industry</h3>
+<span style="font-size:.8em;"><a href="/categories">Back to Industries</a></span>
+<br/><br/>
+    
+    <?php echo $this->Form->create('Category', array('action' => 'edit/'.$category['Category']['id'])); ?>
+    <?php echo $this->Form->input('name', array( 'label' => 'Name: ')); ?>
+    <?php echo $this->Form->input('use_ranges', array( 'label' => 'Use Price Ranges')); ?>
+    <?php echo $this->Form->input('enable', array( 'label' => 'Enable')); ?>
+    <?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>
+    <?php echo $this->Form->end('Save'); ?>
+    

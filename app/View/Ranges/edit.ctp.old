@@ -1,0 +1,22 @@
+<div style="width:60%;float:left;">
+
+<h3>Edit Price Range</h3>
+<!--<span style="font-size:.8em;"><a href="/ranges/index/">Back to Price Ranges</a></span>
+<br/><br/>-->
+    
+    <?php echo $this->Form->create('Range', array('action' => 'edit/'.$id)); ?>
+    <?php echo $this->Form->input('low_end', array( 'label' => 'Low End: ')); ?>
+    <?php echo $this->Form->input('high_end', array( 'label' => 'High End: ')); ?>
+    <?php //echo $this->Form->input('category_id', array( 'label' => 'Category')); ?>
+    <?php echo $this->Form->input('Vendor', array( 'label' => 'Vendors: ','multiple'=>'checkbox')); ?>
+    <?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>
+    <?php echo $this->Form->end('Update'); ?>
+
+</div>
+
+<div style="width:40%;float:right;">
+    <h4>Price</h4>
+    <p>No dollar sign ($) on ranges.</p>
+    <br/><br/>
+</div>
+    

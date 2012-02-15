@@ -1,0 +1,91 @@
+
+
+/*
+As Internet Explorer doesn't support most of the CSS3 features,
+here are a few fixes to enable semi-transparent backgrounds
+as well as the rotation effect.
+*/
+
+
+.hover_rotation img.hover_rotation_right:hover {
+   /* IE8+ - must be on one line, unfortunately */ 
+   -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9659258262890683, M12=-0.2588190451025207, M21=0.2588190451025207, M22=0.9659258262890683, SizingMethod='auto expand')";
+   /* IE6 and 7 */ 
+   filter: progid:DXImageTransform.Microsoft.Matrix(
+            M11=0.9659258262890683,
+            M12=-0.2588190451025207,
+            M21=0.2588190451025207,
+            M22=0.9659258262890683,
+            SizingMethod='auto expand');
+   left: 28px; 
+   top: 20px;
+} 
+.hover_rotation img.hover_rotation_left:hover {
+   /* IE8+ - must be on one line, unfortunately */ 
+   -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9659258262890684, M12=0.25881904510252024, M21=-0.25881904510252024, M22=0.9659258262890684, SizingMethod='auto expand')";
+   /* IE6 and 7 */ 
+   filter: progid:DXImageTransform.Microsoft.Matrix(
+            M11=0.9659258262890684,
+            M12=0.25881904510252024,
+            M21=-0.25881904510252024,
+            M22=0.9659258262890684,
+            SizingMethod='auto expand');
+   left: 80px; 
+   top: 40px;
+} 
+
+.overlay_slide .zoom_black,
+.overlay_fade:hover .zoom_black,
+.overlay_split .split_black,
+.overlay_join .join_black {
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000);   /* IE6 & 7 */      
+	zoom: 1;
+}
+.overlay_slide .zoom_white,
+.overlay_fade:hover .zoom_white,
+.overlay_split .split_white,
+.overlay_join .join_white {
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2FFFFFF,endColorstr=#B2FFFFFF)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2FFFFFF,endColorstr=#B2FFFFFF);   /* IE6 & 7 */      
+	zoom: 1;
+}
+
+.corner_ribbon .corner_ribbon_top_left_white,
+.corner_ribbon .corner_ribbon_top_right_white {
+	border-top: 150px solid #FFFFFF;
+}
+.corner_ribbon .corner_ribbon_bottom_left_white,
+.corner_ribbon .corner_ribbon_bottom_right_white {
+	border-bottom: 150px solid #FFFFFF;
+}
+.corner_ribbon .corner_ribbon_top_left_black,
+.corner_ribbon .corner_ribbon_top_right_black,{
+	border-top: 150px solid #000000;
+}
+.corner_ribbon .corner_ribbon_bottom_left_black,
+.corner_ribbon .corner_ribbon_bottom_right_black {
+	border-bottom: 150px solid #000000;
+}
+
+.flip_image:hover .flip_info {
+	background: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2FFFFFF,endColorstr=#B2FFFFFF)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2FFFFFF,endColorstr=#B2FFFFFF);   /* IE6 & 7 */      
+	zoom: 1;
+}
+
+.bottom_overlay:hover .description_white {
+	background: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF,endColorstr=#CCFFFFFF)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF,endColorstr=#CCFFFFFF);   /* IE6 & 7 */      
+	zoom: 1;
+}
+.bottom_overlay:hover .description_black {
+	background: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000,endColorstr=#CC000000)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000,endColorstr=#CC000000);   /* IE6 & 7 */      
+	zoom: 1;
+}
+
+

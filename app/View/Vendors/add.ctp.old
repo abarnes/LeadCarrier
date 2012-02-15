@@ -1,0 +1,24 @@
+<h3>Add Vendor</h3>
+
+<div style="width:100%;float:left;">    
+
+    <?php echo $this->Form->create('Vendor', array('action' => 'add/'.$cat)); ?>
+    <?php echo $this->Form->input('name', array( 'label' => 'Name: ')); ?>
+    <?php //echo $this->Form->input('category_id', array( 'label' => 'Category: ')); ?>
+    <?php echo $this->Form->input('phone', array( 'label' => 'Phone: ')); ?>
+    <?php echo $this->Form->input('email', array( 'label' => 'Email: ')); ?>
+    <?php echo $this->Form->input('address1', array( 'label' => 'Address 1: ')); ?>
+    <?php echo $this->Form->input('address2', array( 'label' => 'Address 2: ')); ?>
+    <?php echo $this->Form->input('city', array( 'label' => 'City: ')); ?>
+    <?php echo $this->Form->input('state', array( 'label' => 'State: ')); ?>
+    <?php echo $this->Form->input('zip', array( 'label' => 'Zip Code: ')); ?>
+    <?php echo $this->Form->input('contact_name', array( 'label' => 'Contact Name: ')); ?>
+    <?php echo $this->Form->input('notes', array( 'label' => 'Notes: <br/>')); ?>
+    <?php echo $this->Form->input('leads_per_week', array( 'label' => 'Maximum Leads/Week: <br/>')); ?>
+    <?php if (!empty($ranges)) { ?>
+    <?php echo $this->Form->input('Range', array( 'label' => 'Price Ranges: <br/>','multiple'=>'checkbox')); ?>
+    <?php } ?>
+    <?php echo $this->Form->end('Add Vendor'); ?>
+
+</div>
+    

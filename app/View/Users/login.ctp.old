@@ -1,0 +1,45 @@
+<style>
+    .d {
+        width:260px;
+        text-align:center;
+        margin-right:auto;
+        margin-left:auto;
+        margin-top:130px;
+        border:2px solid rgb(110,163,211);
+        font-family:'Calibri','Arial';
+    }
+    input {
+        margin-top:7px;
+        margin-bottom:7px;
+        border:2px solid rgb(110,163,211);
+        font-size:1.5em;
+        width:210px;
+    }
+    .submit input {
+        width:150px;
+        font-size:1em;
+        color: #ffffff;
+        background: rgb(85,147,204);
+    }
+    h4 {
+        color:red;
+    }
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#corner').corner("28px");
+  $('.g').corner();
+});
+</script>
+
+<div class="d" id="corner">
+    <h2>LeadGenX Login</h2>
+    <h4><?php echo $this->Session->flash(); ?></h4>
+    <h4><?php echo $this->Session->flash('Auth'); ?></h4>
+<?php echo $this->Form->create('User', array('action' => 'login'));
+    echo $this->Form->input('username', array( 'label' => 'Username: <br/>'));
+    echo $this->Form->input('password', array('label'=>'Password: <br/>'));
+    echo $this->Form->end(array('label'=>'Sign In','class'=>'g')); ?>
+    <br/>
+</div>

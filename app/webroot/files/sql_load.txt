@@ -1,0 +1,173 @@
+-- phpMyAdmin SQL Dump
+-- version 3.3.9.2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 05, 2012 at 08:30 PM
+-- Server version: 5.5.9
+-- PHP Version: 5.3.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `Lead Gen`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bills`
+--
+
+CREATE TABLE `bills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `vendor_id` int(11) NOT NULL,
+  `week_start` varchar(25) NOT NULL,
+  `week_end` varchar(25) NOT NULL,
+  `end_timestamp` int(20) NOT NULL,
+  `leads` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `paid` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `use_ranges` tinyint(1) NOT NULL,
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories_vendors`
+--
+
+CREATE TABLE `categories_vendors` (
+  `category_id` int(11) NOT NULL,
+  `vendor_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `zip` varchar(10) NOT NULL,
+  `wedding_date` date NOT NULL,
+  `approved` int(1) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ranges`
+--
+
+CREATE TABLE `ranges` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `low_end` decimal(10,2) DEFAULT NULL,
+  `high_end` decimal(10,2) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ranges_vendors`
+--
+
+CREATE TABLE `ranges_vendors` (
+  `range_id` int(11) NOT NULL,
+  `vendor_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `records`
+--
+
+CREATE TABLE `records` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `select` tinyint(1) DEFAULT NULL,
+  `range_id` int(11) DEFAULT NULL,
+  `vendor_id` int(11) DEFAULT NULL,
+  `sent` tinyint(1) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=964 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_email` varchar(255) DEFAULT NULL,
+  `replyto_email` varchar(255) DEFAULT NULL,
+  `site_url` varchar(255) DEFAULT NULL,
+  `lead_price` decimal(10,2) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendors`
+--
+
+CREATE TABLE `vendors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `leads_per_week` int(5) DEFAULT '99999',
+  `name` varchar(255) NOT NULL,
+  `phone` varchar(25) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `address1` varchar(255) DEFAULT NULL,
+  `address2` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zip` int(10) DEFAULT NULL,
+  `contact_name` varchar(255) DEFAULT NULL,
+  `notes` text,
+  `total_all` int(11) DEFAULT NULL,
+  `total_bill` int(11) DEFAULT '99999',
+  `last_sent` datetime DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=416 ;
