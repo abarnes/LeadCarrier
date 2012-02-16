@@ -51,8 +51,9 @@ class AppModel extends Model {
         $this->setDataSource('new');
         $query = file_get_contents('files/sql_load.txt');
         if ($this->query($query)) {
-            $settings = "INSERT INTO `settings` VALUES(1, '', '', '', 5.00, '2012-01-01 00:00:00', '2012-01-01 00:00:00');";
-            $this->query($settings);
+            //$settings = "INSERT INTO `settings` VALUES(1, '', '', '', 5.00, '2012-01-01 00:00:00', '2012-01-01 00:00:00');";
+            //$this->query($settings);
+            return true;
         } else {
             return false;
         }

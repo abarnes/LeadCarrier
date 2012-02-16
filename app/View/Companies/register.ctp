@@ -12,6 +12,7 @@
     <?php echo $this->Form->input('phone', array( 'label' => 'Phone Number: ')); ?>
     <?php echo $this->Form->input('contact_name', array( 'label' => 'Contact Name: ')); ?>
     <?php echo $this->Form->input('email', array( 'label' => 'Email: ')); ?>
+    <?php echo $this->Form->input('subdomain', array( 'label' => 'Desired Subdomain: ')); ?>
     <?php echo $this->Form->end('Register'); ?>
 
 

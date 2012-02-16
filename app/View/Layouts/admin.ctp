@@ -212,7 +212,7 @@
                         Hello, <?php echo $current_user['username']; ?>
                     </div>
                     <ul>
-                    	<li><a href="#">Profile</a></li>
+                    	<li><a href="/companies/edit/<?php echo $current_user['company_id']; ?>">Profile</a></li>
                         <li><a href="/users/passwordchange/<?php echo $current_user['id']; ?>">Change Password</a></li>
                         <li><a href="/users/logout">Logout</a></li>
                     </ul>

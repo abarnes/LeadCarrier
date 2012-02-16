@@ -48,6 +48,19 @@ class SettingsController extends AppController {
 		$this->Setting->id = $s['Setting']['id'];
 		$this->data = $this->Setting->read();
 	}
+	
+	public function setup($id) {
+		$this->layout = 'main';
+		$this->set('id',$id);
+		if (!empty($this->request->data)) {
+			$this->Setting->create();
+			if ($this->Setting->save($this->request->data)) {
+				$this->redirect(array('controller'=>'records','action' => 'dashboard'));
+			} else {
+				$this->Session->setFlash('Error: Setup Failure.  Please try again later.');
+			}
+		}
+	}
         
 	
 	function edit() {

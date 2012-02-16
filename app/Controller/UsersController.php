@@ -20,7 +20,7 @@ class UsersController extends AppController {
 	);
 	
         public function beforeFilter() {
-		parent::beforeFilter();
+		//parent::beforeFilter();
 		$this->Auth->allow('add','login');
 		/*$connect = $this->connect();
 		if (!empty($connect)) {
@@ -82,8 +82,16 @@ class UsersController extends AppController {
 	
 	//add a regular user, incl. after register public function
 	public function add($id) {
-		$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
-		$this->layout = 'admin';
+		$this->User->setDataSource('default');
+		$this->Company->setDataSource('default');
+		
+		$userInfo = $this->Auth->user();
+		if (!empty($userInfo)) {
+			$this->layout = 'admin';
+			$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
+		} else {
+			$this->layout = 'main';	
+		}
 		$this->set('id',$id);
 		$company = $this->User->Company->findById($id);
 		if(!empty($company)) {
@@ -101,7 +109,7 @@ class UsersController extends AppController {
 					    if ($this->Auth->user('id')==null) {
 						$this->Auth->login($this->request->data['User']);
 					    }
-					    $this->redirect(array('controller'=>'records','action' => 'dashboard'));
+					    $this->redirect(array('controller'=>'settings','action' => 'setup/'.$id));
 				    } else {
 					    $this->Session->setFlash('Failed to Save User');
 					    $this->redirect('/settings');
