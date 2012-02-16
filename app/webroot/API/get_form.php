@@ -1,0 +1,37 @@
+<?php
+include('config.php');
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $leadcarrier_url."/get_form");
+curl_setopt($ch, CURLOPT_HEADER, false);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+$result = curl_exec($ch);
+curl_close($ch);
+
+$categories = json_decode($result);
+
+/*---------------------------Edit below this line to change the appearance of the industry select form----------------------------------*/
+
+echo '<form action="'.$site_url.'/API/'.$parse_url.'" method="post">';
+foreach ($categories as $c) {
+  if ($c->Category->use_ranges=='0') {
+    echo '<label class=".$select_label_class.">'.$c->Category->name.'</label>';
+    echo '<input type="checkbox" name="c'.$c->Category->id.'" checked="checked">';
+  } else {
+      echo '<label class="'.$select_label_class.'">'.$c->Category->name.'</label>';
+      echo '<input type="checkbox" name="c'.$c->Category->id.'" label="'.$c->Category->name.'" checked="checked"><br/>';
+      echo '<select name="'.$c->Category->id.'">';
+      foreach ($c->Range as $r) {
+        echo '<option value="'.$r->id.'">'.$r->name.'</option>';
+      }
+      echo '</select>';
+  }
+  echo '<br/><br/>';
+}
+echo '<input type="button" value="submit"/></form>';
+
+/*--------------*/
+exit();
+?>  

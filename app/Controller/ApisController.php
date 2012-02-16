@@ -50,7 +50,21 @@ class ApisController extends AppController {
         
 	//parses client information and selections at once
 	public function parse_all() {
-
+		$vars = $_POST;
+		
+		
+		$this->Client->create();
+		$data = array();
+		foreach ($vars as $row=>$value) {
+			$data['Client'][$row] = $value;
+		}
+		if ($this->Client->save($data)) {
+			$id = $this->Client->getLastInsertID();
+			
+		} else {
+			echo 'Error: failed to save information.';
+		}
+		
 	}
 	
 	//parses client information and returns an ID, which is then used in parse_selections()
@@ -77,7 +91,8 @@ class ApisController extends AppController {
 	
 	//returns data for selection form (industries & their ranges)
 	public function get_form() {
-		
+		$this->Category->recursive = 1;
+		echo json_encode($this->Category->find('all',array('conditions'=>array('Category.enable'=>'1'))));
 	}
 }
 
