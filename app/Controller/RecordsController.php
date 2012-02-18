@@ -15,6 +15,7 @@ class RecordsController extends AppController {
         
         function beforeFilter() {
 		parent::beforeFilter();
+		
             //$this->Auth->allow('view');
 	    
 	    /*$connect = $this->connect();
@@ -40,19 +41,13 @@ class RecordsController extends AppController {
 		$this->Client->setDataSource('new');
 	    }*/
         }
-        
 	
-	function index () {
-		//$this->set('records', $this->Range->Vendor->find('list'));
-		$this->paginate = array('limit' => 18);
-			$records = $this->paginate('Record');
-			if (count($records)==0){
-				$this->Session->setFlash('No records found.');
-			}
-		$this->set(compact('records'));
-	}
-	
-	function dashboard(){
+	public function dashboard(){
+		$current_user = $this->Auth->user();
+		if ($current_user['admin']=='1') {
+			$this->redirect('/admin/companies');
+		}
+		
 		$this->layout = 'admin';
 		$this->set('down','dashboard');
 		
@@ -257,12 +252,13 @@ class RecordsController extends AppController {
 			$this->set('dat',$dat);
 			
 			$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
-			$this->set('active_vendors',$this->Vendor->find('count',array('conditions'=>array('Vendor.active'=>'1'))));
 		} else {
 			$this->set('go','0');
 		}
+		$this->set('active_vendors',$this->Vendor->find('count',array('conditions'=>array('Vendor.active'=>'1'))));
 	}
 	
+	/*
 	function add() {
 		//$this->set('rs', $this->Range->Vendor->find('list'));
 		if (!empty($this->request->data)) {
@@ -294,7 +290,7 @@ class RecordsController extends AppController {
 		$this->Record->delete($id);
 		$this->Session->setFlash('Record Successfully Deleted.');
 		$this->redirect(array('action'=>'index'));
-	}
+	}*/
 	
 }
 

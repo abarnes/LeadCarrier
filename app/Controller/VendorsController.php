@@ -258,7 +258,7 @@ class VendorsController extends AppController {
 	}
 	
 	function sendmail($id=null) {
-		if ($id!=null) {
+		if ($id==null) {
 			$id = $this->request->data['Vendor']['i'];
 		}
 		$vendor = $this->Vendor->findById($id);		

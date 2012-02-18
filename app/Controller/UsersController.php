@@ -20,7 +20,7 @@ class UsersController extends AppController {
 	);
 	
         public function beforeFilter() {
-		//parent::beforeFilter();
+		parent::beforeFilter();
 		$this->Auth->allow('add','login');
 		/*$connect = $this->connect();
 		if (!empty($connect)) {
@@ -81,7 +81,7 @@ class UsersController extends AppController {
 	}
 	
 	//add a regular user, incl. after register public function
-	public function add($id) {
+	public function add($id,$r=null) {
 		$this->User->setDataSource('default');
 		$this->Company->setDataSource('default');
 		
@@ -103,13 +103,24 @@ class UsersController extends AppController {
 		    if (!empty($this->request->data)) {
 			    $p2 = $this->request->data['User']['password2'];
 			    if ($this->request->data['User']['password'] == $p2) {
-				$this->request->data['User']['company_id'] = $id; 
+				$this->request->data['User']['company_id'] = $id;
+				if (!empty($userInfo)&&$userInfo['admin']==1) {
+					$this->request->data['User']['admin']='1';
+				}
 				    if ($this->User->save($this->request->data)) {
 					    $this->Session->setFlash('"'.$this->request->data['User']['username'] . '" Successfully Added.');
 					    if ($this->Auth->user('id')==null) {
 						$this->Auth->login($this->request->data['User']);
 					    }
-					    $this->redirect(array('controller'=>'settings','action' => 'setup/'.$id));
+					    if ($r!=null) {
+						if ($userInfo['admin']==0) {
+							$this->redirect(array('controller'=>'settings','action' => 'index'));
+						} else {
+							$this->redirect(array('controller'=>'users','action' => 'index','admin'=>true));
+						}
+					    } else {
+						$this->redirect(array('controller'=>'settings','action' => 'setup/'.$id));
+					    }
 				    } else {
 					    $this->Session->setFlash('Failed to Save User');
 					    $this->redirect('/settings');
@@ -133,12 +144,20 @@ class UsersController extends AppController {
 		    } else {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash('User Information Has Been Updated.');
-				$this->redirect('/settings');
+				if ($this->Auth->user('admin')==1) {
+					$this->redirect('/admin/users');
+				} else {
+					$this->redirect('/settings');	
+				}
 			}
 		    }
 		} else {
 			$this->Session->setFlash('Authentication Error');
-			$this->redirect('/settings');
+			if ($this->Auth->user('admin')==1) {
+				$this->redirect('/admin/users');
+			} else {
+				$this->redirect('/settings');	
+			}
 		}
 	}
 	
@@ -175,19 +194,32 @@ class UsersController extends AppController {
 	}
     
 	public function delete($id) {
+		$userInfo = $this->Auth->user();
+		if ($userInfo['admin']==1) {
+			$redirect = '/admin/users';
+		} else {
+			$redirect = '/settings';
+		}
 		$u = $this->User->findById($id);
 		if ($u['User']['company_id']==$this->Auth->user('company_id')||$this->Auth->user('admin')=='1') {
 			$this->User->delete($id);
 			$this->Session->setFlash('User Successfully Deleted.');
-			$this->redirect('/settings');
+			$this->redirect($redirect);
 		} else {
 			$this->Session->setFlash('Authentication Error');
-			$this->redirect('/settings');
+			$this->redirect($redirect);
 		}
 	}
 	
-	public function index () {
-	
+	public function admin_index () {
+		$this->layout = 'admin';
+		$userInfo = $this->Auth->user();
+		if ($userInfo['admin']!='1') {
+			$this->Session->setFlash('You do not have permission to view this page.');
+			$this->redirect('/dashboard');
+		}
+		
+		$this->set('users',$this->User->find('all',array('conditions'=>array('company_id'=>$userInfo['company_id']))));
 	}
 	
 	public function submit() {

@@ -72,8 +72,8 @@
     	<!-- Logo Wrapper -->
     	<div id="mws-logo-container">
         	<div id="mws-logo-wrap">
-            	<img src="/images/logo.png" alt="mws admin" />
-			</div>
+			<img src="/images/logo.png" alt="mws admin" />
+		</div>
         </div>
         
         <!-- User Area Wrapper -->
@@ -140,14 +140,13 @@
             </div>-->
             
             <!-- User Messages -->
-            <div id="mws-user-message" class="mws-dropdown-menu">
+            <!--<div id="mws-user-message" class="mws-dropdown-menu">
             	<a href="#" class="mws-i-24 i-message mws-dropdown-trigger">Messages</a>
                 <span class="mws-dropdown-notif">35</span>
                 <div class="mws-dropdown-box">
                 	<div class="mws-dropdown-content">
                         <ul class="mws-messages">
                         
-                        	<!-- Message Content -->
                         	<li class="read">
                             	<a href="#">
                                     <span class="sender">dfsd</span>
@@ -192,15 +191,14 @@
                                     </span>
                                 </a>
                             </li>
-                            <!-- End Messages -->
                             
                         </ul>
                         <div class="mws-dropdown-viewall">
 	                        <a href="#">View All Messages</a>
                         </div>
                     </div>
-                </div>
-            </div>
+		</div>
+	    </div>-->
             
             <!-- User Functions -->
             <div id="mws-user-info" class="mws-inset">

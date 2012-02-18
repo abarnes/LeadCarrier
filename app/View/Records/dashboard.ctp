@@ -1,43 +1,44 @@
-<!-----chart function ---->
-<script type="text/javascript">
-$(function () {
-    var Leads = [];
-    var mult=0;
-    
-    <?php $leads=0; ?> 
-    <?php foreach ($dat as $d) { ?>
-	mult = <?php echo $d['date']; ?>;
-	Leads.push([mult*1000, <?php echo $d['leads']; ?>]);
-	<?php $leads=$leads+$d['leads']; ?>
-    <?php } ?>
-	//alert(Leads);
-    var plot = $.plot($("#mws-dashboard-chart"),
-           [ { data: Leads, label: "Leads Generated", color: "#c5d52b"} ], {
-               series: {
-                   lines: { show: true },
-                   points: { show: true }
-               },
-               grid: { hoverable: true, clickable: true },
-               //xaxis: { min: 1, max: 31 },
-	        xaxis: {
-			mode: "time",
-			minTickSize: [1, "day"],
-			min: (new Date(<?php echo $starttime; ?>/*2012, 0, 12*/)).getTime(),
-			max: (new Date(<?php echo $endtime; ?>/*2012, 1, 12*/)).getTime()
-		},
-               yaxis: { min: 0, max: <?php echo $max; ?> }
-             });
-});
-</script>
-
-<script>
-	$(function() {
-		$( ".datepicker" ).datepicker();
-                $('#gr').visualize({type: 'area', width: '730px',height:'300px'});
-                $('.subm').corner();
+<?php if ($go=='1') { ?>
+	<!-----chart function ---->
+	<script type="text/javascript">
+	$(function () {
+	    var Leads = [];
+	    var mult=0;
+	    
+	    <?php $leads=0; ?> 
+	    <?php foreach ($dat as $d) { ?>
+		mult = <?php echo $d['date']; ?>;
+		Leads.push([mult*1000, <?php echo $d['leads']; ?>]);
+		<?php $leads=$leads+$d['leads']; ?>
+	    <?php } ?>
+		//alert(Leads);
+	    var plot = $.plot($("#mws-dashboard-chart"),
+		   [ { data: Leads, label: "Leads Generated", color: "#c5d52b"} ], {
+		       series: {
+			   lines: { show: true },
+			   points: { show: true }
+		       },
+		       grid: { hoverable: true, clickable: true },
+		       //xaxis: { min: 1, max: 31 },
+			xaxis: {
+				mode: "time",
+				minTickSize: [1, "day"],
+				min: (new Date(<?php echo $starttime; ?>/*2012, 0, 12*/)).getTime(),
+				max: (new Date(<?php echo $endtime; ?>/*2012, 1, 12*/)).getTime()
+			},
+		       yaxis: { min: 0, max: <?php echo $max; ?> }
+		     });
 	});
-</script>
-<?php //die(print($starttime.'|'.$endtime)); ?>
+	</script>
+	
+	<script>
+		$(function() {
+			$( ".datepicker" ).datepicker();
+			$('#gr').visualize({type: 'area', width: '730px',height:'300px'});
+			$('.subm').corner();
+		});
+	</script>
+<?php } ?>
 
 <!-- Sidebar Wrapper -->
         <div id="mws-sidebar">
@@ -57,7 +58,7 @@ $(function () {
                 	<li class="active"><a href="/dashboard" class="mws-i-24 i-home">Dashboard</a></li>
 			<li>
 				<a href="/pending" class="mws-i-24 i-plus">
-					Pending <span class="mws-nav-tooltip">+<?php echo $pendings; ?></span>
+					Pending <span class="mws-nav-tooltip">+<?php if (isset($pendings)) {echo $pendings; } else { echo '0'; }?></span>
 				</a>
 			</li>
                 	<li><a href="/clients" class="mws-i-24 i-group-2">Clients</a></li>
@@ -78,26 +79,28 @@ $(function () {
 	    <?php echo $this->Session->flash(); ?>
 	    
 		<div style="float:left;width:100%;">
-			<h2 style="max-width:500px;float:left;">Dashboard - <?php echo $nam; ?></h2>
-			<div style="float:right;">
-				<div class="dateform">
-					<table>
-					    <tr>
-						<td>
-							<?php echo $this->Form->create('Record', array('action' => 'dashboard'));
-							echo $this->Form->input('start_date', array( 'label' => '<span class="datelabel">Start Date: </span>','class'=>'datepicker')); ?>
-						</td>
-						<td>
-							<?php echo $this->Form->input('end_date', array('label'=>'<span class="datelabel">End Date: </span>','class'=>'datepicker')); ?>
-						</td>
-						<td>
-							<?php echo $this->Form->end(array('label'=>'Submit','class'=>'mws-button black')); ?>
-						</td>
-					    </tr>
-					</table>
-				    </div>
-			</div>		
-		</div>		
+			<h2 style="max-width:500px;float:left;">Dashboard <?php if ($go=='1') {echo ' - '.$nam;} ?></h2>
+			<?php if ($go=='1') { ?>
+				<div style="float:right;">
+					<div class="dateform">
+						<table>
+						    <tr>
+							<td>
+								<?php echo $this->Form->create('Record', array('action' => 'dashboard'));
+								echo $this->Form->input('start_date', array( 'label' => '<span class="datelabel">Start Date: </span>','class'=>'datepicker')); ?>
+							</td>
+							<td>
+								<?php echo $this->Form->input('end_date', array('label'=>'<span class="datelabel">End Date: </span>','class'=>'datepicker')); ?>
+							</td>
+							<td>
+								<?php echo $this->Form->end(array('label'=>'Submit','class'=>'mws-button black')); ?>
+							</td>
+						    </tr>
+						</table>
+					    </div>
+				</div>
+			<?php } ?>
+		</div>
 		
             	<div class="mws-report-container clearfix">
 		
@@ -105,7 +108,7 @@ $(function () {
                     	<span class="mws-report-icon mws-ic ic-user-add"></span>
                         <span class="mws-report-content">
                         	<span class="mws-report-title">Pending</span><br/>
-                            <span class="mws-report-value"><?php echo $pendings; ?></span>
+                            <span class="mws-report-value"><?php if (isset($pendings)) {echo $pendings; } else { echo '0'; }?></span>
                         </span>
                     </a>		    
                     		
@@ -114,7 +117,7 @@ $(function () {
                     	<span class="mws-report-icon mws-ic ic-group-link"></span>
                         <span class="mws-report-content">
                         	<span class="mws-report-title">Total Sign-Ups</span><br/>
-                            <span class="mws-report-value"><?php echo $brides; ?></span>
+                            <span class="mws-report-value"><?php if (isset($brides)) {echo $brides; } else { echo '0'; }?></span>
                         </span>
                     </a>
 
@@ -122,7 +125,7 @@ $(function () {
                     	<span class="mws-report-icon mws-ic ic-chart-line"></span>
                         <span class="mws-report-content">
                         	<span class="mws-report-title">Leads Generated</span><br/>
-                            <span class="mws-report-value"><?php echo $leads; ?></span>
+                            <span class="mws-report-value"><?php if (isset($leads)) {echo $leads; } else { echo '0'; }?></span>
                         </span>
                     </a>
 		    
@@ -138,12 +141,13 @@ $(function () {
                     	<span class="mws-report-icon mws-ic ic-money-add"></span>
                         <span class="mws-report-content">
                         	<span class="mws-report-title">Revenue Generated</span><br/>
-                            <span class="mws-report-value">$<?php echo $rev; ?></span>
+                            <span class="mws-report-value">$<?php if (isset($rev)) {echo $rev; } else { echo '0'; }?></span>
                         </span>
                     </a>		    
 		    
                 </div>
                 
+	<?php if ($go=='1') { ?>
             	<div class="mws-panel grid_5">
                 	<div class="mws-panel-header">
                     	<span class="mws-i-24 i-graph">Leads</span>
@@ -174,5 +178,22 @@ $(function () {
                         </ul>
                     </div>
                 </div>
+	<?php } else { ?>
+		<div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                    	<span class="mws-i-24 i-graph">Get Started</span>
+                    </div>
+                    <div class="mws-panel-body">
+                    	<div class="mws-panel-content">
+	                    	<ol>
+					<li>Create Industries & Price Ranges</li>
+					<li>Add Vendors</li>
+					<li>Integrate with your site</li>
+					<li>Start distributing leads!</li>
+				</ol>
+                        </div>
+                    </div>
+                </div>
+	<?php } ?>
 		
             <!-- End Main Container -->

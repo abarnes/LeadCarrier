@@ -71,7 +71,7 @@ class AppController extends Controller {
         }
     }    
     
-    function connect() {
+    /*function connect() {
         //$urlParts = explode('.', $_SERVER['HTTP_HOST']);
         
         $current_user = $this->Auth->user();
@@ -82,6 +82,6 @@ class AppController extends Controller {
         } else {
             return array();
         }
-    }
+    }*/
     
 }

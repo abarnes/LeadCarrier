@@ -9,6 +9,7 @@
 		
             <!-- Main Navigation -->
             <div id="mws-navigation">
+	    <?php if ($current_user['admin']==0) { ?>
             	<ul>
                 	<li><a href="/dashboard" class="mws-i-24 i-home">Dashboard</a></li>
 			<li>
@@ -21,6 +22,12 @@
                 	<li><a href="/categories" class="mws-i-24 i-companies">Industries</a></li>
                 	<li class="active"><a href="/settings" class="mws-i-24 i-cog-4">Admin</a></li>
                 </ul>
+		<?php } else { ?>
+		<ul>
+		    <li><a href="/admin/companies" class="mws-i-24 i-apartment-building">Companies</a></li>
+                    <li class="active"><a href="/admin/users" class="mws-i-24 i-cog-4">Users</a></li>
+		</ul>
+		<?php } ?>
             </div>
             <!-- End Navigation -->
         </div>
@@ -33,7 +40,11 @@
 		<div style="float:left;width:100%;">
 			<h2 style="max-width:500px;float:left;">Edit User</h2>
 			<div style="float:right;">
+			    <?php if ($current_user['admin']==0) { ?>
 				<a href="/settings"><input type="button" value="Admin Panel" class="mws-button black mws-i-24 i-cog-4 large"></a>
+			    <?php } else { ?>
+				<a href="/admin/users"><input type="button" value="Admin Users" class="mws-button black mws-i-24 i-cog-4 large"></a>
+			    <?php } ?>
 			</div>	
 		</div>
 		

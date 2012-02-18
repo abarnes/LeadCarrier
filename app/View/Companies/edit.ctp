@@ -54,6 +54,7 @@ function button(action){
 		
             <!-- Main Navigation -->
             <div id="mws-navigation">
+		<?php if ($admin=='0') { ?>
             	<ul>
                 	<li><a href="/dashboard" class="mws-i-24 i-home">Dashboard</a></li>
 			<li>
@@ -66,6 +67,12 @@ function button(action){
                 	<li><a href="/categories" class="mws-i-24 i-companies">Industries</a></li>
                 	<li class="active"><a href="/settings" class="mws-i-24 i-cog-4">Admin</a></li>
                 </ul>
+		<?php } else { ?>
+		<ul>
+                	<li class="active"><a href="/admin/companies" class="mws-i-24 i-apartment-building">Companies</a></li>
+                	<li><a href="/admin/users" class="mws-i-24 i-cog-4">Users</a></li>
+                </ul>
+		<?php } ?>
             </div>
             <!-- End Navigation -->
         </div>
@@ -78,7 +85,8 @@ function button(action){
 		<div style="float:left;width:100%;">
 			<h2 style="max-width:500px;float:left;">Admin Panel</h2>
 			<div style="float:right;">
-
+				<a href="/admin/companies"><input type="button" value="Manage Companies" class="mws-button black mws-i-24 i-apartment-building large"></a>
+				<a href="/admin/companies/delete/<?php echo $c['Company']['id']; ?>" onclick="return confirm('Are you sure you want to delete this company?  This cannot be undone.')"><input type="button" value="Delete" class="mws-button red mws-i-24 i-cross large"></a>
 			</div>	
 		</div>
 		
@@ -97,11 +105,20 @@ function button(action){
 					'div' => false
 				    ),
 				    'class'=>'mws-form',
-				    'action'=>'edit'
+				    'action'=>'edit/'.$id
 				)); ?>		
 				
 				<?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>
                     		<div class="mws-form-inline">
+				        <?php if ($admin=='1') { ?>
+					<div class="mws-form-row">
+                    				<label>Name</label>
+                    				<div class="mws-form-item medium">
+						<?php echo $this->Form->input('name', array('class'=>'mws-textinput')); ?>
+                    					
+                    				</div>
+                    			</div>
+					<?php } ?>
                     			<div class="mws-form-row">
                     				<label>Address</label>
                     				<div class="mws-form-item medium">
@@ -159,6 +176,29 @@ function button(action){
                     					
                     				</div>
                     			</div>
+					<?php if ($admin=='1') { ?>
+					<div class="mws-form-row">
+                    				<label>Active</label>
+                    				<div class="mws-form-item medium">
+						<?php echo $this->Form->input('active', array('class'=>'mws-textinput')); ?>
+                    					
+                    				</div>
+                    			</div>
+					<div class="mws-form-row">
+                    				<label>Free</label>
+                    				<div class="mws-form-item medium">
+						<?php echo $this->Form->input('free', array('class'=>'mws-textinput')); ?>
+                    					
+                    				</div>
+                    			</div>
+					<div class="mws-form-row">
+                    				<label>Notes</label>
+                    				<div class="mws-form-item large">
+						<?php echo $this->Form->input('notes', array('class'=>'mws-textinput')); ?>
+                    					
+                    				</div>
+                    			</div>
+					<?php } ?>
 					
                     		</div>
                     		<div class="mws-button-row">
