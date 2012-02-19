@@ -108,11 +108,9 @@ function button(action){
 				     <th><input type="checkbox" id="master" onclick="chk();"/></th>
                                     <th>ID</th>
                                     <th>Time Submitted</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-				    <th>Phone</th>
-				    <th>Zip Code</th>
+				    <?php foreach ($fields as $f) {
+					echo '<th>'.$f['Field']['display_name'].'</th>';
+				    } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -125,32 +123,35 @@ function button(action){
 					<td>
 					    <?php echo date('g:ia m-j-Y',strtotime($u['Client']['created'])); ?>
 					</td>
-					<td>
-					    <?php echo $u['Client']['first_name']; ?>
-					</td>
-					<td>
-					    <?php echo $u['Client']['last_name']; ?>
-					</td>
-					<td>
-					    <?php echo '<a href="mailto:'.$u['Client']['email'].'">'.$u['Client']['email'].'</a>'; ?>
-					</td>
-					<td>
-					    <?php echo $u['Client']['phone']; ?>
-					</td>
-					<td>
-					    <?php echo $u['Client']['zip']; ?>
-					</td>
-					<!--<td>
-					    <?php /*echo $this->Html->link('Approve',array('action'=>'approve/'.$u['Client']['id'])); ?>
-					    <?php echo $this->Html->link('View',array('action'=>'view/'.$u['Client']['id'])); ?>
-					    <?php echo $this->Html->link('Edit',array('action'=>'edit/'.$u['Client']['id'])); ?>
-					    <?php echo $this->Html->link(
-								'Delete', 
-								array('controller'=>'clients','action'=>'delete/'.$u['Client']['id']), 
-								null, 
-								'Are You Sure You Want To Delete This Person?'
-							);*/ ?>
-					</td>-->
+					<?php foreach ($fields as $f) { ?>
+						<td>
+							<?php
+								switch ($f['Field']['type']) {
+									case 'date':
+										echo date('m-j-Y',strtotime($u['Client'][$f['Field']['name']]));
+										break;
+									case 'datetime':
+										echo date('g:ia m-j-Y',strtotime($u['Client'][$f['Field']['name']]));
+										break;
+									case 'tinyint':
+										if (isset($u['Client'][$f['Field']['name']])&&$u['Client'][$f['Field']['name']]=='1') {
+											echo 'yes';
+										} else {
+											echo 'no';
+										}
+										break;
+									default:
+										if ($f['Field']['name']!='email') {
+											echo $u['Client'][$f['Field']['name']];	
+										} else {
+											echo '<a href="mailto:'.$u['Client'][$f['Field']['name']].'">'.$u['Client'][$f['Field']['name']].'</a>';	
+										}
+										break;
+								}
+							
+							?>
+						</td>
+					<?php } ?>
 				</tr>
 				<?php } ?>
                             </tbody>

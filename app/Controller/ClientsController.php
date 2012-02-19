@@ -4,7 +4,7 @@ class ClientsController extends AppController {
 	var $name = 'Clients';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form', 'Time');
-	var $uses = array('Client','Category','Range','Vendor','Setting','Record');
+	var $uses = array('Client','Category','Range','Vendor','Setting','Record','Field');
 	var $components = array('Auth','Session','Email');
         
         function beforeFilter() {
@@ -39,7 +39,7 @@ class ClientsController extends AppController {
         
 	function index ($w=null) {
 		$this->layout = 'admin';
-		$this->set('down','brides');
+		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
 		if (isset($w)) {
 			if ($w=='approved') {
 				$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved'=>'1'),'fields'=>array('DISTINCT Client.id','Client.first_name','Client.last_name','Client.wedding_date','Client.email','Client.approved','Client.zip','Client.phone','Client.created'));
@@ -119,7 +119,7 @@ class ClientsController extends AppController {
 	
 	function pending () {
 		$this->layout = 'admin';
-		$this->set('down','pending');
+		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
 		$this->paginate = array('limit' => 18,'fields'=>array('DISTINCT Client.id','Client.first_name','Client.last_name','Client.wedding_date','Client.email','Client.approved','Client.zip','Client.created','Client.phone'),'conditions'=>array('Client.approved'=>'0'));
 		$clients = $this->paginate('Client');
 		$this->set(compact('clients'));
@@ -157,7 +157,7 @@ class ClientsController extends AppController {
 	
 	function view ($id) {
 		$this->layout = 'admin';
-		$this->set('down','brides');
+		$this->set('fields',$this->Field->find('all'));
 		$c = $this->Client->findById($id);
 		if (isset($c)) {
 			$this->set('c',$c);

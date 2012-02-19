@@ -49,30 +49,47 @@
                     <div class="mws-panel-body">
 			<table class="mws-table">
                             <tbody>
-                                <tr class="even">
-                                    <td>Name</td>
-                                    <td><?php echo $c['Client']['first_name'].' '.$c['Client']['last_name']; ?></td>
-                                </tr>
-				<tr class="odd">
-                                    <td>ID</td>
-                                    <td><?php echo $c['Client']['id']; ?></td>
-                                </tr>
-				<tr class="even">
-                                    <td>Date/Time Submitted</td>
-                                    <td><?php echo date('g:ia m-j-Y',strtotime($c['Client']['created'])); ?></td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>Phone</td>
-                                    <td><?php echo $c['Client']['phone']; ?></td>
-                                </tr>
-                                <tr class="even">
-                                    <td>Email</td>
-                                    <td><?php echo $c['Client']['email']; ?></td>
-                                </tr>
-				<tr class="odd">
-                                    <td>Zipcode</td>
-                                    <td><?php echo $c['Client']['zip']; ?></td>
-                                </tr>
+                                <?php
+				$count = 1;
+				foreach ($fields as $f) {
+					if ($count%2!=0) {
+						$class="even";
+					} else {
+						$class="odd";
+					} ?>
+					<tr class="<?php echo $class; ?>">
+						<td>
+							<?php echo $f['Field']['display_name']; ?>
+						</td>
+						<td>
+							<?php
+								switch ($f['Field']['type']) {
+									case 'date':
+										echo date('m-j-Y',strtotime($c['Client'][$f['Field']['name']]));
+										break;
+									case 'datetime':
+										echo date('g:ia m-j-Y',strtotime($c['Client'][$f['Field']['name']]));
+										break;
+									case 'tinyint':
+										if ($c['Client'][$f['Field']['name']]=='1') {
+											echo 'yes';
+										} else {
+											echo 'no';
+										}
+										break;
+									default:
+										if ($f['Field']['name']!='email') {
+											echo $c['Client'][$f['Field']['name']];	
+										} else {
+											echo '<a href="mailto:'.$c['Client'][$f['Field']['name']].'">'.$c['Client'][$f['Field']['name']].'</a>';	
+										}
+										break;
+								}
+							
+							?>
+						</td>
+					</tr>
+				<?php $count++; } ?>
                             </tbody>
                         </table>
 		    </div>

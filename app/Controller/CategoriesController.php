@@ -4,7 +4,7 @@ class CategoriesController extends AppController {
 	var $name = 'Categories';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form', 'Time');
-	var $uses = array('Category','Range','Record','Client','RangesVendor');
+	var $uses = array('Category','Range','Record','Client','RangesVendor','Setting');
 	public $components = array(
 		'Session',
 		'Auth' => array(
@@ -118,6 +118,7 @@ class CategoriesController extends AppController {
 		$this->set('id',$id);
 		$this->Category->recursive = 2;
 		$this->set('categories',$this->Category->find('all',array('conditions'=>array('Category.enable'=>'1'))));
+		$s = $this->Setting->find('first',array('order'=>'Setting.created ASC'));
 		if (!empty($this->request->data)) {
 			//die(print_r($this->request->data));
 			foreach ($this->request->data['Category'] as $row=>$value) {
@@ -125,7 +126,7 @@ class CategoriesController extends AppController {
 					$f = $this->Category->findById(substr($row,1));
 					
 					$i = 1;
-					while($i<4){
+					while($i<=$s['Setting']['leads_per_industry']){
 						$this->Category->Record->create();
 						$data = array();
 						$data['Record']['client_id'] = $id;

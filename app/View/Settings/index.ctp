@@ -14,6 +14,20 @@ $(document).ready(function(){
 		    chk();
 		    return true;
 		 });
+		$("#master2").click(function(){
+		  var checked_status = this.checked;
+                    $("input[class=ck2]").each(function()
+                    {
+			/*if (this.checked==false) {
+				this.checked=true;
+			} else {
+				this.checked=false;
+			}*/
+                     this.checked = true;
+                    });
+		    chk();
+		    return true;
+		 });
 });
 
 function chk() {
@@ -40,6 +54,14 @@ function button(action){
 	}
 	$('#UserAction').val(action);
 	$('#UserSubmitForm').submit();
+}
+
+function button2(action){
+	if (action=='delete') {
+		confirm('Are you sure you want to delete these fields?  This cannot be undone and all data will be lost.');
+	}
+	$('#FieldAction').val(action);
+	$('#FieldSubmitForm').submit();
 }
 </script>        
 	
@@ -131,6 +153,13 @@ function button(action){
 								</div>
                     				</div>
                     			</div>
+					<div class="mws-form-row">
+                    				<label>Leads per Industry</label>
+                    				<div class="mws-form-item small">
+						<?php echo $this->Form->input('leads_per_industry', array('class'=>'mws-textinput')); ?>
+                    					
+                    				</div>
+                    			</div>
 					
                     		</div>
                     		<div class="mws-button-row">
@@ -140,13 +169,13 @@ function button(action){
                     </div>    	
                 </div>
 		
-		<div style="float:right;margin-top:320px;">
+		<div style="float:right;margin-top:380px;">
 				<a href="/users/add/<?php echo $current_user['company_id']; ?>"><input type="button" value="Add User" class="mws-button blue mws-i-24 i-plus large"></a>
 		</div>	
                 <!-------user table---->
                 
             	<div class="mws-panel grid_8">
-                	<div class="mws-panel-header">
+                    <div class="mws-panel-header">
                     	<span class="mws-i-24 i-table-1">Users</span>
                     </div>
                     <div class="mws-panel-body">
@@ -184,14 +213,6 @@ function button(action){
 					    <a href="/users/edit/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" value="Edit" class="mws-button green mws-i-24 small"></a>
 					    <a href="/users/passwordchange/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" value="Change Password" class="mws-button blue mws-i-24 small"></a>
 					    <a href="/users/delete/<?php echo $u['User']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete this?')"><input type="button" value="Delete" class="mws-button red mws-i-24 small"></a>
-					    
-					    <?php //echo $this->Html->link('Edit',array('action'=>'edit/'.$u['Category']['id'])); ?>
-					    <?php /*echo $this->Html->link(
-								'Delete', 
-								array('controller'=>'clients','action'=>'delete/'.$u['Category']['id']), 
-								null, 
-								'Are You Sure You Want To Delete This Category?'
-							);*/ ?>
 					</td>
 				</tr>
 			    <?php } ?>
@@ -200,4 +221,70 @@ function button(action){
                         </table>
                     </div>
                 </div>
+		
+		<!-------fields table---->
+		<p style="float:left;margin-left:20px;margin-top:16px;">Manage the data fields saved for each client and displayed in the client tables. This will alter the database, and changes are permanent.</p>
+		<div style="float:right;margin-top:0px;margin-bottom:20px;">
+				<a href="/fields/add"><input type="button" value="Add Field" class="mws-button blue mws-i-24 i-plus large"></a>
+		</div>                
+		
+            	<div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                    	<span class="mws-i-24 i-table-1">Fields</span>
+                    </div>
+                    <div class="mws-panel-body">
+			<div class="mws-panel-toolbar top clearfix">
+                        	<ul>
+                            	<li><a href="#" onclick="button2('delete');" class="mws-ic-16 ic-delete">Delete</a></li>
+                            </ul>
+                        </div>
+			<?php echo $this->Form->create('Field',array('action'=>'submit')); ?>
+			<?php echo $this->Form->input('action',array('type'=>'hidden')); ?>
+                        <table class="mws-datatable-fn mws-table">
+                            <thead>
+                                <tr>
+				    <th><input type="checkbox" id="master2" onclick="chk2();"/></th>
+                                    <th>Display Name</th>
+				    <th>Name</th>
+				    <th>Type</th>
+				    <th>Display in Table</th>
+				    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+			    <?php foreach ($fields as $u) { ?>
+				<tr>
+					<td><?php echo $this->Form->input('check'.$u['Field']['id'],array('type'=>'checkbox','label'=>'','class'=>'ck2','onclick'=>'chk2();')); ?></td>
+					<td>
+					    <?php echo $u['Field']['display_name']; ?>
+					</td>
+					<td>
+					    <?php echo $u['Field']['name']; ?>
+					</td>
+					<td>
+						<?php echo $u['Field']['type']; ?>
+					</td>
+					<td>
+						<?php
+						switch ($u['Field']['display']) {
+								case '1':
+										echo 'yes';
+										break;
+								default:
+										echo 'no';
+										break;
+						} ?>
+					</td>
+					<td class="hid" style="width:300px;">
+					    <a href="/fields/delete/<?php echo $u['Field']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete these fields?  This cannot be undone and all data will be lost.')"><input type="button" value="Delete" class="mws-button red mws-i-24 small"></a>
+					    <a href="/fields/toggle_display/<?php echo $u['Field']['id']; ?>" style="text-decoration:none;"><input type="button" value="Toggle Display" class="mws-button blue mws-i-24 small"></a>
+					</td>
+				</tr>
+			    <?php } ?>
+			    </form>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>				
+		
             </div>

@@ -4,7 +4,7 @@ class SettingsController extends AppController {
 	var $name = 'Settings';
         var $layout = 'admin';
 	//var $helpers = array('Html', 'Form', 'Time', 'javascript');
-	public $uses = array('Setting','Client','User');
+	public $uses = array('Setting','Client','User','Field');
 	public $components = array(
 		'Session',
 		'Auth' => array(
@@ -42,6 +42,7 @@ class SettingsController extends AppController {
 
 	public function index() {
 		$this->set('users',$this->User->find('all',array('conditions'=>array('company_id'=>$this->Auth->user('company_id')))));
+		$this->set('fields',$this->Field->find('all'));
 		
 		//find settings
 		$s = $this->Setting->find('first',array('order'=>'Setting.created ASC'));
