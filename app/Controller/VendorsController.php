@@ -4,7 +4,7 @@ class VendorsController extends AppController {
 	var $name = 'Vendors';
         var $layout = 'admin';
 	var $helpers = array('Html', 'Form', 'Time');
-	var $uses = array('Vendor','Bill','Category','Record','Setting','Client','Range');
+	var $uses = array('Vendor','Bill','Category','Record','Setting','Client','Range','Field');
 	public $components = array(
 		'Session',
 		'Email',
@@ -184,13 +184,14 @@ class VendorsController extends AppController {
 			$this->set('ranges', $this->Range->find('list',array('conditions'=>array('Range.category_id'=>$c['Vendor']['category_id']),'fields'=>array('Range.id','Range.name'))));
 			$this->set('c',$c);
 			if ($w==null) {
-				$this->paginate = array('limit' => 20,'order'=>'Record.created DESC','conditions'=>array('Record.vendor_id'=>$id,'Record.sent'=>'1'));
-				$h = $this->paginate('Record');
-				$this->set('b',$h);
+				$h = $this->Record->find('all',array('limit' => 20,'order'=>'Record.created DESC','conditions'=>array('Record.vendor_id'=>$id,'Record.sent'=>'1')));
+				$this->set('clients',$h);
 				//$this->set('b',$this->Vendor->Record->find('all',array('conditions'=>array('Record.vendor_id'=>$id,'Record.sent'=>'1'))));
 				$this->set('w','leads');
 				$s = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 				$this->set('price',$s['Setting']['lead_price']);
+				$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
+				//die(print_r($h));
 			} else {
 				if ($w=='billing') {
 					$this->paginate = array('limit' => 20,'order'=>'Bill.end_timestamp DESC','conditions'=>array('Bill.vendor_id'=>$id));
@@ -199,13 +200,13 @@ class VendorsController extends AppController {
 					//$this->set('h',$this->Vendor->Bill->find('all',array('conditions'=>array('Bill.vendor_id'=>$id))));
 					$this->set('w','billing');
 				} else {
-					$this->paginate = array('limit' => 20,'order'=>'Record.created DESC','conditions'=>array('Record.vendor_id'=>$id,'Record.sent'=>'1'));
-					$h = $this->paginate('Record');
-					$this->set('b',$h);
+					$h = $this->Record->find('all',array('limit' => 20,'order'=>'Record.created DESC','conditions'=>array('Record.vendor_id'=>$id,'Record.sent'=>'1')));
+					$this->set('clients',$h);
 					//$this->set('b',$this->Vendor->Record->find('all',array('conditions'=>array('Record.vendor_id'=>$id,'Record.sent'=>'1'))));
 					$this->set('w','leads');
 					$s = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 					$this->set('price',$s['Setting']['lead_price']);
+					$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
 				}
 			}
 		} else {

@@ -2,7 +2,7 @@
 class Client extends AppModel {
     var $name = 'Client';
     var $useDbConfig = 'new';
-    var $hasMany = array('Record');
+    var $hasMany = array('Record'=>array('dependent'=>true));
     /*var $validate = array(
         /*'email' => array(
             'rule' => array('email', true),

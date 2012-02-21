@@ -37,10 +37,12 @@ function chk() {
 
 function button(action){
 	if (action=='delete') {
-		confirm('Are you sure you want to delete these?  This cannot be undone.');
+		var answer = confirm('Are you sure you want to delete these?  This cannot be undone.');
 	}
-	$('#ClientAction').val(action);
-	$('#ClientSubmitForm').submit();
+	if (answer) {
+		$('#ClientAction').val(action);
+		$('#ClientSubmitForm').submit();
+	}
 }
 </script>         
 	
@@ -105,7 +107,7 @@ function button(action){
                         <table class="mws-datatable-fn mws-table">
                             <thead>
                                 <tr>
-				     <th><input type="checkbox" id="master" onclick="chk();"/></th>
+				    <th><input type="checkbox" id="master" onclick="chk();"/></th>
                                     <th>ID</th>
                                     <th>Time Submitted</th>
 				    <?php foreach ($fields as $f) {
@@ -156,7 +158,7 @@ function button(action){
 				<?php } ?>
                             </tbody>
                         </table>
-			</form?
+			</form>
                     </div>
                 </div>
             </div>

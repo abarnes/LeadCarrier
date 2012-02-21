@@ -37,10 +37,12 @@ function chk() {
 
 function button(action){
 	if (action=='delete') {
-		confirm('Are you sure you want to delete these?  This cannot be undone.');
+		var answer = confirm('Are you sure you want to delete these?  This cannot be undone.');
 	}
-	$('#ClientAction').val(action);
-	$('#ClientSubmitForm').submit();
+	if (answer) {
+		$('#ClientAction').val(action);
+		$('#ClientSubmitForm').submit();
+	}
 }
 </script>
 

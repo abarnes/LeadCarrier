@@ -50,8 +50,8 @@ $(document).ready(function() {
 	$(".mws-nav-tooltip").addClass("mws-inset");
 	
 	/* Table Row CSS Class */
-	$("table.mws-table tbody tr:even").addClass("even");
-	$("table.mws-table tbody tr:odd").addClass("odd");
+	$("table.mws-table  tr:even").addClass("even");
+	$("table.mws-table  tr:odd").addClass("odd");
 	
 	/* File Input Styling */
 	

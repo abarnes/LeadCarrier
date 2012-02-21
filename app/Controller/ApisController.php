@@ -170,7 +170,7 @@ class ApisController extends AppController {
 	//returns data for selection form (industries & their ranges)
 	public function get_selections() {
 		$this->Category->recursive = 1;
-		echo json_encode($this->Category->find('all',array('conditions'=>array('Category.enable'=>'1'))));
+		echo json_encode($this->Category->find('all',array('order'=>'Category.use_ranges DESC','conditions'=>array('Category.enable'=>'1'))));
 	}
 	
 }

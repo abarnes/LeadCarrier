@@ -128,3 +128,129 @@
 		</div>
 		<?php } ?>
 		
+		<?php if ($w == 'leads') { ?>
+		
+		<div class="mws-panel grid_8">
+		    <div class="mws-panel-header">
+                    	<span class="mws-i-24 i-group-2">Lead History <a href="/vendors/view/<?php echo $c['Vendor']['id']; ?>/billing" style="float:right;"><input type="button" value="Billing History" class="mws-button blue mws-i-24 small"></a></span>
+                    </div>
+                    <div class="mws-panel-body">
+			<table class="mws-datatable-fn mws-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Time Submitted</th>
+				    <?php foreach ($fields as $f) {
+					echo '<th>'.$f['Field']['display_name'].'</th>';
+				    } ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+				<?php foreach ($clients as $u) { ?>
+				<tr>
+					<td>
+					    <a href="/clients/view/<?php echo $u['Client']['id']; ?>"><?php printf("%06s", $u['Client']['id']); ?></a>
+					</td>
+					<td>
+					    <?php echo date('g:ia m-j-Y',strtotime($u['Client']['created'])); ?>
+					</td>
+					<?php foreach ($fields as $f) { ?>
+						<td>
+							<?php
+								switch ($f['Field']['type']) {
+									case 'date':
+										echo date('m-j-Y',strtotime($u['Client'][$f['Field']['name']]));
+										break;
+									case 'datetime':
+										echo date('g:ia m-j-Y',strtotime($u['Client'][$f['Field']['name']]));
+										break;
+									case 'tinyint':
+										if (isset($u['Client'][$f['Field']['name']])&&$u['Client'][$f['Field']['name']]=='1') {
+											echo 'yes';
+										} else {
+											echo 'no';
+										}
+										break;
+									default:
+										if ($f['Field']['name']!='email') {
+											echo $u['Client'][$f['Field']['name']];	
+										} else {
+											echo '<a href="mailto:'.$u['Client'][$f['Field']['name']].'">'.$u['Client'][$f['Field']['name']].'</a>';	
+										}
+										break;
+								}
+							
+							?>
+						</td>
+					<?php } ?>
+				</tr>
+				<?php } ?>
+                            </tbody>
+                        </table>
+		    </div>
+		</div>
+		
+		<?php } else { ?>
+		
+		<div class="mws-panel grid_8">
+		    <div class="mws-panel-header">
+                    	<span class="mws-i-24 i-price-tag">Billing History <a href="/vendors/view/<?php echo $c['Vendor']['id']; ?>/leads" style="float:right;"><input type="button" value="Lead History" class="mws-button blue mws-i-24 small"></a></span>
+                    </div>
+                    <div class="mws-panel-body">
+			<table class="mws-datatable-fn mws-table">
+			<thead>
+				<tr>
+				    <th>
+				       Paid [yes/no]
+				    </th>
+				    <th>
+					Week
+				    </th>
+				    <th>
+					# of Leads
+				    </th>
+				    <th>
+					Balance
+				    </th>
+				    <th class="hid" style="width:120px;">
+					
+				    </th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($h as $h) { ?>
+				<tr>
+				    <td>
+					<?php
+					    if ($h['Bill']['paid']=='1') {
+						echo 'yes';
+					    } else {
+						echo 'no';
+					    }
+					?>
+				    </td>
+				    <td>
+					<?php echo $h['Bill']['week_start'].' - '.$h['Bill']['week_end']; ?>
+				    </td>
+				    <td>
+					<?php echo $h['Bill']['leads']; ?>
+				    </td>
+				    <td>
+					$<?php echo $h['Bill']['total']; ?>
+				    </td>
+				    <td class="hid">
+					<?php if ($h['Bill']['paid']=='0') { ?>
+					    <a href="/vendors/paid/<?php echo $h['Bill']['id']; ?>" style="text-decoration:none;"><input type="button" value="Mark Paid" class="mws-button blue mws-i-24 small"></a>					
+					<?php } else { ?>
+					    <a href="/vendors/paid/<?php echo $h['Bill']['id']; ?>" style="text-decoration:none;"><input type="button" value="Mark Unpaid" class="mws-button blue mws-i-24 small"></a>
+					<?php } ?>
+				    </td>
+				</tr>
+				<?php } ?>
+			</tbody>
+			</table>
+		    </div>
+		</div>
+		<?php } ?>
+		
+		

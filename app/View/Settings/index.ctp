@@ -50,18 +50,22 @@ function chk() {
 
 function button(action){
 	if (action=='delete') {
-		confirm('Are you sure you want to delete these users?  This cannot be undone.');
+		var answer = confirm('Are you sure you want to delete these users?  This cannot be undone.');
 	}
-	$('#UserAction').val(action);
-	$('#UserSubmitForm').submit();
+	if (answer) {
+		$('#UserAction').val(action);
+		$('#UserSubmitForm').submit();
+	}
 }
 
 function button2(action){
 	if (action=='delete') {
-		confirm('Are you sure you want to delete these fields?  This cannot be undone and all data will be lost.');
+		var answer2 = confirm('Are you sure you want to delete these fields?  This cannot be undone and all data will be lost.');
 	}
-	$('#FieldAction').val(action);
-	$('#FieldSubmitForm').submit();
+	if (answer2) {
+		$('#FieldAction').val(action);
+		$('#FieldSubmitForm').submit();
+	}
 }
 </script>        
 	

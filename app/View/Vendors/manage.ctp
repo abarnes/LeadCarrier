@@ -63,10 +63,12 @@ function chk() {
 
 function button(action){
 	if (action=='delete') {
-		confirm('Are you sure you want to delete this vendor?  This cannot be undone.');
+		var answer = confirm('Are you sure you want to delete this vendor?  This cannot be undone.');
 	}
-	$('#VendorAction').val(action);
-	$('#VendorSubmitForm').submit();
+	if (answer) {
+		$('#VendorAction').val(action);
+		$('#VendorSubmitForm').submit();
+	}
 }
 </script> 
 

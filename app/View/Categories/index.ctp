@@ -38,10 +38,12 @@ function chk() {
 function button(action){
 	//alert(action);
 	if (action=='delete') {
-		confirm('Are you sure you want to delete this?  All vendors in this industry will be deleted as well.');
+		var answer = confirm('Are you sure you want to delete this?  All vendors in this industry will be deleted as well.');
 	}
-	$('#CategoryAction').val(action);
-	$('#CategorySubmitForm').submit();
+	if (answer) {
+		$('#CategoryAction').val(action);
+		$('#CategorySubmitForm').submit();
+	}
 }
 </script>        
 	
