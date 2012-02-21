@@ -3,6 +3,7 @@ include('config.php');
 
 $vars = $_POST;
 foreach ($vars as $row=>$value) {
+  
   $post[$row] = $value;  
 }
 
