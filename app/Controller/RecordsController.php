@@ -4,7 +4,7 @@ class RecordsController extends AppController {
 	var $name = 'Records';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form', 'Time');
-	var $uses = array('Setting','Record','Category','Vendor','Client');
+	var $uses = array('Setting','Record','Category','Vendor','Client','Freshbooks.Item');
 	public $components = array(
 		'Session',
 		'Auth' => array(
@@ -12,6 +12,10 @@ class RecordsController extends AppController {
 		    'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')
 		)
 	);
+	
+	function test () {
+		die(print_r($this->Item->find('all')));
+	}
         
         function beforeFilter() {
 		parent::beforeFilter();
