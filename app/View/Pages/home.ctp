@@ -100,54 +100,10 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         <!-- #Menu-->
         <div class="grid_12 topmenu">
         	<ul id="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#"><span>Theme</span></a>
-                <ul>
-                	<li><a href="theme-layouts.html">Theme Style</a>
-                    <ul>
-                    	<li><a href="http://www.iamthemes.com/themeforest/html/city/city-main/">Default Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-auto/">Auto Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-furniture/">Furniture Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-makeup/">Makeup Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-mobile/">Mobile Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-sport/">Sports Theme</a></li> 
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-photograph/">Photograph Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-jewel/">Jewel Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-hotels/">Hotels Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-cinema/">Cinema Theme</a></li>
-                        <li><a href="http://www.iamthemes.com/themeforest/html/city/city-travel/">Travel Theme</a></li>
-                    </ul>
-                    </li>
-                    
-                    <li><a href="theme-layouts.html">Theme Layouts</a></li>
-                    <li><a href="theme-table.html">Theme Price Table</a></li>
-                    <li><a href="theme-buttons.html">Theme Buttons</a></li>
-                    <li><a href="theme-typography.html">Theme Typography</a></li>
-                </ul>
-            
-                </li>
-                <li><a href="#">Work</a>
-                <ul>
-                	<li><a href="portfolio.html">Portfolio Image</a></li>
-                    <li><a href="portfolio-video.html">Portfolio Video</a></li>
-                    <li><a href="portfolio-iframe.html">Portfolio Iframe</a></li>
-                    <li><a href="portfolio-pdf.html">Portfolio PDF</a></li>
-                </ul>
-                </li>
-                <li><a href="#">Blog</a>
-                <ul>
-                	<li><a href="blog.html">Blog Page</a></li>
-                    <li><a href="blog-read.html">Blog Read Page</a></li>
-                </ul>
-                </li>
-                <li><a href="#">Page</a>
-                <ul>
-                	<li><a href="page.html">Normal Page</a></li>
-                    <li><a href="full-page.html">Full Width Page</a></li>
-                    <li><a href="page-nocomment.html">Page No Comment</a></li>
-                </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/">Home</a></li>
+		<li><a href="/pricing">Pricing</a></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </div>        
     </div>
@@ -426,8 +382,8 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
     <!-- Advert Start -->
     <div id="advert" class="grid_16 advert">
     	<div id="advertback"></div>
-        <h1>"Quisque lorem orci, scelerisque vel aliquet in, rutrum vitae enim"</h1>
-        <div class="margin3 fright"><a href="#" class="minibutton">Only $9.99 Purchase</a></div>
+        <h1>"We were sold when we saw the demo."</h1>
+        <div class="margin3 fright"><a href="http://demo.leadcarrier.com" target="_new" class="minibutton">Live Demo</a></div>
     </div>
     <!-- Advert End -->
     
@@ -444,9 +400,9 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         </div>
         <div class="leftcloumb-list">
         	<ul>
-            	<li><div class="margin4 fright"><a href="#" class="minibutton2">More</a></div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>William Crahenberg Says:</h1><p>In consequat velit tempor dui dapibus mollis. Morbi a risus felis. Nulla non odio nunc, sit amet.</p></li>
-                <li><div class="margin4 fright"><a href="#" class="minibutton2">More</a></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Marie Smith Do Says:</h1><p>In consequat velit tempor dui dapibus mollis. Morbi a risus felis. Nulla non odio nunc, sit amet.</p></li>
-                <li><div class="margin4 fright"><a href="#" class="minibutton2">More</a></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark John Gothenberg Says:</h1><p>In consequat velit tempor dui dapibus mollis. Morbi a risus felis. Nulla non odio nunc, sit amet.</p></li>
+            	<li><div class="margin4 fright"><</div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>William Crahenberg Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Marie Smith Do Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark John Gothenberg Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
             </ul>
         </div>
     </div>
@@ -467,141 +423,14 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
     </div>
     <!-- Bigg Boss End -->
     
-    <!-- Clear-->
-    <div class="clear"></div>
-    
-    <div id="company-logo" class="grid_16">
-    	<div id="tabback3"></div>
-        <div id="tabmenuback3"></div>
-        <div id="logo-list">
-            <script src="js/portfolio.js"></script>
-            <div id="ps_slider" class="ps_slider" style="margin-top:32px;">
-            <a class="prev disabled"></a>
-            <a class="next disabled"></a>
-            <div id="ps_albums" class="logolist">
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_01.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_02.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_03.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_04.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_05.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_06.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_07.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_08.jpeg" class="logolist-img" alt=""></a>
-                </div>
-                <div class="ps_album">
-                    <a class="team" href="image/post/bigimage.png" title="LOGO NAME </BR> Description: Lorem ipsum is simply dummy data text printing."><img src="image/post/logo_09.jpeg" class="logolist-img" alt=""></a>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Clear-->
-	<div class="clear"></div> 
-    
 </div>
 <!-- Container End-->
 
 <!-- Clear-->
 <div class="clear"></div>     
 
-<!-- Footer 1 Start -->    
-<div id="footer1-back">
-    <div class="container_16">
-      <div class="grid_16 margin">
-           <!-- Widget Categories-->
-           <div class="footercategories margin">
-              <h2>Blog or Page CategorIes</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing </p>
-              <ul>
-                  <li><a href="#">Portfolio</a></li>
-                  <li><a href="#">Company News</a></li>
-                  <li><a href="#">Services Options</a></li>
-                  <li><a href="#">Team Blog</a></li>
-                  <li><a href="#">Who Are We</a></li>
-                  <li><a href="#">People Says</a></li>
-                  <li><a href="#">Contact</a></li>
-              </ul>
-           </div>
-           <!-- Latest Portfolio -->
-           <div class="footerportfolio margin">
-              <h2>Latest PortfolIo Items</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing </p>
-              <ul>
-                  <li><a href="#"><img src="image/post/p1.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p2.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p3.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p4.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p5.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p6.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p7.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p8.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p9.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p10.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p11.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p12.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p13.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p14.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p15.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p16.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p17.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p18.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p19.png" alt=""></a></li>
-                  <li><a href="#"><img src="image/post/p20.png" alt=""></a></li>
-              </ul>
-              <div class="footerportfolio-button"><a href="#" class="middlebutton">Portfolio</a></div>
-           </div>
-           <!-- Social Widget -->
-           <div class="footersocial margin">
-              <h2>SocIal Platform Of CIty</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing </p>
-              <div class="twittermessage">
-                <div class="footertwitter">
-                    <p>“Lorem Ipsum is text of dummy printing setting data lorem Ipsum is text of dummy printing setting data.  text of”</p>
-                </div>
-                <div class="twitterbird"><img src="image/icon/twitterbird.png" alt=""></div>
-              </div>
-              <div class="footerothermedia">
-              	<p>Others Social Media</p>
-                <ul>
-                	<li><a href="#"><img src="image/icon/s1.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s2.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s3.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s4.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s5.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s6.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s7.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s8.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s9.png" alt=""></a></li>
-                    <li><a href="#"><img src="image/icon/s10.png" alt=""></a></li>
-                </ul>
-                <div class="footersocial-button"><a href="#" class="middlebutton">Contact</a></div>
-              </div>
-           </div>
-      </div>
-    </div>
-</div>
-
-<!-- Clear-->
-<div class="clear"></div>
-
 <!-- Footer 2 Start -->       
-<div id="footer2-back">
+<div id="footer2-back" style="margin:0px;">
 	<div class="container_16">
     	<div class="grid_16 footerregister margin">
         	<p>Copright © 2012 City Themes iamthemes.com. All rights reserved. W3C standart web site valid xhtml and css</p><p>Design by Mithat Sigmaz / <a href="http://www.cubegraphic.net">CUBE GRAPHIC</a> - Code by IAMILKAY / <a href="http://www.iamthemes.com">IAMTHEMES</a></p>
