@@ -14,19 +14,25 @@ class ContactsController extends AppController {
         }
 	
 	function submit() {
-		$this->set('d',$this->request->data['Vendor']);
-			
-		$this->Email->to = $vendor['Vendor']['email'];
-		$this->Email->subject = $this->request->data['Vendor']['subject'];
-		$this->Email->replyTo = $s['Setting']['replyto_email'];
-		$this->Email->from =  $s['Setting']['site_url'].' <'.$s['Setting']['replyto_email'].'>';
-		$this->Email->template = 'message'; 
-		$this->Email->sendAs = 'both';
-		$this->Email->send();		
-		
-		$this->Session->setFlash('Email sent to '.$vendor['Vendor']['name']);
-		$this->redirect(array('controller'=>'vendors','action'=>'manage'));
-		//die(print_r($this->request->data));
+		if (!empty($this->request->data)) {
+			$this->Contact->set($this->request->data);
+			if ($this->Contact->validates()) {
+				$this->set('d',$this->request->data['Contact']);
+					
+				$this->Email->to = 'info@leadcarrier.com';
+				$this->Email->subject = 'Message Submitted by '.$this->request->data['Contact']['name'];
+				$this->Email->replyTo = $this->request->data['Contact']['email'];
+				$this->Email->from =  'Lead Carrier <info@leadcarrier.com>';
+				$this->Email->template = 'contactform'; 
+				$this->Email->sendAs = 'both';
+				$this->Email->send();		
+				
+				$this->Session->setFlash('Thank you! Your message has been submitted.');
+				$this->redirect('/contact');
+			} else {
+				$errors = $this->Contact->validationErrors;
+			}
+		}
 	}
 }
 
