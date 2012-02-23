@@ -24,11 +24,11 @@
         	<h1>Send us a Message</h1>
         </div>
         <div class="comment-form margin">
-	    <?php echo $this->Form->create('Contact',array('action'=>'submit'),array('div'=>false)); ?>
-            <fieldset><input name="data[Contact][name]" id="ContactName" type="text" value="Name:" onfocus="if(this.value=='Name:')this.value='';" onblur=	"if(this.value=='')this.value='Name:';"/></fieldset>  
-            <fieldset><input name="data[Contact][email]" id="ContactEmail" type="text" value="E-Mail:" onfocus="if(this.value=='E-Mail:')this.value='';" onblur=	"if(this.value=='')this.value='E-Mail:';"/></fieldset>
-            <fieldset><input name="data[Contact][company]" type="text" value="Company:" onfocus="if(this.value=='Company:')this.value='';" onblur=	"if(this.value=='')this.value='Company:';"/></fieldset>
-            <fieldset><textarea name="data[Contact][message]" onfocus="if(this.value=='Message:')this.value='';" onblur=	"if(this.value=='')this.value='Message:';">Message:</textarea></fieldset>
+	    <?php echo $this->Form->create('Contact',array('action'=>'submit','inputDefaults' => array('label' => false,'div' => false))); ?>
+	    <fieldset><?php echo $this->Form->input('name',array('value'=>'Name:','onfocus'=>"if(this.value=='Name:')this.value='';","onblur"=>"if(this.value=='')this.value='Name:';")); ?></fieldset>
+	    <fieldset><?php echo $this->Form->input('email',array('value'=>'Email:','onfocus'=>"if(this.value=='Email:')this.value='';","onblur"=>"if(this.value=='')this.value='Email:';")); ?></fieldset>
+	    <fieldset><?php echo $this->Form->input('company',array('value'=>'Company:','onfocus'=>"if(this.value=='Company:')this.value='';","onblur"=>"if(this.value=='')this.value='Company:';")); ?></fieldset>
+            <fieldset><?php echo $this->Form->input('message',array('type'=>'textarea','value'=>'Message:','onfocus'=>"if(this.value=='Message:')this.value='';","onblur"=>"if(this.value=='')this.value='Message:';")); ?></fieldset> 
             <div class="fright"><fieldset><input type="submit" value="Send" /></fieldset></div>
 	    </form>
         </div>

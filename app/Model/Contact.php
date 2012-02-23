@@ -8,13 +8,31 @@ class Contact extends AppModel {
             'message' => 'Please supply a valid email address.'
         ),
         'name' => array(
-            'rule' => array('minLength', '1'),
+            'rule'    => array('check_name'),
             'message' => 'Please supply your name.'
         ),
         'message' => array(
-            'rule' => array('minLength', '1'),
-            'message' => 'The message cannot be blank'
+            'rule'    => array('check_message'),
+            'message' => 'Message cannot be blank.'
         )
     );
+    
+    function check_name ($check) {
+        $forbidden = array("","Name:");
+        if (in_array($check['name'],$forbidden)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    function check_message ($check) {
+        $forbidden = array("","Message:");
+        if (in_array($check['name'],$forbidden)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 ?>
