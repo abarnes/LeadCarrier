@@ -52,43 +52,6 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 	
     <div id="topdot" class="grid_16 margin"></div>
     
-    <!-- Top Menu -->
-    <div class="grid_16 margin">
-      <div id="topmenu">
-      	<ul>
-        	<li><a id="contactline1" href="#contactline"><img src="image/icon/mail.png" alt=""></a></li>
-            <li><a id="contactline2" href="#contactadress"><img src="image/icon/phone.png" alt=""></a></li>
-            <li><input name="Search" type="text" value="Search:" onfocus="if(this.value=='Search:')this.value='';" onblur=	"if(this.value=='')this.value='Search:';"/></li>
-        </ul>
-        <!-- Popup Contact Form -->
-        <div  class="dnone">
-          <div id="contactline" class="popupcontact">
-              <h1>Contact Form</h1>
-              <form>
-              <fieldset><input name="Name" type="text" value="Name:" onfocus="if(this.value=='Name:')this.value='';" onblur=	"if(this.value=='')this.value='Name:';"/></fieldset>  
-              <fieldset><input name="Mail" type="text" value="E-Mail:" onfocus="if(this.value=='E-Mail:')this.value='';" onblur=	"if(this.value=='')this.value='E-Mail:';"/></fieldset>
-              <fieldset><input name="Web" type="text" value="Web:" onfocus="if(this.value=='Web:')this.value='';" onblur=	"if(this.value=='')this.value='Web:';"/></fieldset>
-              <fieldset><textarea name="Message" onfocus="if(this.value=='Message:')this.value='';" onblur=	"if(this.value=='')this.value='Message:';">Message:</textarea></fieldset>
-              <fieldset><input type="submit" value="Send" /></fieldset>
-              </form>
-          </div>
-		</div>
-        <!-- Popup Contact Adress -->
-        <div  class="dnone">
-          <div id="contactadress" class="popupcontact">
-              <h1>City Adress Detail</h1>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-              <h5>Telephone:</h5>
-              <p>(+90) 555 444 333 PBX </p>
-              <h5>Fax:</h5>
-              <p>(+90) 555 444 333 PBX </p>
-              <h5>E-Mail:</h5>
-              <p>johndo@domain.com</p>
-          </div>
-		</div>
-      </div>
-    </div>
-    
     <!-- Navigation Start-->
     <div id="navigation" class="grid_16 margin">
         
