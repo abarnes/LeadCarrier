@@ -44,7 +44,7 @@ else { document.write('<link rel=stylesheet href="/fancybox/jquery.fancybox-1.3.
 <script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 
 </head>
-<body>
+<body style="background-color:#DBDBDB;">
 
 <!-- Container Start-->
 <div class="container_16" style="padding-left:15px;">
@@ -79,7 +79,7 @@ else { document.write('<link rel=stylesheet href="/fancybox/jquery.fancybox-1.3.
     <div id="pageback"></div>
     <div id="tabback2"></div>
     
-    <div class="grid_16 margin">
+    <div class="grid_16 margin" style="position: relative;z-index: 10;">
     	<div id="tabmenuback2"></div>
         <div class="bigtitle">
         	<h1>Lead Carrier</h1>
