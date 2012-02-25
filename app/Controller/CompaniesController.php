@@ -184,9 +184,17 @@ class CompaniesController extends AppController {
 			$this->redirect('/dashboard');
 		}
 		
-		$this->Company->delete($id);
-		$this->Session->setFlash('Company Successfully Deleted.');
-		$this->redirect(array('action'=>'index'));
+		if ($this->Company->delete($id)) {
+			$users = $this->User->find('all',array('conditions'=>array('User.company_id'=>$id)));
+			foreach ($users as $u) {
+				$this->User->delete($u['User']['id']);
+			}
+			$this->Session->setFlash('Company Successfully Deleted.');
+			$this->redirect(array('action'=>'index'));
+		} else {
+			$this->Session->setFlash('Failed to Delete Company.');
+			$this->redirect(array('action'=>'index'));
+		}
 	}
 	
 	function admin_sendmail($id=null) {
