@@ -67,6 +67,9 @@ class FreshBooksRequest {
     {
         self::$_domain = $domain;
         self::$_token = $token;
+        //$url = self::$_domain.'/api/2.1/xml-in';
+        //self::$_domain = 'https://abarnes.freshbooks.com'; // https://your-subdomain.freshbooks.com/
+	//self::$_token = '0f07ab1e5364c668b02c10a2094acc72';
     }
 
     /*
@@ -156,7 +159,9 @@ class FreshBooksRequest {
         }
 
         $post_data = $this->getGeneratedXML();
-        $url = str_replace('{{ DOMAIN }}', self::$_domain, $this->_api_url);
+        //$url = str_replace('{{ DOMAIN }}', self::$_domain, $this->_api_url);
+        $url = self::$_domain.'/api/2.1/xml-in';
+        //$url = 'https://myweddingconnector.freshbooks.com/api/2.1/xml-in';
         $ch = curl_init();    // initialize curl handle
         curl_setopt($ch, CURLOPT_URL, $url); // set url to post to
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // return into a variable

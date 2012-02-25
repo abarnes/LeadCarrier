@@ -144,8 +144,58 @@ class VendorsController extends AppController {
 				$this->request->data['Vendor']['leads_per_week']='99999';
 			}
 			if ($this->Vendor->save($this->request->data)) {
-				$this->Session->setFlash('"'.$this->request->data['Vendor']['name'] . '" Successfully Added.');
-				$this->redirect(array('controller'=>'vendors','action' => 'manage'));
+				//freshbooks create
+				$company = $this->Company->findById($this->Auth->user('company_id'));
+				if ($company['Company']['use_freshbooks']=='1') {
+					$id = $this->Vendor->getLastInsertId();
+					require('freshbooks_api/FreshBooksRequest.php');
+					
+					$domain = $company['Company']['freshbooks_url'];
+					$token = $company['Company']['freshbooks_api_token'];
+
+					FreshBooksRequest::init($domain, $token);
+					
+					$fb = new FreshBooksRequest('client.create');
+					// Any arguments you want to pass it
+					$fb->post(array('client'=>array(
+						'first_name' => '',		
+						'last_name' => $this->request->data['Vendor']['contact_name'],
+						'organization' => $this->request->data['Vendor']['name'],
+						'email' => $this->request->data['Vendor']['email'],
+						'work_phone'=>$this->request->data['Vendor']['phone'],
+						'p_street1'=>$this->request->data['Vendor']['address1'],
+						'p_street2'=>$this->request->data['Vendor']['address2'],
+						'p_city'=>$this->request->data['Vendor']['city'],
+						'p_state'=>$this->request->data['Vendor']['state'],
+						'p_code'=>$this->request->data['Vendor']['zip'],
+						'p_country'=>'United States',
+						'notes'=>$this->request->data['Vendor']['notes']
+						)
+					));
+					// Make the request
+					$fb->request();
+					if($fb->success())
+					{
+						$result = $fb->getResponse();
+						$this->Vendor->id = $id;
+						$this->Vendor->saveField('freshbooks_id',$result['client_id']);
+						
+					    //die(print_r($result['client_id']));
+					    //$result['clients']['client']
+					    //print_r($fb->getResponse());
+						$this->Session->setFlash('"'.$this->request->data['Vendor']['name'] . '" Successfully Added.');
+						$this->redirect(array('controller'=>'vendors','action' => 'manage'));
+					}
+					else
+					{
+					    $this->Session->setFlash('Freshbooks Error: '.$fb->getError());
+					    $this->redirect(array('controller'=>'vendors','action' => 'manage'));
+					    //print_r($fb->getResponse());
+					}
+				} else {
+					$this->Session->setFlash('"'.$this->request->data['Vendor']['name'] . '" Successfully Added.');
+					$this->redirect(array('controller'=>'vendors','action' => 'manage'));
+				}
 			} else {
 				$this->Session->setFlash('Error: Failed to Save Vendor');
 			}
@@ -155,10 +205,10 @@ class VendorsController extends AppController {
 	function edit($id) {
 		$this->set('id',$id);
 		$this->Vendor->id = $id;
+		$c = $this->Vendor->findById($id);
 		if (empty($this->request->data)) {
 			$this->request->data = $this->Vendor->read();
 			$this->set('categories', $this->Category->find('list',array('order'=>'Category.name ASC')));
-			$c = $this->Vendor->findById($id);
 			$this->set('ranges', $this->Range->find('list',array('conditions'=>array('Range.category_id'=>$c['Vendor']['category_id']),'fields'=>array('Range.id','Range.name'))));
 			$this->set('name',$this->request->data['Vendor']['name']);
 		} else {
@@ -166,8 +216,51 @@ class VendorsController extends AppController {
 				$this->request->data['Vendor']['leads_per_week']='99999';
 			}
 			if ($this->Vendor->save($this->request->data)) {
-				$this->Session->setFlash('Vendor Has Been Updated.');
-				$this->redirect(array('action'=>'view/'.$id));
+								//freshbooks create
+				$company = $this->Company->findById($this->Auth->user('company_id'));
+				if ($company['Company']['use_freshbooks']=='1'&&$c['Vendor']['freshbooks_id']!='') {
+					require('freshbooks_api/FreshBooksRequest.php');
+					
+					$domain = $company['Company']['freshbooks_url'];
+					$token = $company['Company']['freshbooks_api_token'];
+
+					FreshBooksRequest::init($domain, $token);
+					
+					$fb = new FreshBooksRequest('client.update');
+					// Any arguments you want to pass it
+					$fb->post(array('client'=>array(
+						'client_id'=>$c['Vendor']['freshbooks_id'],
+						'first_name' => '',		
+						'last_name' => $this->request->data['Vendor']['contact_name'],
+						'organization' => $this->request->data['Vendor']['name'],
+						'email' => $this->request->data['Vendor']['email'],
+						'work_phone'=>$this->request->data['Vendor']['phone'],
+						'p_street1'=>$this->request->data['Vendor']['address1'],
+						'p_street2'=>$this->request->data['Vendor']['address2'],
+						'p_city'=>$this->request->data['Vendor']['city'],
+						'p_state'=>$this->request->data['Vendor']['state'],
+						'p_code'=>$this->request->data['Vendor']['zip'],
+						'p_country'=>'United States',
+						'notes'=>$this->request->data['Vendor']['notes']
+						)
+					));
+					// Make the request
+					$fb->request();
+					if($fb->success())
+					{
+						$this->Session->setFlash('Vendor Has Been Updated.');
+						$this->redirect(array('action'=>'view/'.$id));
+					}
+					else
+					{
+					    $this->Session->setFlash('Freshbooks Error: '.$fb->getError());
+					    $this->redirect(array('controller'=>'vendors','action' => 'view/'.$id));
+					    //print_r($fb->getResponse());
+					}
+				} else {
+					$this->Session->setFlash('Vendor Has Been Updated.');
+					$this->redirect(array('action'=>'view/'.$id));
+				}
 			} else {
 				$this->Session->setFlash('Error: Failed to Save Vendor');
 			}

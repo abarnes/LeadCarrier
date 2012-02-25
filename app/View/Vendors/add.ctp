@@ -65,6 +65,12 @@
                     				</div>
                     			</div>
 					<div class="mws-form-row">
+                    				<label>Phone Number</label>
+                    				<div class="mws-form-item medium">
+                    					<?php echo $this->Form->input('phone', array( 'class' => 'mws-textinput')); ?>
+                    				</div>
+                    			</div>
+					<div class="mws-form-row">
                     				<label>Address Line 1</label>
                     				<div class="mws-form-item medium">
                     					<?php echo $this->Form->input('address1', array( 'class' => 'mws-textinput')); ?>
