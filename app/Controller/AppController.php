@@ -53,7 +53,7 @@ class AppController extends Controller {
             $company = $this->Company->findById($current_user['company_id']);
             if (empty($company)) {
                 $this->Session->setFlash('Connection Error: Unable to retrieve company information.');
-                $this->redirect('/login');
+                //$this->redirect('/login');
             }
             $connect = array('db_name'=>$company['Company']['db_name'],'db_password'=>$company['Company']['db_password']);
 	    if (!empty($connect)&&$connect['db_name']!=''&&$connect['db_password']!='') {
