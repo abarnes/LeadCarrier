@@ -9,7 +9,7 @@
 		
             <!-- Main Navigation -->
             <div id="mws-navigation">
-		<?php if ($current_user['admin']=='0') { ?>
+		<?php if (isset($current_user)&&$current_user['admin']=='0') { ?>
             	<ul>
                 	<li><a href="/dashboard" class="mws-i-24 i-home">Dashboard</a></li>
 			<li>
