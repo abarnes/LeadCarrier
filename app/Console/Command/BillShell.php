@@ -1,13 +1,10 @@
 <?php
-class BillShell extends Shell {
+class BillShell extends AppShell {
 	var $uses = array('Vendor','Bill','Setting','Company');
 	//var $tasks = array('Email');
 	//var $Email;
 
-	function startup() {
-	}
-
-	function main() {
+	public function main() {
 		$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1')));
 		foreach ($companies as $c) {
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);

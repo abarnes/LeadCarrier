@@ -126,9 +126,11 @@ function button(action){
 				     <th><input type="checkbox" id="master" onclick="chk();"/></th>
                                     <th>ID</th>
                                     <th>Name</th>
+				    <th>Active</th>
                                     <th>Subdomain</th>
 				    <th>Email</th>
                                     <th>Join Date</th>
+				    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -142,6 +144,16 @@ function button(action){
 					    <?php echo $u['Company']['name']; ?>
 					</td>
 					<td>
+						<?php switch ($u['Company']['active']) {
+							case '1':
+								echo 'yes';
+								break;
+						        default:
+								echo 'no';
+								break;
+						} ?>
+					</td>
+					<td>
 					    <?php echo $u['Company']['subdomain']; ?>
 					</td>
 					<td>
@@ -150,17 +162,13 @@ function button(action){
 					<td>
 					    <?php echo date('g:ia m-j-Y',strtotime($u['Company']['created'])); ?>
 					</td>
-					<!--<td>
-					    <?php /*echo $this->Html->link('Approve',array('action'=>'approve/'.$u['Company']['id'])); ?>
-					    <?php echo $this->Html->link('View',array('action'=>'view/'.$u['Company']['id'])); ?>
-					    <?php echo $this->Html->link('Edit',array('action'=>'edit/'.$u['Company']['id'])); ?>
-					    <?php echo $this->Html->link(
-								'Delete', 
-								array('controller'=>'clients','action'=>'delete/'.$u['Company']['id']), 
-								null, 
-								'Are You Sure You Want To Delete This Person?'
-							);*/ ?>
-					</td>-->
+					<td>
+						<?php if ($u['Company']['active']=='0') { ?>
+								<a href="/admin/companies/active/<?php echo $u['Company']['id']; ?>"><input type="button" value="Make Active" class="mws-button green mws-i-24 small"></a>
+						<?php } else { ?>
+								<a href="/admin/companies/active/<?php echo $u['Company']['id']; ?>"><input type="button" value="Make Inactive" class="mws-button red mws-i-24 small"></a>
+						<?php } ?>
+					</td>
 				</tr>
 				<?php } ?>
                             </tbody>

@@ -16,7 +16,7 @@
         });	
         </script>
         <div class="bloglisting2">
-        	<h1>Fusce EleiFend Augue a Quam Molestie Viverra</h1>
+        	<h1>Pricing</h1>
 		<br/>
         </div>
         
@@ -59,9 +59,9 @@
 					<!-- data rows -->
 					<li class="row_style_1 align_center"><span></span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
-					<li class="row_style_1 align_center"><span></span></li>
-					<li class="row_style_3 align_center"><span></span></li>
-					<li class="row_style_1 align_center"><span></span></li>
+					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<li class="row_style_3 align_center"><span>Yes</span></li>
 					<li class="row_style_1 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
@@ -82,9 +82,9 @@
 					<!-- data rows -->
 					<li class="row_style_2 align_center"><span>$600</span></li>
 					<li class="row_style_4 align_center"><span>unlimited</span></li>
-					<li class="row_style_2 align_center"><span></span></li>
-					<li class="row_style_4 align_center"><span></span></li>
-					<li class="row_style_2 align_center"><span></span></li>
+					<li class="row_style_2 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<li class="row_style_4 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<li class="row_style_2 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<li class="row_style_4 align_center"><span>Yes</span></li>
 					<li class="row_style_2 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
@@ -105,9 +105,9 @@
 					<!-- data rows -->
 					<li class="row_style_1 align_center"><span>$1,800</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
-					<li class="row_style_1 align_center"><span></span></li>
-					<li class="row_style_3 align_center"><span></span></li>
-					<li class="row_style_1 align_center"><span></span></li>
+					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<li class="row_style_3 align_center"><span>Yes</span></li>
 					<li class="row_style_1 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
@@ -131,7 +131,7 @@
     <div id="advert" class="grid_16 advert">
     	<div id="advertback"></div>
         <h1>"We were sold when we saw the demo."</h1>
-        <div class="margin3 fright"><a href="http://demo.leadcarrier.com" target="_blank" class="minibutton">Live Demo</a></div>
+        <div class="margin3 fright"><a href="http://demo.leadcarrier.com/login" target="_blank" class="minibutton">Live Demo</a></div>
     </div>
     <!-- Advert End -->
     

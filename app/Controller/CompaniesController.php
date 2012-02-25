@@ -219,6 +219,19 @@ class CompaniesController extends AppController {
 		//die(print_r($this->request->data));
 	}
 	
+	function admin_active($id) {
+		$b = $this->Company->findById($id);
+		$this->Company->id = $id;
+			if ($b['Company']['active']=='1') {
+				$this->Company->saveField('active','0');
+				$this->Session->setFlash('Company set as inactive.');
+			} else {
+				$this->Company->saveField('active','1');
+				$this->Session->setFlash('Company set as active.');
+			}
+		$this->redirect('/admin/companies');
+	}
+	
 }
 
 ?>
