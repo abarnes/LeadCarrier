@@ -57,7 +57,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         
         <!-- #Logo-->
         <div class="grid_4 logo margin">
-        	<a href="#"><img src="image/theme/logo.png" alt="" style="width:350px;"></a>
+        	<a href="#"><img src="image/theme/logo.png" alt="" style="width:350px;margin-top:28px;"></a>
         </div>
         
         <!-- #Menu-->
