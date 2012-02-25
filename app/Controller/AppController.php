@@ -52,8 +52,8 @@ class AppController extends Controller {
             $this->loadModel('Company');
             $company = $this->Company->findById($current_user['company_id']);
             $connect = array('db_name'=>$company['Company']['db_name'],'db_password'=>$company['Company']['db_password']);
+            die(print_r($connect));
 	    if (!empty($connect)&&$connect['db_name']!=''&&$connect['db_password']!='') {
-                die(print_r($connect));
 		@App::import('ConnectionManager');
 		$a = array(
 			'datasource' => 'Database/Mysql',
