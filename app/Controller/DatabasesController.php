@@ -32,7 +32,11 @@ class DatabasesController extends AppController {
 		$create_user = "CREATE USER '".$uname."'@'localhost' IDENTIFIED BY '".$p."';";
 		$grant = "GRANT All ON ".$uname.".* TO '".$uname."'@'localhost' WITH GRANT OPTION;";
 		
-		$this->Database->query($create_db);
+		//try {
+			$this->Database->query($create_db);
+		//} catch (Exception $e) {
+		//	die(print('Caught exception: '.$e->getMessage()));
+		//}
 		$this->Database->query($create_user);
 		$this->Database->query($grant);
 		

@@ -47,7 +47,7 @@ class AppController extends Controller {
         if (!empty($current_user)) {
             $this->set('current_user',$current_user);
         }
-        //die(print_r($current_user));
+        die(print_r($current_user));
         if (!empty($current_user)&&$current_user['admin']=='0') {
             $this->loadModel('Company');
             $company = $this->Company->findById($current_user['company_id']);
