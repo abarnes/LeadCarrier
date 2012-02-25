@@ -48,7 +48,7 @@ class AppController extends Controller {
             $this->set('current_user',$current_user);
         }
         
-        if (!empty($current_user)) {
+        if (!empty($current_user)&&$current_user['admin']=='0') {
             $this->loadModel('Company');
             $company = $this->Company->findById($current_user['company_id']);
             $connect = array('db_name'=>$company['Company']['db_name'],'db_password'=>$company['Company']['db_password']);
