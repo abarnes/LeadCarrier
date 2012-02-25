@@ -185,12 +185,12 @@
                     </div>
                     <div class="mws-panel-body">
                     	<div class="mws-panel-content">
-	                    	<ol>
+	                    	<h4><ol>
 					<li>Create Industries & Price Ranges</li>
 					<li>Add Vendors</li>
-					<li>Integrate with your site</li>
-					<li>Start distributing leads!</li>
-				</ol>
+					<li>Integrate with Your Site</li>
+					<li>Start Distributing Leads!</li>
+				</ol></h4>
                         </div>
                     </div>
                 </div>
