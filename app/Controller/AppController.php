@@ -52,7 +52,7 @@ class AppController extends Controller {
             $this->loadModel('Company');
             $company = $this->Company->findById($current_user['company_id']);
             $connect = array('db_name'=>$company['Company']['db_name'],'db_password'=>$company['Company']['db_password']);
-            die(print_r($connect));
+            die(print_r($current_user));
 	    if (!empty($connect)&&$connect['db_name']!=''&&$connect['db_password']!='') {
 		@App::import('ConnectionManager');
 		$a = array(
