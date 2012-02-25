@@ -40,7 +40,7 @@
 		<div style="float:left;width:100%;">
 			<h2 style="max-width:500px;float:left;">Add User</h2>
 			<div style="float:right;">
-			<?php if ($current_user['admin']=='0') { ?>
+			<?php if (isset($current_user)&&$current_user['admin']=='0') { ?>
 				<a href="/settings"><input type="button" value="Admin Panel" class="mws-button black mws-i-24 i-cog-4 large"></a>
     			<?php } else { ?>
 				<a href="/admin/users"><input type="button" value="Admin Users" class="mws-button black mws-i-24 i-cog-4 large"></a>
