@@ -89,7 +89,7 @@ class BillShell extends Shell {
 			}
 		}
 		
-		if ($company['Company']['use_freshbooks']=='1') {
+		if ($c['Company']['use_freshbooks']=='1') {
 			$add = ' Freshbooks Invoices Generate for '.$fbc.' Vendors.';
 		} else {
 			$add = '';
