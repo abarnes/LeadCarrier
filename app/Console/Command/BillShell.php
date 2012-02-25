@@ -5,7 +5,7 @@ class BillShell extends Shell {
 	//var $Email;
 
 	public function main() {
-		$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1','Company.id'!='1')));
+		$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
 			$this->out($c['Company']['name'].': started.');
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);
