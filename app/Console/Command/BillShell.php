@@ -1,5 +1,5 @@
 <?php
-class BillShell extends AppShell {
+class BillShell extends Shell {
 	var $uses = array('Vendor','Bill','Setting','Company');
 	//var $tasks = array('Email');
 	//var $Email;
