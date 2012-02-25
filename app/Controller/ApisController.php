@@ -111,7 +111,7 @@ class ApisController extends AppController {
 		$data = array();
 		foreach ($vars as $row=>$value) {
 			if (substr($row,0,1)=='I') {
-				$data['Client'][substr($row,0)] = $value;
+				$data['Client'][substr($row,1)] = $value;
 			}
 		}
 		if ($this->Client->save($data)) {

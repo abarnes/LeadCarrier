@@ -315,6 +315,32 @@ class ClientsController extends AppController {
 		//sleep(1);
 		return true;
 	}
+	function freshbooks_test() {
+		require('freshbooks_api/FreshBooksRequest.php');
+		
+		//https://abarnes.freshbooks.com/api/2.1/xml-in
+		$domain = 'https://abarnes.freshbooks.com/api/2.1/xml-in'; // https://your-subdomain.freshbooks.com/
+		$token = '0f07ab1e5364c668b02c10a2094acc72'; // your api token found in your account
+		FreshBooksRequest::init($domain, $token);
+		
+		$fb = new FreshBooksRequest('client.list');
+		// Any arguments you want to pass it
+		$fb->post(array(
+		    'email' => 'charles_gasmire@baylor.edu'
+		));
+		// Make the request
+		$fb->request();
+		if($fb->success())
+		{
+		    echo 'successful! the full response is in an array below';
+		    print_r($fb->getResponse());
+		}
+		else
+		{
+		    echo $fb->getError();
+		    print_r($fb->getResponse());
+		}
+	}
     
 }
 
