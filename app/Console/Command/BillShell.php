@@ -5,7 +5,7 @@ class BillShell extends Shell {
 	//var $Email;
 
 	public function main() {
-		$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1')));
+		/*$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1')));
 		foreach ($companies as $c) {
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);
 			if (!empty($connect)) {
@@ -46,7 +46,8 @@ class BillShell extends Shell {
 				$num++;
 			}
 		}
-		$this->out($c['Company']['name'].': bills Generated for '.$num.' vendors.');
+		$this->out($c['Company']['name'].': bills Generated for '.$num.' vendors.');*/
+		$this->out('win');
 	}
 		
 }

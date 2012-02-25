@@ -110,6 +110,8 @@ class UsersController extends AppController {
 				    if ($this->User->save($this->request->data)) {
 					    $this->Session->setFlash('"'.$this->request->data['User']['username'] . '" Successfully Added.');
 					    if ($this->Auth->user('id')==null) {
+						$id = $this->User->id;
+						$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
 						$this->Auth->login($this->request->data['User']);
 					    }
 					    if ($r!=null) {
