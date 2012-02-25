@@ -5,20 +5,20 @@ class BillShell extends Shell {
 	//var $Email;
 
 	public function main() {
-		/*$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1')));
+		$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1','Company.id'!='1')));
 		foreach ($companies as $c) {
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);
 			if (!empty($connect)) {
-			    @App::import('ConnectionManager');
-			    $a = array(
-				    'datasource' => 'Database/Mysql',
-				    'persistent' => false,
-				    'host' => 'localhost',
-				    'login' => $connect['db_name'],
-				    'password' => $connect['db_password'],
-				    'database' => $connect['db_name'],
-				    'prefix' => '');
-				    ConnectionManager::create('new', $a);
+				@App::import('ConnectionManager');
+				$a = array(
+					'datasource' => 'Database/Mysql',
+					'persistent' => false,
+					'host' => 'localhost',
+					'login' => $connect['db_name'],
+					'password' => $connect['db_password'],
+					'database' => $connect['db_name'],
+					'prefix' => '');
+					ConnectionManager::create('new', $a);
 			}		
 			
 			$s = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
@@ -46,8 +46,8 @@ class BillShell extends Shell {
 				$num++;
 			}
 		}
-		$this->out($c['Company']['name'].': bills Generated for '.$num.' vendors.');*/
-		$this->out('win');
+		$this->out($c['Company']['name'].': bills Generated for '.$num.' vendors.');
+		//$this->out('win');
 	}
 		
 }
