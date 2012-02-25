@@ -57,7 +57,8 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         
         <!-- #Logo-->
         <div class="grid_4 logo margin">
-        	<a href="#"><img src="image/theme/logo.png" alt=""></a>
+        	<!--<a href="#"><img src="image/theme/logo.png" alt=""></a>-->
+		<h1>(Logo)</h1>
         </div>
         
         <!-- #Menu-->
@@ -90,10 +91,11 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
                         // Components							
                         slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
                         slides 					:  	[			// Slideshow Images	
-                        {image : 'image/wall/01.jpg', title : '<h1>Business Life in The City</h1> <h2>"You can change your life"</h2>'},
+                        {image : 'image/wall/01.jpg', title : ''}/*,
+			{image : 'image/wall/01.jpg', title : '<h1>Lead Carrier</h1> <h2>"Lead Distribution. Simplified."</h2>'}/*,
                         {image : 'image/wall/02.jpg', title : '<h1>The New York City</h1> <h2>"Duis eleifend suscipit pellentesque"</h2>'},
 						{image : 'image/wall/03.jpg', title : '<h1>A Black Night in The City</h1> <h2>"Vivamus euismod luctus tempus"</h2>'},
-						{image : 'image/wall/04.jpg', title : '<h1>New World in The City</h1> <h2>"Nulla augue urna, dictum eu luctus"</h2>'}												
+						{image : 'image/wall/04.jpg', title : '<h1>New World in The City</h1> <h2>"Nulla augue urna, dictum eu luctus"</h2>'}*/												
                                                     ]	
                     });
                 });

@@ -5,7 +5,7 @@ class BillShell extends Shell {
 	//var $Email;
 
 	public function main() {
-		$companies = $this->Company->find('all',array('conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
+		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
 			$this->out($c['Company']['name'].': started.');
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);
@@ -20,7 +20,8 @@ class BillShell extends Shell {
 					'database' => $connect['db_name'],
 					'prefix' => '');
 					ConnectionManager::create('new', $a);
-			}		
+			}
+			$this->out($c['Company']['name'].': connected.');
 			
 			$s = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 			$start = date('n/j/y',strtotime("-1 week"));
