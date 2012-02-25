@@ -111,7 +111,7 @@ class UsersController extends AppController {
 					    $this->Session->setFlash('"'.$this->request->data['User']['username'] . '" Successfully Added.');
 					    if ($this->Auth->user('id')==null) {
 						$user = $this->User->findById($this->User->getLastInsertId());
-						$this->Auth->login(array('username'=>$this->request->data['User']['username'],'password'=>''));
+						$this->Auth->login($user['User']);
 					    }
 					    if ($r!=null) {
 						if ($userInfo['admin']==0) {

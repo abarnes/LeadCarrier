@@ -83,16 +83,18 @@ function button(action){
 	    <?php echo $this->Session->flash(); ?>
 
 		<div style="float:left;width:100%;">
-			<h2 style="max-width:500px;float:left;">Admin Panel</h2>
+			<h2 style="max-width:500px;float:left;">Company Profile</h2>
 			<div style="float:right;">
+			<?php if ($admin=='1') { ?>
 				<a href="/admin/companies"><input type="button" value="Manage Companies" class="mws-button black mws-i-24 i-apartment-building large"></a>
 				<a href="/admin/companies/delete/<?php echo $c['Company']['id']; ?>" onclick="return confirm('Are you sure you want to delete this company?  This cannot be undone.')"><input type="button" value="Delete" class="mws-button red mws-i-24 i-cross large"></a>
+		        <?php } ?>
 			</div>	
 		</div>
 		
 		<!----settings---->
 
-		<div class="mws-panel grid_6">
+		<div class="mws-panel grid_5">
                 	<div class="mws-panel-header">
                     	<span class="mws-i-24 i-list">Edit Company Profile</span>
                     </div>
@@ -205,6 +207,42 @@ function button(action){
                     			<input type="submit" value="Save" class="mws-button black">
                     		</div>
                     	</form>
+                    </div>    	
+                </div>
+		
+		<div class="mws-panel grid_3">
+                	<div class="mws-panel-header">
+                    	<span class="mws-i-24 i-list">API Configuration Information</span>
+                    </div>
+                    <div class="mws-panel-body">
+				<table class="mws-datatable-fn mws-table">
+				<tbody>
+						<tr>
+								<td>
+										API Token
+								</td>
+								<td>
+										<?php echo $this->request->data['Company']['api_token']; ?>
+								</td>
+						</tr>
+						<tr>
+								<td>
+										Company Name
+								</td>
+								<td>
+										<?php echo $this->request->data['Company']['name']; ?>
+								</td>
+						</tr>
+						<tr>
+								<td>
+										Access URL
+								</td>
+								<td>
+										<?php echo 'http://'.$this->request->data['Company']['subdomain'].'.leadcarrier.com'; ?>
+								</td>
+						</tr>
+				</tbody>
+				</table>
                     </div>    	
                 </div>
 

@@ -144,8 +144,8 @@ class CompaniesController extends AppController {
 		}
 		
 		$this->Company->id = $id;
-		$this->set('id',$id);
 		if (empty($this->request->data)) {
+			$this->set('id',$id);
 			$this->request->data = $this->Company->read();
 			$this->set('c',$this->Company->findById($id));
 			if ($userInfo['admin']==1) {
@@ -161,6 +161,7 @@ class CompaniesController extends AppController {
 				$this->redirect('/dashboard');
 			} else {
 				$this->Session->setFlash('Error: Failed to Save Information');
+				$this->redirect('/companies/edit/'.$id);
 			}
 		}
 	}
