@@ -32,7 +32,7 @@ class BillShell extends Shell {
 			$vn = $this->Vendor->find('all',array('conditions'=>array('Vendor.total_bill >'=>'0')));
 			foreach ($vn as $v) {
 				if ($c['Company']['use_freshbooks']=='1'&&$v['Vendor']['freshbooks_id']!='') {
-					require('/freshbooks_api/FreshBooksRequest.php');
+					require('/home/lcarrier/public_html/app/webroot/freshbooks_api/FreshBooksRequest.php');
 					
 					$domain = $company['Company']['freshbooks_url'];
 					$token = $company['Company']['freshbooks_api_token'];
