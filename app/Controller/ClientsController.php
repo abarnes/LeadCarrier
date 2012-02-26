@@ -325,15 +325,22 @@ class ClientsController extends AppController {
 		
 		FreshBooksRequest::init($domain, $token);
 		$fb = new FreshBooksRequest('client.list');
-		//$fb->post(array('invoice_id'=>$fid));
-		$fb->request();
-		die();
-		if ($fb->success()) {
-			$result = $fb->getResponse();
-			die(print_r($result));
-		} else {
-			die(print($fb->getError()));
-		}
+			// Any arguments you want to pass it
+			$fb->post(array(
+			    'email' => 'thomas@thomasgarzaphotography.com'
+			));
+			// Make the request
+			$fb->request();
+			if($fb->success())
+			{
+			    echo 'successful! the full response is in an array below';
+			    print_r($fb->getResponse());
+			}
+			else
+			{
+			    echo $fb->getError();
+			    print_r($fb->getResponse());
+			}
 	}
 }
 

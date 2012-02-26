@@ -59,15 +59,15 @@ class BillShell extends Shell {
 					{
 						$result = $fb->getResponse();
 						$id = $result['invoice_id'];
-						FreshBooksRequest::init($domain, $token);
+						/*FreshBooksRequest::init($domain, $token);
 						$fb = new FreshBooksRequest('invoice.sendByEmail');
 						$fb->post(array('invoice_id'=>$id));
 						$fb->request();
-						if ($fb->success()) {
+						if ($fb->success()) {*/
 							$fbc++;		
-						} else {
+						/*} else {
 							$this->out($c['Company']['name'].'('.$c['Company']['id'].'): Sending Failed - '.$fb->getError());
-						}
+						}*/
 					}
 					else
 					{
