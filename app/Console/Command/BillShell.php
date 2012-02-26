@@ -46,6 +46,7 @@ class BillShell extends Shell {
 						'lines'=>array(
 							'line'=>array(
 								'name'=>'Leads Generated',
+								'description'=>$start.' to '.$end,
 								'unit_cost'=>$s['Setting']['lead_price'],
 								'quantity'=>$v['Vendor']['total_bill']
 							)
@@ -56,13 +57,21 @@ class BillShell extends Shell {
 					$fb->request();
 					if($fb->success())
 					{
-						$fbc++;
 						$result = $fb->getResponse();
 						$id = $result['invoice_id'];
+						FreshBooksRequest::init($domain, $token);
+						$fb = new FreshBooksRequest('invoice.sendByEmail');
+						$fb->post(array('invoice_id'=>$id));
+						$fb->request();
+						if ($fb->success()) {
+							$fbc++;		
+						} else {
+							$this->out($c['Company']['name'].'('.$c['Company']['id'].'): Sending Failed - '.$fb->getError());
+						}
 					}
 					else
 					{
-					    $this->out($c['Company']['name'].'('.$c['Company']['id'].'): Invoice Failed '.$fb->getError());
+					    $this->out($c['Company']['name'].'('.$c['Company']['id'].'): Invoice Creation Failed - '.$fb->getError());
 					    $id = '';	
 					}
 				} else {
