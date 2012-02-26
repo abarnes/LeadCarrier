@@ -316,7 +316,7 @@ class ClientsController extends AppController {
 		return true;
 	}
 	
-	function findfb(){
+	/*function findfb(){
 		$company = $this->Company->findById($this->Auth->user('company_id'));
 		require('freshbooks_api/FreshBooksRequest.php');
 					
@@ -341,7 +341,7 @@ class ClientsController extends AppController {
 			    echo $fb->getError();
 			    print_r($fb->getResponse());
 			}
-	}
+	}*/
 }
 
 ?>
