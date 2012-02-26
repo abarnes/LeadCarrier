@@ -323,7 +323,7 @@ class VendorsController extends AppController {
 					$token = $company['Company']['freshbooks_api_token'];
 					FreshBooksRequest::init($domain, $token);
 					$fb = new FreshBooksRequest('payment.create');
-					$fb->post(array('payment'=>array('invoice_id'=>$b['Bill']['freshbooks_invoice_id'])));
+					$fb->post(array('payment'=>array('invoice_id'=>$b['Bill']['freshbooks_invoice_id'],'amount'=>$b['Bill']['total'])));
 					$fb->request();
 					if ($fb->success()) {
 						$this->Bill->saveField('paid','1');
