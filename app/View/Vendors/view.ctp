@@ -244,8 +244,8 @@
 					<?php } else { ?>
 					    <a href="/vendors/paid/<?php echo $h['Bill']['id']; ?>" style="text-decoration:none;"><input type="button" value="Mark Unpaid" class="mws-button blue mws-i-24 small"></a>
 					<?php } ?>
-					<?php if ($h['Bill']['freshbooks_id']!='') { ?>
-					    <a href="/vendors/view_freshbooks_bill/<?php echo $h['Bill']['freshbooks_id']; ?>" target="_blank" style="text-decoration:none;"><input type="button" value="Freshbooks" class="mws-button green mws-i-24 small"></a>	
+					<?php if ($h['Bill']['freshbooks_invoice_id']!='') { ?>
+					    <a href="/vendors/view_freshbooks_bill/<?php echo $h['Bill']['freshbooks_invoice_id']; ?>" target="_blank" style="text-decoration:none;"><input type="button" value="Freshbooks" class="mws-button green mws-i-24 small"></a>	
 					<?php } ?>
 				    </td>
 				</tr>
