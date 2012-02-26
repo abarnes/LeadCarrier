@@ -60,6 +60,14 @@ class UsersController extends AppController {
 			} else {
 				$this->Cookie->delete('uname');
 			}
+			$user = $this->User->findByUsername($this->request->data['User']['username']);
+			if (!empty($user)) {
+				$c = $this->Company->findById($user['User']['company_id']);
+				if ($c['Company']['active']!='1') {
+					$this->redirect('/companies/inactive');					
+				}
+			}
+			
 			if ($this->Auth->login()) {
 				//record last login
 				//

@@ -315,35 +315,6 @@ class ClientsController extends AppController {
 		//sleep(1);
 		return true;
 	}
-	function freshbooks_test() {
-		require('freshbooks_api/FreshBooksRequest.php');
-		
-		//https://abarnes.freshbooks.com/api/2.1/xml-in
-		$domain = 'https://myweddingconnector.freshbooks.com'; // https://your-subdomain.freshbooks.com/
-		$token = 'c17c9aeb651880dcda07c85c0e6f1343'; // your api token found in your account
-		FreshBooksRequest::init($domain, $token);
-		
-		$fb = new FreshBooksRequest('invoice.list');
-		// Any arguments you want to pass it
-		/*$fb->post(array(
-		    'client_id' => '6'
-		));*/
-		// Make the request
-		$fb->request();
-		if($fb->success())
-		{
-		    $result = $fb->getResponse();
-		    die(print_r($result['invoices']['invoice']));
-		    //$result['clients']['client']
-		    print_r($fb->getResponse());		    
-		}
-		else
-		{
-		    echo $fb->getError();
-		    print_r($fb->getResponse());
-		}
-	}
-    
 }
 
 ?>
