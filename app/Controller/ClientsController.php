@@ -324,8 +324,8 @@ class ClientsController extends AppController {
 		$token = $company['Company']['freshbooks_api_token'];
 		
 		FreshBooksRequest::init($domain, $token);
-		die();
 		$fb = new FreshBooksRequest('client.list');
+		die();
 		//$fb->post(array('invoice_id'=>$fid));
 		$fb->request();
 		if ($fb->success()) {
