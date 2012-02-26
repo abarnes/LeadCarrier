@@ -318,7 +318,7 @@ class ClientsController extends AppController {
 	
 	function findfb(){
 		$company = $this->Company->findById($this->Auth->user('company_id'));
-		require('freshbooks_api/FreshBooksRequest.php');
+		require('/freshbooks_api/FreshBooksRequest.php');
 					
 		$domain = $company['Company']['freshbooks_url'];
 		$token = $company['Company']['freshbooks_api_token'];
