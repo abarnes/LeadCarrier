@@ -326,9 +326,9 @@ class ClientsController extends AppController {
 		FreshBooksRequest::init($domain, $token);
 		$fb = new FreshBooksRequest('client.list');
 			// Any arguments you want to pass it
-			$fb->post(array(
-			    'email' => 'thomas@thomasgarzaphotography.com'
-			));
+			/*$fb->post(array(
+			    'email' => 'meredith.gedrose@gmail.com'
+			));*/
 			// Make the request
 			$fb->request();
 			if($fb->success())
