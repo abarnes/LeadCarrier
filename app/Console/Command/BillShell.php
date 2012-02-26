@@ -41,7 +41,7 @@ class BillShell extends Shell {
 					
 					$fb = new FreshBooksRequest('invoice.create');
 					// Any arguments you want to pass it
-					$fb->post(array('client'=>array(
+					$fb->post(array('invoice'=>array(
 						'client_id'=>$v['Vendor']['freshbooks_id'],
 						'lines'=>array(
 							'line'=>array(
