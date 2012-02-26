@@ -377,14 +377,25 @@ class VendorsController extends AppController {
 		//die(print_r($this->request->data));
 	}
 	
-	/*function test(){
-		$v = $this->Vendor->find('all');
-		foreach ($v as $v) {
-			$this->Vendor->id = $v['Vendor']['id'];
-			$this->Vendor->saveField('leads_per_week',99999);
-			$this->Vendor->id = false;
+	function view_freshbooks_bill($fid) {
+		$company = $this->Company->findById($this->Auth->user('company_id'));
+		require('freshbooks_api/FreshBooksRequest.php');
+					
+		$domain = $company['Company']['freshbooks_url'];
+		$token = $company['Company']['freshbooks_api_token'];
+		
+		FreshBooksRequest::init($domain, $token);
+		$fb = new FreshBooksRequest('invoice.get');
+		$fb->post(array('invoice_id'=>$fid));
+		$fb->request();
+		if ($fb->success()) {
+			$result = $fb->getResponse();
+			$this->redirect($result['invoice']['links']['view']);
+		} else {
+			$this->Session->setFlash('Error opening page: '.$fb->getError());
+			$this->redirect('/vendors/manage');
 		}
-	}*/
+	}
 }
 
 ?>
