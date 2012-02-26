@@ -315,8 +315,26 @@ class VendorsController extends AppController {
 				$this->Bill->saveField('paid','0');
 				$this->Session->setFlash('Bill marked as unpaid.');
 			} else {
-				$this->Bill->saveField('paid','1');
-				$this->Session->setFlash('Bill marked as paid.');
+				$company = $this->Company->findById($this->Auth->user('company_id'));
+				if ($company['Company']['use_freshbooks']=='1') {
+					require('freshbooks_api/FreshBooksRequest.php');
+								
+					$domain = $company['Company']['freshbooks_url'];
+					$token = $company['Company']['freshbooks_api_token'];
+					FreshBooksRequest::init($domain, $token);
+					$fb = new FreshBooksRequest('payment.create');
+					$fb->post(array('invoice_id'=>$d['Bill']['freshbooks_invoice_id']));
+					$fb->request();
+					if ($fb->success()) {
+						$this->Bill->saveField('paid','1');
+						$this->Session->setFlash('Bill marked as paid.');
+					} else {
+						$this->Session->setFlash('Error opening page: '.$fb->getError());
+					}
+				} else {
+					$this->Bill->saveField('paid','1');
+					$this->Session->setFlash('Bill marked as paid.');
+				}
 			}
 		$this->redirect(array('action'=>'view/'.$b['Bill']['vendor_id'].'/billing'));
 	}
