@@ -315,6 +315,25 @@ class ClientsController extends AppController {
 		//sleep(1);
 		return true;
 	}
+	
+	function findfb(){
+		$company = $this->Company->findById($this->Auth->user('company_id'));
+		require('freshbooks_api/FreshBooksRequest.php');
+					
+		$domain = $company['Company']['freshbooks_url'];
+		$token = $company['Company']['freshbooks_api_token'];
+		
+		FreshBooksRequest::init($domain, $token);
+		$fb = new FreshBooksRequest('client.list');
+		//$fb->post(array('invoice_id'=>$fid));
+		$fb->request();
+		if ($fb->success()) {
+			$result = $fb->getResponse();
+			die(print_r($result));
+		} else {
+			echo $fb->getError();
+		}
+	}
 }
 
 ?>
