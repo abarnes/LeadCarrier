@@ -182,9 +182,9 @@ class FreshBooksRequest {
             curl_close($ch);
         }
         
-        //$response = json_decode(json_encode(simplexml_load_string($result)), true);
-        $this->_response = $result;
-        //$this->_response = $response;
+        $response = json_decode(json_encode(simplexml_load_string($result)), true);
+
+        $this->_response = $response;
         $this->_success = ($response['@attributes']['status'] == 'ok');
         if(isset($response['error']))
         {
