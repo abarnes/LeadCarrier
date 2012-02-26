@@ -325,9 +325,9 @@ class ClientsController extends AppController {
 		
 		FreshBooksRequest::init($domain, $token);
 		$fb = new FreshBooksRequest('client.list');
-		die();
 		//$fb->post(array('invoice_id'=>$fid));
 		$fb->request();
+		die();
 		if ($fb->success()) {
 			$result = $fb->getResponse();
 			die(print_r($result));
