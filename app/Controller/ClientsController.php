@@ -330,7 +330,7 @@ class ClientsController extends AppController {
 			    'email' => 'meredith.gedrose@gmail.com'
 			));*/
 			// Make the request
-			$fb->request();
+			/*$fb->request();
 			if($fb->success())
 			{
 			    echo 'successful! the full response is in an array below';
