@@ -1,5 +1,5 @@
 <?
-require_once('XmlDomConstruct.php');
+require_once('freshbooks_api/XmlDomConstruct.php');
 /**
  * A simple PHP API wrapper for the FreshBooks API.
  * All post vars can be found on the developer site: http://developers.freshbooks.com/
