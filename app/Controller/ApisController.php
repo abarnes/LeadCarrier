@@ -111,7 +111,14 @@ class ApisController extends AppController {
 		$data = array();
 		foreach ($vars as $row=>$value) {
 			if (substr($row,0,1)=='I') {
-				$data['Client'][substr($row,1)] = $value;
+				$field = $this->Field->findByName(substr($row,1));
+				if ($field['Field']['type']=='date') {
+					$data['Client'][substr($row,1)] = date('Y-m-d',strtotime($value));
+				} elseif ($field['Field']['type']=='datetime') {
+					$data['Client'][substr($row,1)] = date('Y-m-d',strtotime($value));
+				} else {
+					$data['Client'][substr($row,1)] = $value;
+				}
 			}
 		}
 		if ($this->Client->save($data)) {
