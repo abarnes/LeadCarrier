@@ -68,7 +68,7 @@ class RecordsController extends AppController {
 				$f = 0;
 				$total = 0;
 				foreach ($ind as $i) {
-					$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.category_id'=>$i['Category']['id'],'Record.created >=' => date('Y-m-d', strtotime("-1 month")))));
+					$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.vendor_id !='=>'','Record.category_id'=>$i['Category']['id'],'Record.created >=' => date('Y-m-d', strtotime("-1 month")))));
 					$ind[$f]['leads'] = $l;
 					$total = $total+$l;
 					$f++;
@@ -100,12 +100,12 @@ class RecordsController extends AppController {
 					$bo = $bo+86400;
 					
 					$this->set('brides',$this->Record->Client->find('count',array('conditions'=>array('Client.approved'=>'1','Client.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])),'Client.created <='=>date('Y-m-d', $bo)))));
-					$ld = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])),'Record.created <='=>date('Y-m-d', $bo))));
+					$ld = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.vendor_id !='=>'','Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])),'Record.created <='=>date('Y-m-d', $bo))));
 					
 					$f = 0;
 					$total = 0;
 					foreach ($ind as $i) {
-						$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.category_id'=>$i['Category']['id'],'Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])),'Record.created <='=>date('Y-m-d', $bo))));
+						$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.vendor_id !='=>'','Record.category_id'=>$i['Category']['id'],'Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])),'Record.created <='=>date('Y-m-d', $bo))));
 						$ind[$f]['leads'] = $l;
 						$total = $total+$l;
 						$f++;
@@ -138,13 +138,13 @@ class RecordsController extends AppController {
 					$bo = $bo+86400;
 					
 					$this->set('brides',$this->Record->Client->find('count',array('conditions'=>array('Client.approved'=>'1','Client.created <='=>date('Y-m-d', $bo)))));
-					$ld = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.created <='=>date('Y-m-d', $bo))));
+					$ld = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.vendor_id !='=>'','Record.created <='=>date('Y-m-d', $bo))));
 					
 					
 					$f = 0;
 					$total = 0;
 					foreach ($ind as $i) {
-						$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.category_id'=>$i['Category']['id'],'Record.created <='=>date('Y-m-d', $bo))));
+						$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.vendor_id !='=>'','Record.category_id'=>$i['Category']['id'],'Record.created <='=>date('Y-m-d', $bo))));
 						$ind[$f]['leads'] = $l;
 						$total = $total+$l;
 						$f++;
@@ -173,12 +173,12 @@ class RecordsController extends AppController {
 					$this->set('endtime',date('Y',strtotime($this->request->data['Record']['end_date'])).', '.$m.', '.date('j',strtotime($this->request->data['Record']['end_date'])));
 				} else {
 					$this->set('brides',$this->Record->Client->find('count',array('conditions'=>array('Client.approved'=>'1','Client.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date']))))));
-					$ld = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])))));
+					$ld = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.vendor_id !='=>'','Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])))));
 					
 					$f = 0;
 					$total = 0;
 					foreach ($ind as $i) {
-						$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.category_id'=>$i['Category']['id'],'Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])))));
+						$l = $this->Record->find('count',array('conditions'=>array('Record.sent'=>'1','Record.vendor_id !='=>'','Record.category_id'=>$i['Category']['id'],'Record.created >=' => date('Y-m-d', strtotime($this->request->data['Record']['start_date'])))));
 						$ind[$f]['leads'] = $l;
 						$total = $total+$l;
 						$f++;
