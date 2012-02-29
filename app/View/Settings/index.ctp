@@ -61,6 +61,8 @@ function button(action){
 function button2(action){
 	if (action=='delete') {
 		var answer2 = confirm('Are you sure you want to delete these fields?  This cannot be undone and all data will be lost.');
+	} else {
+		var answer2 = true;
 	}
 	if (answer2) {
 		$('#FieldAction').val(action);

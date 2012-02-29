@@ -64,6 +64,8 @@ function chk() {
 function button(action){
 	if (action=='delete') {
 		var answer = confirm('Are you sure you want to delete this vendor?  This cannot be undone.');
+	} else {
+		var answer = true;
 	}
 	if (answer) {
 		$('#VendorAction').val(action);
