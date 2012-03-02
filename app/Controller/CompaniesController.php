@@ -33,14 +33,25 @@ class CompaniesController extends AppController {
 			$this->redirect('/pricing');
 		}
 		$this->layout = 'main';
+		$this->set('selected',$plan);
 		if (!empty($this->request->data)) {
 			$this->request->data['Company']['api_token'] = $this->Password->__randomPassword('18');
 			$this->request->data['Company']['plan'] = $plan;
-			if ($this->Company->save($this->request->data)) {
-				$this->redirect(array('controller'=>'databases','action' => 'db_setup/'.$this->Company->getLastInsertId()));
+			$this->Company->set($this->request->data);
+			if ($this->Company->validates()) {
+				if ($this->request->data['Company']['address2']=='Address Line 2') {
+					$this->request->data['Company']['address2'] = '';
+				}
+				if ($this->Company->save($this->request->data)) {
+					$this->redirect(array('controller'=>'databases','action' => 'db_setup/'.$this->Company->getLastInsertId()));
+				} else {
+					//$this->Session->setFlash('Error: Registration Failure.  Please try again later.');
+				}
 			} else {
-				$this->Session->setFlash('Error: Registration Failure.  Please try again later.');
+				$this->set('errors',$this->Company->validationErrors);
 			}
+		} else {
+			//$this->set('errors',array());
 		}
 	}
 	
