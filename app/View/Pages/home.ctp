@@ -58,7 +58,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         
         <!-- #Logo-->
         <div class="grid_4 logo margin">
-        	<a href="/"><img src="img/colorlogo.png" alt="" style="width:360px;margin-top:26px;"></a>
+        	<a href="/"><img src="img/colorlogo.png" alt="Lead Carrier - The Most Affordable Full-Service Lead Distribution Platform" style="width:360px;margin-top:26px;"></a>
         </div>
         
         <!-- #Menu-->
