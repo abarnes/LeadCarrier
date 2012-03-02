@@ -28,10 +28,14 @@ class CompaniesController extends AppController {
 	    }*/
     }
 	
-	public function register() {
+	public function register($plan) {
+		if (!in_array($plan,array('monthly','quarterly','annual'))) {
+			$this->redirect('/pricing');
+		}
 		$this->layout = 'main';
 		if (!empty($this->request->data)) {
 			$this->request->data['Company']['api_token'] = $this->Password->__randomPassword('18');
+			$this->request->data['Company']['plan'] = $plan;
 			if ($this->Company->save($this->request->data)) {
 				$this->redirect(array('controller'=>'databases','action' => 'db_setup/'.$this->Company->getLastInsertId()));
 			} else {

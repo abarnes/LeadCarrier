@@ -46,6 +46,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 
 </head>
 <body>
+<div style="background-image:url('img/background-slide.jpg');background-repeat: none;background-size: cover;height:630px;">
 
 <!-- Container Start-->
 <div class="container_16" style="padding-left:15px;">
@@ -57,7 +58,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         
         <!-- #Logo-->
         <div class="grid_4 logo margin">
-        	<a href="#"><img src="image/theme/colorlogo.png" alt="" style="width:350px;margin-top:30px;"></a>
+        	<a href="/"><img src="img/colorlogo.png" alt="" style="width:360px;margin-top:26px;"></a>
         </div>
         
         <!-- #Menu-->
@@ -72,49 +73,18 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
     </div>
     
     <!-- Slider Start-->
-    <div id="slider" class="grid_16">  
-    	
-    	<!--Arrow Navigation-->
-    	<a id="prevslide" class="load-item"><img src="image/theme/arrow1.png" alt=""></a>
-    	<a id="nextslide" class="load-item"><img src="image/theme/arrow2.png" alt=""></a>
-    	
-        <!--Slide captions displayed here-->
-        <div id="slidecaption">
-		  <script>
-            jQuery(function($){			
-                    $.supersized({			
-                        // Functionality
-                        slide_interval          :   5000,		// Length between transitions
-                        transition              :   1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-                        transition_speed		:	1000,		// Speed of transition															   
-                        // Components							
-                        slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
-                        slides 					:  	[			// Slideshow Images	
-                        {image : 'image/wall/01.jpg', title : ''}/*,
-			{image : 'image/wall/01.jpg', title : '<h1>Lead Carrier</h1> <h2>"Lead Distribution. Simplified."</h2>'}/*,
-                        {image : 'image/wall/02.jpg', title : '<h1>The New York City</h1> <h2>"Duis eleifend suscipit pellentesque"</h2>'},
-						{image : 'image/wall/03.jpg', title : '<h1>A Black Night in The City</h1> <h2>"Vivamus euismod luctus tempus"</h2>'},
-						{image : 'image/wall/04.jpg', title : '<h1>New World in The City</h1> <h2>"Nulla augue urna, dictum eu luctus"</h2>'}*/												
-                                                    ]	
-                    });
-                });
-          </script>
-        </div>
-		
-        <!--Navigation-->
-    	<div id="list-slide">
-        <ul id="slide-list"></ul>
-    	</div>
-        
-    	<!--Time Bar-->
-    	<div id="progress-back" class="load-item">
-    	    <div id="progress-bar"></div>
-    	</div>
+    <div id="slider" class="grid_16">
+	<img src="img/home.png" style="width:820px;margin-left:60px;margin-right: 60px;margin-top:45px;"/>
+	<a href="http://demo.leadcarrier.com/login" target="_blank"><img src="img/scheduledemo.png" style="position:absolute;top:520px;margin-left:70px;width:340px;"/></a>
     </div>
     <!-- Slider End-->
     
     <!-- Clear-->
     <div class="clear"></div>
+
+</div>
+</div>
+<div class="container_16" style="padding-left:15px;margin-top:-80px;">
     
     <!-- Tab Menu Start-->
     <div id="tabmenu" class="grid_16 margin">
@@ -137,9 +107,9 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
           <div id="classytabs">
             <!-- Tab Menu-->
             <ul class="tabs">
-            <li> <a href="#work" class="tabbutton1 first selected"> <img src="image/icon/1.png" alt=""> <h1> Work Portfolio </h1> <p>Lorem ipsum is simply</p></a> </li>
-            <li><a href="#aboutus" class="tabbutton2"><img src="image/icon/2.png" alt=""> <h1> About We Us </h1> <p>Lorem ipsum is simply</p></a> </li>
-            <li><a href="#team" class="tabbutton3"><img src="image/icon/3.png" alt=""> <h1> Creative Team </h1> <p>Lorem ipsum is simply</p></a> </li>
+	    <li><a href="#team" class="tabbutton1 first selected"><img src="image/icon/3.png" alt=""> <h1> Team </h1></a><p></p> </li>
+            <li><a href="#aboutus" class="tabbutton2"><img src="image/icon/2.png" alt=""> <h1> About Us </h1></a> </li>
+	    <li> <a href="#work" class="tabbutton3"> <img src="image/icon/1.png" alt=""> <h1> Product Tour </h1></a> </li>
             </ul>        
           <div class="clearfix"></div>
           
@@ -311,9 +281,9 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
               <div class="homepage-team">
               	<div class="columb-shadow"><img src="image/theme/minishadow2.png" alt=""></div>
               	<img src="image/post/middle.png" class="homepage-team-img" alt="">
-                <h1>Why do we use it?</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p> <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing.</p>
-                <div class="margin1"><a href="#" class="minibutton">More</a></div>
+                <h1>The Company</h1>
+                <p> The Lead Carrier team is compiled of Tech Wizards and Internet Marketers. After realizing a serious need in the lead distribution industry while running our own campaigns, we built a reliable system that can handle whatever amount of traffic you drive to your site. Since implementing the system on our own businesses, we've perfected the simple lead distribution system. Schedule a live demo and let us walk you through the functionality of Lead Carrier today!</p>
+                <!--<div class="margin1"><a href="#" class="minibutton">More</a></div>-->
               </div>
           </div>
           
@@ -321,19 +291,15 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
           <div id="team" class="tab-content">
               <div class="home-team">
               	<ul>
-                	<li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><a class="team" href="image/post/bigimage.png" title="John Smith (General Manager) </br>Lorem ipsum is simply dummy data text printing"><img src="image/post/t1.png" alt="" class="home-team-img"></a><h1>John Smith</h1><p>General Menager</p></li>
-                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><a class="team" href="image/post/bigimage.png" title="Marry Anderson (Ass. Manager) </br>Lorem ipsum is simply dummy data text printing"><img src="image/post/t2.png" alt="" class="home-team-img"></a><h1>Marry Anderson</h1><p>Ass. Manager</p></li>
-                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><a class="team" href="image/post/bigimage.png" title="Micheal Fisher (Graphicer) </br>Lorem ipsum is simply dummy data text printing"><img src="image/post/t3.png" alt="" class="home-team-img"></a><h1>Micheal Fisher</h1><p>Graphicer</p></li>
-                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><a class="team" href="image/post/bigimage.png" title="Alexsandra Smith (Personel Manager) </br>Lorem ipsum is simply dummy data text printing"><img src="image/post/t4.png" alt="" class="home-team-img"></a><h1>Alexsandra Smith</h1><p>Personel Manager</p></li>
-                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><a class="team" href="image/post/bigimage.png" title="Matheus Prahk (Code Developer) </br>Lorem ipsum is simply dummy data text printing"><img src="image/post/t5.png" alt="" class="home-team-img"></a><h1>Matheus Prahk</h1><p>Code Developer</p></li>
-                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><a class="team" href="image/post/bigimage.png" title="Philips Garden (Online Support) </br>Lorem ipsum is simply dummy data text printing"><img src="image/post/t6.png" alt="" class="home-team-img"></a><h1>Philips Gorden</h1><p>Online Support</p></li>
+                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/austin.jpg" alt="" class="home-team-img"><h1>Austin Barnes</h1><p>Founder</p></li>
+                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/cole.jpg" alt="" class="home-team-img"><h1>Cole Chapman</h1><p>Founder</p></li>
+		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/charlie.jpg" alt="" class="home-team-img"><h1>Charlie Gasmire</h1><p>Founder</p></li>
+		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/david.jpg" alt="" class="home-team-img"><h1>David Grubbs</h1><p>Founder</p></li>
+		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/kyle.jpg" alt="" class="home-team-img"><h1>Kyle Mills</h1><p>Founder</p></li>
+		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/gib.jpg" alt="" class="home-team-img"><h1>Gib Reynolds</h1><p>Founder</p></li>
                 </ul>
               </div>
               <div class="clear"></div>
-              <div class="home-team-bottom">
-              <div class="margin2 fleft"><a href="#" class="minibutton">View All Team</a></div>
-              <h1>Since 1947-2012</h1>
-              </div>
           </div>
           </div>
         </div>
@@ -359,13 +325,13 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
     <div class="grid_8 margin leftsays">
     	<div id="full-bottom"></div>
     	<div class="title-2cloumb">
-        	<h1>What Says Our Company</h1>
-        	<p>Lorem ipsum is simply data text</p>
+        	<h1>What people are saying...</h1>
+        	<p></p>
         </div>
         <div class="leftcloumb-list">
         	<ul>
-            	<li><div class="margin4 fright"><</div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>William Crahenberg Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
-                <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Marie Smith Do Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
+            	<li><div class="margin4 fright"></div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
                 <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark John Gothenberg Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
             </ul>
         </div>
@@ -397,7 +363,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 <div id="footer2-back" style="margin:0px;">
 	<div class="container_16">
     	<div class="grid_16 footerregister margin">
-        	<p>Copright © 2012 City Themes iamthemes.com. All rights reserved. W3C standart web site valid xhtml and css</p><p>Design by Mithat Sigmaz / <a href="http://www.cubegraphic.net">CUBE GRAPHIC</a> - Code by IAMILKAY / <a href="http://www.iamthemes.com">IAMTHEMES</a></p>
+        	<p>Copright © 2012 Lead Carrier LLC</p>
         </div>
     </div>
 </div>

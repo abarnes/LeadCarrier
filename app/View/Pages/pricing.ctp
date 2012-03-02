@@ -32,7 +32,7 @@
 				<ul>
 					<!-- column header -->
 					<li class="header_row_1 align_center radius5_topleft"></li>
-					<li class="header_row_2"><h2 class="caption">sellect <span>your</span> table</h2></li>
+					<li class="header_row_2"><h2 class="caption">select <span>your</span> plan</h2></li>
 					<!-- data rows -->
 					<li class="row_style_2"><span>Annual Savings</span></li>
 					<li class="row_style_4"><span>Leads per Month</span></li>
@@ -57,7 +57,7 @@
 					<li class="header_row_1 align_center"><h2 class="col1">monthly</h2></li>
 					<li class="header_row_2 align_center"><h1 class="col1">$<span>749.99</span></h1><h3 class="col1">per month</h3></li>
 					<!-- data rows -->
-					<li class="row_style_1 align_center"><span></span></li>
+					<li class="row_style_1 align_center"><span>-</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
@@ -65,7 +65,7 @@
 					<li class="row_style_3 align_center"><span>Yes</span></li>
 					<li class="row_style_1 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
-					<li class="footer_row"><a href="/companies/register" class="sign_up radius3">sign up!</a></li>
+					<li class="footer_row"><a href="/companies/register/monthly" class="sign_up radius3">sign up!</a></li>
 				</ul>
 			</div>
 			
@@ -88,7 +88,7 @@
 					<li class="row_style_4 align_center"><span>Yes</span></li>
 					<li class="row_style_2 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
-					<li class="footer_row"><a href="/companies/register" class="sign_up radius3">sign up!</a></li>
+					<li class="footer_row"><a href="/companies/register/quarterly" class="sign_up radius3">sign up!</a></li>
 				</ul>
 			</div>
 			
@@ -111,7 +111,7 @@
 					<li class="row_style_3 align_center"><span>Yes</span></li>
 					<li class="row_style_1 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
-					<li class="footer_row"><a href="/companies/register" class="sign_up radius3">sign up!</a></li>
+					<li class="footer_row"><a href="/companies/register/annual" class="sign_up radius3">sign up!</a></li>
 				</ul>
 			</div>
 			
@@ -147,7 +147,7 @@
         <div class="leftcloumb-list">
         	<ul>
             	<li><div class="margin4 fright"></div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
-                <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Robert B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
                 <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark John Gothenberg Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
             </ul>
         </div>

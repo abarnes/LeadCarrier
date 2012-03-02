@@ -61,7 +61,7 @@ else { document.write('<link rel=stylesheet href="/fancybox/jquery.fancybox-1.3.
         
         <!-- #Logo-->
         <div class="grid_4 logo margin">
-        	<a href="#"><img src="/image/theme/logo.png" alt=""></a>
+        	<a href="/"><img src="/image/theme/logo.png" alt="Lead Carrier - The simple " style="width:350px;margin-top:30px;"></a>
         </div>
         
         <!-- #Menu-->
@@ -83,7 +83,7 @@ else { document.write('<link rel=stylesheet href="/fancybox/jquery.fancybox-1.3.
     	<div id="tabmenuback2"></div>
         <div class="bigtitle">
         	<h1>Lead Carrier</h1>
-            <h2>"The Simple, Effective Lead Distribution Platform."</h2>
+            <h2>"The Most Affordable Full-Service Lead Distribution Platform"</h2>
         </div>
     </div>
     
