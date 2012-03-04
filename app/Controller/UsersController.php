@@ -97,8 +97,10 @@ class UsersController extends AppController {
 		if (!empty($userInfo)) {
 			$this->layout = 'admin';
 			$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
+			$this->set('setup','0');
 		} else {
-			$this->layout = 'main';	
+			$this->layout = 'setup';
+			$this->set('setup','1');
 		}
 		$this->set('id',$id);
 		$company = $this->User->Company->findById($id);
@@ -110,7 +112,6 @@ class UsersController extends AppController {
 		}
 		    if (!empty($this->request->data)) {
 			    $p2 = $this->request->data['User']['password2'];
-			    if ($this->request->data['User']['password'] == $p2) {
 				$this->request->data['User']['company_id'] = $id;
 				if (!empty($userInfo)&&$userInfo['admin']==1) {
 					$this->request->data['User']['admin']='1';
@@ -130,14 +131,7 @@ class UsersController extends AppController {
 					    } else {
 						$this->redirect(array('controller'=>'settings','action' => 'setup/'.$id));
 					    }
-				    } else {
-					    $this->Session->setFlash('Failed to Save User');
-					    $this->redirect('/settings');
 				    }
-			    } else {
-				    $this->Session->setFlash('Passwords Did Not Match.  Please Try Again.');
-				    $this->redirect(array('action'=>'add/'.$id));
-			    }
 		    }
 	}
     

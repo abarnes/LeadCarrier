@@ -51,14 +51,17 @@ class SettingsController extends AppController {
 	}
 	
 	public function setup($id) {
-		$this->layout = 'main';
+		$this->layout = 'setup';
 		$this->set('id',$id);
 		if (!empty($this->request->data)) {
+			//convert lead price to decimal format
+			$this->request->data['Setting']['lead_price'] = substr($this->request->data['Setting']['lead_price'],1);
+			if (substr($this->request->data['Setting']['site_url'],0,7)) {
+				$this->request->data['Setting']['site_url'] = "http://".$this->request->data['Setting']['site_url'];
+			}
 			$this->Setting->create();
-			if ($this->Setting->save($this->request->data)) {
+			if ($this->Setting->save($this->request->data,array('validate'=>true))) {
 				$this->redirect(array('controller'=>'records','action' => 'dashboard'));
-			} else {
-				$this->Session->setFlash('Error: Setup Failure.  Please try again later.');
 			}
 		}
 	}

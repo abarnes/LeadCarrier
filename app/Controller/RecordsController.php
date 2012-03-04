@@ -76,7 +76,11 @@ class RecordsController extends AppController {
 				
 				$g = 0;
 				foreach ($ind as $i) {
-					$tt = $i['leads']/$total;
+					if ($total!=0) {
+						$tt = $i['leads']/$total;
+					} else {
+						$tt = 0;
+					}
 					$ind[$g]['perc'] = $tt*100;
 					$g++;
 				}
@@ -95,6 +99,11 @@ class RecordsController extends AppController {
 					$this->Session->setFlash('You cannot set the dates equal to each other.');
 					$this->redirect(array('action'=>'dashboard'));
 				}
+				if (strtotime($this->request->data['Record']['start_date'])>strtotime("now")) {
+					$this->Session->setFlash('You cannot set the start date in the future.');
+					$this->redirect(array('action'=>'dashboard'));
+				}
+					
 				if ($this->request->data['Record']['start_date']!=null && $this->request->data['Record']['end_date']!=null) {
 					$bo = strtotime($this->request->data['Record']['end_date']);
 					$bo = $bo+86400;
@@ -114,7 +123,11 @@ class RecordsController extends AppController {
 					$g = 0;
 					foreach ($ind as $i) {
 						if ($total!=0) {
-							$tt = $i['leads']/$total;
+							if ($total!=0) {
+								$tt = $i['leads']/$total;
+							} else {
+								$tt = 0;
+							}
 							$ind[$g]['perc'] = $tt*100;
 						} else {
 							$ind[$g]['perc'] = '0';	
@@ -153,7 +166,11 @@ class RecordsController extends AppController {
 					$g = 0;
 					foreach ($ind as $i) {
 						if ($total!=0) {
-							$tt = $i['leads']/$total;
+							if ($total!=0) {
+								$tt = $i['leads']/$total;
+							} else {
+								$tt = 0;
+							}
 							$ind[$g]['perc'] = $tt*100;
 						} else {
 							$ind[$g]['perc'] = '0';	
@@ -187,7 +204,11 @@ class RecordsController extends AppController {
 					$g = 0;
 					foreach ($ind as $i) {
 						if ($total!=0) {
-							$tt = $i['leads']/$total;
+							if ($total!=0) {
+								$tt = $i['leads']/$total;
+							} else {
+								$tt = 0;
+							}
 							$ind[$g]['perc'] = $tt*100;
 						} else {
 							$ind[$g]['perc'] = '0';	

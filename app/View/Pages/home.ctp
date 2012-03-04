@@ -107,9 +107,9 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
           <div id="classytabs">
             <!-- Tab Menu-->
             <ul class="tabs">
-	    <li><a href="#team" class="tabbutton1 first selected"><img src="image/icon/3.png" alt=""> <h1> Team </h1></a><p></p> </li>
+	    <li><a href="#team" class="tabbutton1"><img src="image/icon/3.png" alt=""> <h1> Team </h1></a><p></p> </li>
             <li><a href="#aboutus" class="tabbutton2"><img src="image/icon/2.png" alt=""> <h1> About Us </h1></a> </li>
-	    <li> <a href="#work" class="tabbutton3"> <img src="image/icon/1.png" alt=""> <h1> Product Tour </h1></a> </li>
+	    <li> <a href="#work" class="tabbutton3 first selected"> <img src="image/icon/1.png" alt=""> <h1> Product Tour </h1></a> </li>
             </ul>        
           <div class="clearfix"></div>
           

@@ -130,6 +130,7 @@ function button(action){
                                     <th>Subdomain</th>
 				    <th>Email</th>
                                     <th>Join Date</th>
+				    <th>Plan</th>
 				    <th></th>
                                 </tr>
                             </thead>
@@ -161,6 +162,9 @@ function button(action){
 					</td>
 					<td>
 					    <?php echo date('g:ia m-j-Y',strtotime($u['Company']['created'])); ?>
+					</td>
+					<td>
+						<?php echo $u['Company']['plan']; ?>
 					</td>
 					<td>
 						<?php if ($u['Company']['active']=='0') { ?>

@@ -1,3 +1,4 @@
+<?php if ($setup=='0') { ?>
 	<div id="mws-sidebar">
         	<!--<div id="mws-searchbox" class="mws-inset">
             	<form action="table.html">
@@ -31,20 +32,28 @@
             </div>
             <!-- End Navigation -->
         </div>
-        
+<?php } else { ?>
+	
+<?php } ?>
         <div id="mws-container" class="clearfix">
 	
 	<div class="container">
 	    <?php echo $this->Session->flash(); ?>
 
 		<div style="float:left;width:100%;">
-			<h2 style="max-width:500px;float:left;">Add User</h2>
+		    <?php if ($setup=='1') { ?>
+			<h2>Welcome to Lead Carrier!</h2><h5>Set up your First User</h5>
+		    <?php } else { ?>
+			<h2 style="max-width:500px;float:left;">Add a User</h2>
+		    <?php } ?>
 			<div style="float:right;">
-			<?php if (isset($current_user)&&$current_user['admin']=='0') { ?>
-				<a href="/settings"><input type="button" value="Admin Panel" class="mws-button black mws-i-24 i-cog-4 large"></a>
-    			<?php } else { ?>
-				<a href="/admin/users"><input type="button" value="Admin Users" class="mws-button black mws-i-24 i-cog-4 large"></a>
-    			<?php } ?>
+			<?php if ($setup=='0') { ?>
+			    <?php if (isset($current_user)&&$current_user['admin']=='0') { ?>
+				    <a href="/settings"><input type="button" value="Admin Panel" class="mws-button black mws-i-24 i-cog-4 large"></a>
+			    <?php } else { ?>
+				    <a href="/admin/users"><input type="button" value="Admin Users" class="mws-button black mws-i-24 i-cog-4 large"></a>
+			    <?php } ?>
+			<?php } ?>
 			</div>	
 		</div>
 		

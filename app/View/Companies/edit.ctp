@@ -194,6 +194,13 @@ function button(action){
                     				</div>
                     			</div>
 					<div class="mws-form-row">
+                    				<label>Plan</label>
+                    				<div class="mws-form-item medium">
+						<?php echo $this->Form->input('plan', array('class'=>'mws-textinput','options'=>array('monthly'=>'monthly','quarterly'=>'quarterly','annual'=>'annual'))); ?>
+                    					
+                    				</div>
+                    			</div>
+					<div class="mws-form-row">
                     				<label>Notes</label>
                     				<div class="mws-form-item large">
 						<?php echo $this->Form->input('notes', array('class'=>'mws-textinput')); ?>

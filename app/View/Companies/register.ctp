@@ -5,7 +5,7 @@
         <div class="comment-form margin">
         <?php //die(print_r($errors)); ?>
 	    <?php echo $this->Form->create('Company',array('action'=>'register/'.$selected,'inputDefaults' => array('label' => false,'div' => false))); ?>
-            <?php if (isset($errors['name'])) { ?>
+            <?php if (isset($errors)) { ?>
                 <fieldset><?php echo $this->Form->input('name',array('onfocus'=>"if(this.value=='Company Name')this.value='';","onblur"=>"if(this.value=='')this.value='Company Name';")); ?></fieldset>
             <?php } else { ?>
                 <fieldset><?php echo $this->Form->input('name',array('value'=>'Company Name','onfocus'=>"if(this.value=='Company Name')this.value='';","onblur"=>"if(this.value=='')this.value='Company Name';")); ?></fieldset>

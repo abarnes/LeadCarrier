@@ -79,8 +79,11 @@
 				    } ?>
 				    </td>
                                 </tr>
-                            
 				<tr class="odd">
+				    <td>Plan</td>
+				    <td><?php echo $c['Company']['plan']; ?></td>
+				</tr>
+				<tr class="even">
                                     <td>Notes</td>
                                     <td><?php echo $c['Company']['notes']; ?></td>
                                 </tr>

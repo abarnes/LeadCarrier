@@ -16,6 +16,10 @@ class Company extends AppModel {
                 'rule'=>array('banned'),
                 'message'=>'Please provide your company\'s name.',
                 'last'=>true
+            ),
+            'rule4'=>array(
+                'rule'=>array('check_name'),
+                'message'=>'This company name has already been taken, or is nearly identical to an existing name.'
             )
         ),
         'subdomain' => array(
@@ -109,13 +113,21 @@ class Company extends AppModel {
     }
     
     function banned($check) {
-        $b = array("Company Name","Contact Name","Subdomain","Address Line 1","Address Line 2","City","State");
+        $b = array("Company Name","Contact Name","Subdomain","Address Line 1","City","State");
         foreach ($check as $check) {
             if (in_array($check,$b)) {
                 return false;
             } else {
                 return true;
             }
+        }
+    }
+    function check_name($check) {
+        $uname = 'lcarrier_'.substr(str_replace(" ", "", $check['name']),0,7);
+        if ($this->find('count',array('conditions'=>array('Company.db_name'=>$uname)))>0) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

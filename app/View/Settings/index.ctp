@@ -161,9 +161,10 @@ function button2(action){
                     			</div>
 					<div class="mws-form-row">
                     				<label>Leads per Industry</label>
-                    				<div class="mws-form-item small">
-						<?php echo $this->Form->input('leads_per_industry', array('class'=>'mws-textinput')); ?>
-                    					
+                    				<div class="mws-form-item">
+								<div class="ui-spinner">
+                                                                    <?php echo $this->Form->input('leads_per_industry', array('class'=>'mws-textinput ui-spinner-box','type'=>'text')); ?>
+								</div>
                     				</div>
                     			</div>
 					
@@ -175,7 +176,8 @@ function button2(action){
                     </div>    	
                 </div>
 		
-		<div style="float:right;margin-top:380px;">
+		<hr/>
+		<div style="float:right;margin-bottom:20px;">
 				<a href="/users/add/<?php echo $current_user['company_id']; ?>"><input type="button" value="Add User" class="mws-button blue mws-i-24 i-plus large"></a>
 		</div>	
                 <!-------user table---->
@@ -228,6 +230,7 @@ function button2(action){
                     </div>
                 </div>
 		
+		<hr/>
 		<!-------fields table---->
 		<p style="float:left;margin-left:20px;margin-top:16px;">Manage the data fields saved for each client and displayed in the client tables. This will alter the database, and changes are permanent.</p>
 		<div style="float:right;margin-top:0px;margin-bottom:20px;">

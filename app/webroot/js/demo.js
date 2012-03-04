@@ -110,7 +110,8 @@ $(document).ready(function() {
 		's1': {decimals:2},
 		's2': {stepping: 0.25},
 		's3': {currency: '$'},
-		'SettingLeadPrice': {currency: '$'}
+		'SettingLeadPrice': {currency: '$'},
+		'SettingLeadsPerIndustry': {stepping: 1}
 	};
 
 	for (var n in opts)
