@@ -115,7 +115,7 @@ class ApisController extends AppController {
 				if ($field['Field']['type']=='date') {
 					$data['Client'][substr($row,1)] = date('Y-m-d',strtotime($value));
 				} elseif ($field['Field']['type']=='datetime') {
-					$data['Client'][substr($row,1)] = date('Y-m-d',strtotime($value));
+					$data['Client'][substr($row,1)] = date('Y-m-d H:i:s',strtotime($value));
 				} else {
 					$data['Client'][substr($row,1)] = $value;
 				}

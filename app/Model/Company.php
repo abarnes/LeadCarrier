@@ -100,7 +100,8 @@ class Company extends AppModel {
         'terms'=>array(
             'rule'=>array('checked'),
             'required'=>true,
-            'message'=>array('You must agree to the Terms and Conditions')
+            'message'=>array('You must agree to the Terms and Conditions'),
+            'on'=>'create'
         )
     );
     

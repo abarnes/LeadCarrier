@@ -17,7 +17,7 @@ class CompaniesController extends AppController {
         
     public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('register');
+		$this->Auth->allow('register','inactive');
 	    /*$admin = array('admin_index','admin_delete','admin_view');
 	    if (in_array(Router::url($this->request->here, true),$admin)) {
 		$userInfo = $this->Auth->user();
@@ -159,23 +159,20 @@ class CompaniesController extends AppController {
 		}
 		
 		$this->Company->id = $id;
+		if ($userInfo['admin']==1) {
+			$this->set('admin','1');
+		} else {
+			$this->set('admin','0');
+			$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
+		}
+		$this->set('c',$this->Company->findById($id));
+		$this->set('id',$id);
 		if (empty($this->request->data)) {
-			$this->set('id',$id);
 			$this->request->data = $this->Company->read();
-			$this->set('c',$this->Company->findById($id));
-			if ($userInfo['admin']==1) {
-				$this->set('admin','1');
-			} else {
-				$this->set('admin','0');
-				$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
-			}
 		} else {
 			//die(print_r($this->request->data));
 			if ($this->Company->save($this->request->data)) {
-				$this->Session->setFlash('Company has been updated.');
-				$this->redirect('/dashboard');
-			} else {
-				$this->Session->setFlash('Error: Failed to Save Information');
+				$this->Session->setFlash('Company profile updated.');
 				$this->redirect('/companies/edit/'.$id);
 			}
 		}
@@ -254,6 +251,10 @@ class CompaniesController extends AppController {
 				$this->Session->setFlash('Company set as active.');
 			}
 		$this->redirect('/admin/companies');
+	}
+	
+	function inactive() {
+		$this->layout = 'blank';
 	}
 	
 }

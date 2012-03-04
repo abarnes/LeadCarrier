@@ -317,11 +317,11 @@ class ClientsController extends AppController {
 	}
 	
 	/*function findfb(){
-		$company = $this->Company->findById($this->Auth->user('company_id'));
+		$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 		require('freshbooks_api/FreshBooksRequest.php');
 					
-		$domain = $company['Company']['freshbooks_url'];
-		$token = $company['Company']['freshbooks_api_token'];
+		$domain = $setting['Setting']['freshbooks_url'];
+		$token = $setting['Setting']['freshbooks_api_token'];
 		
 		FreshBooksRequest::init($domain, $token);
 		$fb = new FreshBooksRequest('client.list');

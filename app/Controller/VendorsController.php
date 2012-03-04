@@ -145,13 +145,13 @@ class VendorsController extends AppController {
 			}
 			if ($this->Vendor->save($this->request->data)) {
 				//freshbooks create
-				$company = $this->Company->findById($this->Auth->user('company_id'));
-				if ($company['Company']['use_freshbooks']=='1') {
+				$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
+				if ($setting['Setting']['use_freshbooks']=='1') {
 					$id = $this->Vendor->getLastInsertId();
 					require('freshbooks_api/FreshBooksRequest.php');
 					
-					$domain = $company['Company']['freshbooks_url'];
-					$token = $company['Company']['freshbooks_api_token'];
+					$domain = $setting['Setting']['freshbooks_url'];
+					$token = $setting['Setting']['freshbooks_api_token'];
 
 					FreshBooksRequest::init($domain, $token);
 					
@@ -217,12 +217,12 @@ class VendorsController extends AppController {
 			}
 			if ($this->Vendor->save($this->request->data)) {
 								//freshbooks create
-				$company = $this->Company->findById($this->Auth->user('company_id'));
-				if ($company['Company']['use_freshbooks']=='1'&&$c['Vendor']['freshbooks_id']!='') {
+				$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
+				if ($setting['Setting']['use_freshbooks']=='1'&&$c['Vendor']['freshbooks_id']!='') {
 					require('freshbooks_api/FreshBooksRequest.php');
 					
-					$domain = $company['Company']['freshbooks_url'];
-					$token = $company['Company']['freshbooks_api_token'];
+					$domain = $setting['Setting']['freshbooks_url'];
+					$token = $setting['Setting']['freshbooks_api_token'];
 
 					FreshBooksRequest::init($domain, $token);
 					
@@ -315,12 +315,12 @@ class VendorsController extends AppController {
 				$this->Bill->saveField('paid','0');
 				$this->Session->setFlash('Bill marked as unpaid.');
 			} else {
-				$company = $this->Company->findById($this->Auth->user('company_id'));
-				if ($company['Company']['use_freshbooks']=='1') {
+				$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
+				if ($setting['Setting']['use_freshbooks']=='1') {
 					require('freshbooks_api/FreshBooksRequest.php');
 								
-					$domain = $company['Company']['freshbooks_url'];
-					$token = $company['Company']['freshbooks_api_token'];
+					$domain = $setting['Setting']['freshbooks_url'];
+					$token = $setting['Setting']['freshbooks_api_token'];
 					FreshBooksRequest::init($domain, $token);
 					$fb = new FreshBooksRequest('payment.create');
 					$fb->post(array('payment'=>array('invoice_id'=>$b['Bill']['freshbooks_invoice_id'],'amount'=>$b['Bill']['total'])));
@@ -396,11 +396,11 @@ class VendorsController extends AppController {
 	}
 	
 	function view_freshbooks_bill($fid) {
-		$company = $this->Company->findById($this->Auth->user('company_id'));
+		$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 		require('freshbooks_api/FreshBooksRequest.php');
 					
-		$domain = $company['Company']['freshbooks_url'];
-		$token = $company['Company']['freshbooks_api_token'];
+		$domain = $setting['Setting']['freshbooks_url'];
+		$token = $setting['Setting']['freshbooks_api_token'];
 		
 		FreshBooksRequest::init($domain, $token);
 		$fb = new FreshBooksRequest('invoice.get');
@@ -413,6 +413,10 @@ class VendorsController extends AppController {
 			$this->Session->setFlash('Error opening page: '.$fb->getError());
 			$this->redirect('/vendors/manage');
 		}
+	}
+	
+	function dashboard() {
+		
 	}
 }
 
