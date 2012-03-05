@@ -295,7 +295,7 @@ class CompaniesController extends AppController {
 			if ($this->Auth->login()) {
 				//record last login
 				//
-			    $this->redirect('/clients/vendor_view');
+			    $this->redirect('/records/vendor_view');
 			} else {
 			    $this->Session->setFlash(__('Invalid password.'));
 			    //$this->redirect('/login');

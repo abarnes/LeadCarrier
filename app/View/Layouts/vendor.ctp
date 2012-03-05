@@ -174,7 +174,7 @@
                 </div>
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, <?php echo $current_user['username']; ?>
+                        <!--Hello, <?php //echo $current_user['username']; ?>-->
                     </div>
                     <ul>
                     	<li><a href="/vendors/vendor_edit">Profile</a></li>
