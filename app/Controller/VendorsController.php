@@ -505,7 +505,7 @@ class VendorsController extends AppController {
 		$this->set('password',$password);
 		
 		$this->Email->to = $vendor['Vendor']['email'];
-		$this->Email->subject = $this->request->data['Vendor']['subject'];
+		$this->Email->subject = 'Welcome - '.$company['Company']['name'];
 		$this->Email->replyTo = $s['Setting']['replyto_email'];
 		$this->Email->from =  $s['Setting']['site_url'].' <'.$s['Setting']['replyto_email'].'>';
 		$this->Email->template = 'vendor_join'; 
