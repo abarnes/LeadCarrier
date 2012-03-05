@@ -185,11 +185,15 @@ class VendorsController extends AppController {
 						
 						$d = array();
 						$d['User']['username'] = $username;
-						$d['user']['password'] = $this->Password->__randomPassword('8');
-						$d['User']['vendor_id']=$this->Vendor->getLastInsertId();
+						$password = $this->Password->__randomPassword('8');
+						$d['user']['password'] = $password;
+						$vid = $this->Vendor->getLastInsertId();
+						$d['User']['vendor_id']=$vid;
 						$d['User']['company_id'] = $this->Auth->user('company_id');
 						$this->User->create();
 						$this->User->save($d);
+						
+						$this->Vendor->_vendor_join_email($this->Auth->user('company_id'),$vid,$password);
 						
 						$this->Session->setFlash('"'.$this->request->data['Vendor']['name'] . '" Successfully Added.');
 						$this->redirect(array('controller'=>'vendors','action' => 'manage'));
@@ -476,6 +480,26 @@ class VendorsController extends AppController {
 		$this->Session->setFlash('Email sent to '.$vendor['Vendor']['name']);
 		$this->redirect(array('controller'=>'vendors','action'=>'manage'));
 		//die(print_r($this->request->data));
+	}
+	
+	function _vendor_join_email($comp,$vend,$password) {
+		$vendor = $this->Vendor->findById($vend);		
+		
+		$company = $this->Company->findById($comp);
+		$s = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
+			
+		$this->set('vendor',$vendor);
+		$this->set('company',$company);
+		$this->set('password',$password);
+		
+		$this->Email->to = $vendor['Vendor']['email'];
+		$this->Email->subject = $this->request->data['Vendor']['subject'];
+		$this->Email->replyTo = $s['Setting']['replyto_email'];
+		$this->Email->from =  $s['Setting']['site_url'].' <'.$s['Setting']['replyto_email'].'>';
+		$this->Email->template = 'vendor_join'; 
+		$this->Email->sendAs = 'both';
+		$this->Email->send();		
+		return true;
 	}
 }
 
