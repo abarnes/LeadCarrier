@@ -467,15 +467,6 @@ class VendorsController extends AppController {
 		$this->redirect(array('controller'=>'vendors','action'=>'manage'));
 		//die(print_r($this->request->data));
 	}
-	
-	function find($token) {
-		$urlParts = explode('.', $_SERVER['HTTP_HOST']);
-		$company = $this->Company->findBySubdomain($urlParts[0]);
-		die(print_r($company));
-		
-		$v = $this->Vendor->find('first',array('conditions'=>array('Vendor.token'=>$token)));
-		$this->set('vendor',$v);
-	}
 }
 
 ?>

@@ -257,6 +257,14 @@ class CompaniesController extends AppController {
 		$this->layout = 'blank';
 	}
 	
+	function find($token) {
+		$urlParts = explode('.', $_SERVER['HTTP_HOST']);
+		$company = $this->Company->findBySubdomain($urlParts[0]);
+		die(print_r($company));
+		
+		$v = $this->Vendor->find('first',array('conditions'=>array('Vendor.token'=>$token)));
+		$this->set('vendor',$v);
+	}
 }
 
 ?>
