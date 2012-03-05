@@ -195,7 +195,34 @@ class UsersController extends AppController {
 			$this->redirect('/settings');
 		}
 	}
-    
+	
+	public function vendor_passwordchange($id = null) {
+		$this->layout = 'vendor';
+		$this->User->id = $id;
+		$userinfo = $this->Auth->User();
+		$u = $this->User->findById($id);
+		if ($u['User']['company_id']==$userinfo['company_id']||$userinfo['admin']=='1') {
+			if (empty($this->request->data)) {
+				//$this->request->data = $this->User->read();
+				$this->set('name',$u['User']['username']);
+				$this->set('id',$id);
+			} else {
+				$p2 = $this->request->data['User']['password2'];
+				if ($this->request->data['User']['password'] == $p2  && strlen($p2)>='6') {
+					if ($this->User->saveField('password',$this->request->data['User']['password']/*$this->Auth->password($this->request->data['User']['password'])*/)) {
+						$this->Session->setFlash('Password Changed.');
+						$this->redirect(array('controller'=>'settings','action' => 'index'));
+					}
+				} else {
+					$this->Session->setFlash('Passwords Did Not Match, Or Your New Password Is Less Than 6 Characters.');
+				}
+			}
+		} else {
+			$this->Session->setFlash('Authentication Error');
+			$this->redirect('/settings');
+		}
+	}
+	
 	public function delete($id) {
 		$userInfo = $this->Auth->user();
 		if ($userInfo['admin']==1) {
