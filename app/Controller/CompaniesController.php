@@ -4,7 +4,7 @@ class CompaniesController extends AppController {
 	var $name = 'Companies';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form');
-	var $uses = array('Company','Client','Setting');
+	var $uses = array('Company','Client','Setting','Vendor');
 	public $components = array(
 		'Session',
 		'Password',
