@@ -205,6 +205,18 @@ class VendorsController extends AppController {
 					    //print_r($fb->getResponse());
 					}
 				} else {
+					$d = array();
+						$d['User']['username'] = $username;
+						$password = $this->Password->__randomPassword('8');
+						$d['user']['password'] = $password;
+						$vid = $this->Vendor->getLastInsertId();
+						$d['User']['vendor_id']=$vid;
+						$d['User']['company_id'] = $this->Auth->user('company_id');
+						$this->User->create();
+						$this->User->save($d);
+						
+					$this->Vendor->_vendor_join_email($this->Auth->user('company_id'),$vid,$password);
+					
 					$this->Session->setFlash('"'.$this->request->data['Vendor']['name'] . '" Successfully Added.');
 					$this->redirect(array('controller'=>'vendors','action' => 'manage'));
 				}
