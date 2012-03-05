@@ -17,7 +17,7 @@ class CompaniesController extends AppController {
         
     public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('register','inactive');
+		$this->Auth->allow('register','inactive','find');
 	    /*$admin = array('admin_index','admin_delete','admin_view');
 	    if (in_array(Router::url($this->request->here, true),$admin)) {
 		$userInfo = $this->Auth->user();
