@@ -41,7 +41,7 @@
                         <div class="mws-form-row">
                             <div class="mws-form-item large">
 			    <?php echo $this->Session->flash(); ?>
-				<p><?php echo $vendor['Vendor']['name']; ?></p>
+				<span style="color:#ffffff;"><h6><?php echo $vendor['Vendor']['name']; ?></h6></span>
                             </div>
                         </div>
                         <div class="mws-form-row">

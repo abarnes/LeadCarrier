@@ -263,7 +263,6 @@ class CompaniesController extends AppController {
 		$company = $this->Company->findBySubdomain($urlParts[0]);
 		if (empty($company)) {
 			$this->Session->setFlash('Connection Error: Unable to retrieve company information.');
-			//$this->redirect('/login');
 		    }
 		    $connect = array('db_name'=>$company['Company']['db_name'],'db_password'=>$company['Company']['db_password']);
 		    if (!empty($connect)&&$connect['db_name']!=''&&$connect['db_password']!='') {
@@ -284,11 +283,18 @@ class CompaniesController extends AppController {
 		    }
 		
 		$v = $this->Vendor->findByToken($token);
-		//die(print($token));
 		$this->set('vendor',$v);
 		if (!empty($this->request->data)) {
 			$this->request->data['User']['username'] = $token;
-			die(print_r($this->request->data));	
+			$this->request->data['User']['password'] = $this->request->data['Company']['password'];
+			if ($this->Auth->login()) {
+				//record last login
+				//
+			    $this->redirect('/clients/vendor_view');
+			} else {
+			    $this->Session->setFlash(__('Invalid password.'));
+			    //$this->redirect('/login');
+			}
 		}
 	}
 }
