@@ -215,7 +215,7 @@ class VendorsController extends AppController {
 						$this->User->create();
 						$this->User->save($d);
 						
-					$this->Vendor->_vendor_join_email($this->Auth->user('company_id'),$vid,$password);
+					$this->_vendor_join_email($this->Auth->user('company_id'),$vid,$password);
 					
 					$this->Session->setFlash('"'.$this->request->data['Vendor']['name'] . '" Successfully Added.');
 					$this->redirect(array('controller'=>'vendors','action' => 'manage'));
