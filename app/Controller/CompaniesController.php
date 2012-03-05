@@ -257,7 +257,8 @@ class CompaniesController extends AppController {
 		$this->layout = 'blank';
 	}
 	
-	function find($token) {
+	function find() {
+		$token = $this->request->params['token'];
 		$urlParts = explode('.', $_SERVER['HTTP_HOST']);
 		$company = $this->Company->findBySubdomain($urlParts[0]);
 		if (empty($company)) {
@@ -283,7 +284,7 @@ class CompaniesController extends AppController {
 		    }
 		
 		$v = $this->Vendor->findByToken($token);
-		die(print_r($v));
+		//die(print($token));
 		$this->set('vendor',$v);
 		if (!empty($this->request->data)) {
 			$this->request->data['User']['username'] = $token;
