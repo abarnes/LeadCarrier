@@ -283,6 +283,7 @@ class CompaniesController extends AppController {
 		    }
 		
 		$v = $this->Vendor->find('first',array('conditions'=>array('Vendor.token'=>$token)));
+		die(print_r($v));
 		$this->set('vendor',$v);
 		if (!empty($this->request->data)) {
 			$this->request->data['User']['username'] = $token;
