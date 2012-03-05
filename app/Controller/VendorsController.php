@@ -8,6 +8,7 @@ class VendorsController extends AppController {
 	public $components = array(
 		'Session',
 		'Email',
+		'Password',
 		'Auth' => array(
 		    'loginRedirect' => array('controller' => 'companies', 'action' => 'index'),
 		    'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')
@@ -143,6 +144,8 @@ class VendorsController extends AppController {
 			if ($this->request->data['Vendor']['leads_per_week']==null || $this->request->data['Vendor']['leads_per_week']=='0' || $this->request->data['Vendor']['leads_per_week']=='') {
 				$this->request->data['Vendor']['leads_per_week']='99999';
 			}
+			$username = $this->Password->__randomPassword('8');
+			$this->request->data['Vendor']['token'] = $username;
 			if ($this->Vendor->save($this->request->data)) {
 				//freshbooks create
 				$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
@@ -180,6 +183,13 @@ class VendorsController extends AppController {
 						$this->Vendor->id = $id;
 						$this->Vendor->saveField('freshbooks_id',$result['client_id']);
 						
+						$d = array();
+						$d['User']['username'] = $username;
+						$d['user']['password'] = $this->Password->__randomPassword('8');
+						$d['User']['vendor_id']=$this->Vendor->getLastInsertId();
+						$d['User']['company_id'] = $this->Auth->user('company_id');
+						$this->User->create();
+						$this->User->save($d);
 						
 						$this->Session->setFlash('"'.$this->request->data['Vendor']['name'] . '" Successfully Added.');
 						$this->redirect(array('controller'=>'vendors','action' => 'manage'));

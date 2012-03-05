@@ -260,10 +260,34 @@ class CompaniesController extends AppController {
 	function find($token) {
 		$urlParts = explode('.', $_SERVER['HTTP_HOST']);
 		$company = $this->Company->findBySubdomain($urlParts[0]);
-		die(print_r($company));
+		if (empty($company)) {
+			$this->Session->setFlash('Connection Error: Unable to retrieve company information.');
+			//$this->redirect('/login');
+		    }
+		    $connect = array('db_name'=>$company['Company']['db_name'],'db_password'=>$company['Company']['db_password']);
+		    if (!empty($connect)&&$connect['db_name']!=''&&$connect['db_password']!='') {
+			@App::import('ConnectionManager');
+			$a = array(
+				'datasource' => 'Database/Mysql',
+				'persistent' => false,
+				'host' => 'localhost',
+				'login' => $connect['db_name'],
+				'password' => $connect['db_password'],
+				'database' => $connect['db_name'],
+				'prefix' => '');
+			try {
+				ConnectionManager::create('new', $a);
+			} catch (MissingDatabaseException $e) {
+				$this->Session->setFlash('DB error: '.$e->getMessage());
+			}
+		    }
 		
 		$v = $this->Vendor->find('first',array('conditions'=>array('Vendor.token'=>$token)));
 		$this->set('vendor',$v);
+		if (!empty($this->request->data)) {
+			$this->request->data['User']['username'] = $token;
+			die(print_r($this->request->data));	
+		}
 	}
 }
 
