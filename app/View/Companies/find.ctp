@@ -34,7 +34,7 @@
                 <div class="mws-login-lock"><img src="/css/icons/24/locked-2.png" alt="" /></div>
                 <div id="mws-login-form">
                     <!--<form class="mws-form" action="dashboard.html" method="post">-->
-		    <?php echo $this->Form->create('Company', array('action' => 'find','class'=>'mws-form')); ?>
+		    <?php echo $this->Form->create('Company', array('action' => 'find/'.$token,'class'=>'mws-form')); ?>
                         <div id="mws-login-error" class="mws-form-message error">
 				
                         </div>

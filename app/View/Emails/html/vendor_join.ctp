@@ -7,7 +7,7 @@
       <p>You will begin receiving leads from <?php echo $company['Company']['name']; ?> immediately.</p><br/>
       
       <p>Leads will be sent to you by email, and are also viewable along with bills and profile settings at the following URL:<br/>
-      <a href="<?php echo 'http://'.$company['Company']['subdomain'].'.leadcarrier.com/v/'.$vendor['Vendor']['token']; ?>">http://'.$company['Company']['subdomain'].'.leadcarrier.com/v/'.$vendor['Vendor']['token']; ?></a><br/><br/>
+      <a href="http://<?php echo $company['Company']['subdomain']; ?>.leadcarrier.com/v/<?php echo $vendor['Vendor']['token']; ?>">http://<?php echo $company['Company']['subdomain']; ?>.leadcarrier.com/v/<?php echo $vendor['Vendor']['token']; ?></a><br/><br/>
       You may bookmark this URL for future access.<br/><br/>
       Your password: <?php echo $password; ?><br/>
       You can change your password once you login.<br/><br/>
