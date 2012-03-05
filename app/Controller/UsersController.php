@@ -67,7 +67,7 @@ class UsersController extends AppController {
 					$this->redirect('/companies/inactive');					
 				}
 			}
-			
+
 			if ($this->Auth->login()) {
 				//record last login
 				//

@@ -290,7 +290,9 @@ class CompaniesController extends AppController {
 		if (!empty($this->request->data)) {
 			$this->request->data['User']['username'] = $token;
 			die(print(AuthComponent::password($this->request->data['Company']['password']).' '.$this->request->data['Company']['password']));
-			$this->request->data['User']['password'] = AuthComponent::password($this->request->data['Company']['password']);
+			$this->request->data['User']['password'] = $this->request->data['Company']['password'];
+			die(print_r($this->request->data));
+			
 			if ($this->Auth->login()) {
 				//record last login
 				//
