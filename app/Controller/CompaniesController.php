@@ -257,8 +257,10 @@ class CompaniesController extends AppController {
 		$this->layout = 'blank';
 	}
 	
-	function find() {
-		$token = $this->request->params['token'];
+	function find($token = null) {
+		if ($token==null) {
+			$token = $this->request->params['token'];
+		}
 		$urlParts = explode('.', $_SERVER['HTTP_HOST']);
 		$company = $this->Company->findBySubdomain($urlParts[0]);
 		if (empty($company)) {
