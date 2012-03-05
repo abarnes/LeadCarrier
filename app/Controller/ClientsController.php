@@ -4,7 +4,7 @@ class ClientsController extends AppController {
 	var $name = 'Clients';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form', 'Time');
-	var $uses = array('Client','Category','Range','Vendor','Setting','Record','Field');
+	var $uses = array('Client','Category','Range','Vendor','Setting','Record','Field','Bill');
 	var $components = array('Auth','Session','Email');
         
         function beforeFilter() {
@@ -163,6 +163,28 @@ class ClientsController extends AppController {
 			$this->set('c',$c);
 			$this->set('cats',$this->Category->find('list',array('fields'=>array('Category.name'))));
 			$this->set('v',$this->Vendor->find('list',array('fields'=>array('Vendor.name'))));
+		} else {
+			$this->Session->setFlash('ID not found.');
+			$this->redirect(array('action'=>'index'));
+		}
+	}
+	
+	function vendor_view ($id) {
+		$this->layout = 'vendor';
+		
+		$userInfo = $this->Auth->user();
+		if ($userInfo['vendor_id']==null||$userInfo['vendor_id']<1) {
+			$this->redirect('/dashboard');
+		}
+		
+		$unpaid = $this->Bill->find('all',array('conditions'=>array('Bill.paid'=>'0','Bill.vendor_id'=>$userInfo['vendor_id'])));
+		$this->set('unpaid',$unpaid);
+		$this->set('count',count($unpaid));
+		
+		$this->set('fields',$this->Field->find('all'));
+		$c = $this->Client->findById($id);
+		if (isset($c)) {
+			$this->set('c',$c);
 		} else {
 			$this->Session->setFlash('ID not found.');
 			$this->redirect(array('action'=>'index'));

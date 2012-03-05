@@ -4,7 +4,7 @@ class RecordsController extends AppController {
 	var $name = 'Records';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form', 'Time');
-	var $uses = array('Setting','Record','Category','Vendor','Client','Freshbooks.Item');
+	var $uses = array('Setting','Record','Category','Vendor','Client','Field','Client','Bill');
 	public $components = array(
 		'Session',
 		'Auth' => array(
@@ -283,40 +283,20 @@ class RecordsController extends AppController {
 		$this->set('active_vendors',$this->Vendor->find('count',array('conditions'=>array('Vendor.active'=>'1'))));
 	}
 	
-	/*
-	function add() {
-		//$this->set('rs', $this->Range->Vendor->find('list'));
-		if (!empty($this->request->data)) {
-			if ($this->Record->save($this->request->data)) {
-				$this->Session->setFlash('Record Successfully Added.');
-				$this->redirect(array('controller'=>'records','action' => 'index'));
-			} else {
-				$this->Session->setFlash('Error: Failed to Save Record');
-			}
+	function vendor_view() {
+		$this->layout = 'vendor';
+		$userInfo = $this->Auth->user();
+		if ($userInfo['vendor_id']==null||$userInfo['vendor_id']<1) {
+			$this->redirect('/dashboard');
 		}
+		
+		$unpaid = $this->Bill->find('all',array('conditions'=>array('Bill.paid'=>'0','Bill.vendor_id'=>$userInfo['vendor_id'])));
+		$this->set('unpaid',$unpaid);
+		$this->set('count',count($unpaid));
+		
+		$records = $this->Record->find('list',array('fields'=>array('Record.client_id'),'conditions'=>array('Record.vendor_id'=>$userInfo['vendor_id'])));
+		$this->set('leads',$this->Client->find('all',array('conditions'=>array('Client.id'=>$records))));
+		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
 	}
-    
-	function edit($id) {
-		$this->set('id',$id);
-		//$this->set('vendors', $this->Range->Vendor->find('list',array('order'=>'Range.name ASC')));
-		if (empty($this->request->data)) {
-			$this->request->data = $this->Record->read();
-		} else {
-			if ($this->Record->save($this->request->data)) {
-				$this->Session->setFlash('Record Has Been Updated.');
-				$this->redirect(array('action'=>'index'));
-			} else {
-				$this->Session->setFlash('Error: Failed to Save');
-			} 
-		}
-	}
-    
-	function delete($id) {
-		$this->Record->delete($id);
-		$this->Session->setFlash('Record Successfully Deleted.');
-		$this->redirect(array('action'=>'index'));
-	}*/
-	
 }
-
 ?>

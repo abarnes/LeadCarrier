@@ -44,7 +44,7 @@
 		
 		<div class="mws-panel grid_5">
 		    <div class="mws-panel-header">
-                    	<span class="mws-i-24 i-companies">Information</span>
+                    	<span class="mws-i-24 i-single-user">Information</span>
                     </div>
                     <div class="mws-panel-body">
 			<table class="mws-table">
