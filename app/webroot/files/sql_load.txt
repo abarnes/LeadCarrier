@@ -31,7 +31,7 @@ CREATE TABLE `categories` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 -- --------------------------------------------------------
 
@@ -61,8 +61,9 @@ CREATE TABLE `clients` (
   `approved` int(1) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
+  `we` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,7 @@ CREATE TABLE `fields` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,7 @@ CREATE TABLE `ranges` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 -- --------------------------------------------------------
 
@@ -121,6 +122,7 @@ CREATE TABLE `records` (
   `select` tinyint(1) DEFAULT NULL,
   `range_id` int(11) DEFAULT NULL,
   `vendor_id` int(11) DEFAULT NULL,
+  `bill_id` int(11) DEFAULT NULL,
   `sent` tinyint(1) NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
@@ -140,6 +142,10 @@ CREATE TABLE `settings` (
   `site_url` varchar(255) DEFAULT NULL,
   `lead_price` decimal(10,2) DEFAULT NULL,
   `leads_per_industry` int(4) NOT NULL,
+  `parse_redirect` varchar(255) NOT NULL,
+  `use_freshbooks` tinyint(1) NOT NULL DEFAULT '0',
+  `freshbooks_url` varchar(255) NOT NULL,
+  `freshbooks_api_token` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -154,6 +160,7 @@ CREATE TABLE `settings` (
 CREATE TABLE `vendors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
+  `token` varchar(15) DEFAULT NULL,
   `leads_per_week` int(5) DEFAULT '99999',
   `name` varchar(255) NOT NULL,
   `phone` varchar(25) DEFAULT NULL,
@@ -173,10 +180,4 @@ CREATE TABLE `vendors` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=124 ;
-
-INSERT INTO `fields` VALUES(1, 'first_name', 'First Name', 'varchar', 1, '2012-02-19 13:50:19', '2012-02-19 13:50:19');
-INSERT INTO `fields` VALUES(2, 'last_name', 'Last Name', 'varchar', 1, '2012-02-19 13:50:33', '2012-02-19 13:50:33');
-INSERT INTO `fields` VALUES(3, 'phone', 'Phone Number', 'varchar', 0, '2012-02-19 13:51:09', '2012-02-19 15:14:45');
-INSERT INTO `fields` VALUES(4, 'email', 'Email', 'varchar', 1, '2012-02-19 13:51:23', '2012-02-19 13:51:23');
-INSERT INTO `fields` VALUES(5, 'zip', 'Zip Code', 'varchar', 1, '2012-02-19 13:51:49', '2012-02-19 15:10:13');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=426 ;
