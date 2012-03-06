@@ -75,7 +75,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 	<!-- Slider Start-->
 	<div id="slider" class="grid_16">
 	    <img src="img/home.png" style="width:820px;margin-left:60px;margin-right: 60px;margin-top:45px;"/>
-	    <a href="http://demo.leadcarrier.com/login" target="_blank"><img src="img/launchdemo.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>
+	    <a href="/users/demo_login" target="_blank"><img src="img/launchdemo.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>
 	</div>
 	<!-- Slider End-->
 	
@@ -313,7 +313,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
     <div id="advert" class="grid_16 advert">
     	<div id="advertback"></div>
         <h1>"We were sold when we saw the demo."</h1>
-        <div class="margin3 fright"><a href="http://demo.leadcarrier.com" target="_new" class="minibutton">Live Demo</a></div>
+        <div class="margin3 fright"><a href="/users/demo_login" target="_new" class="minibutton">Live Demo</a></div>
     </div>
     <!-- Advert End -->
     
