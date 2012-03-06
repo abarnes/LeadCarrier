@@ -78,6 +78,15 @@ class UsersController extends AppController {
 			}
 		}	
 	}
+	
+	function demo_login(){
+		$this->request->data = array();
+		$this->request->data['User']['username'] = 'demo';
+		$this->request->data['User']['password'] = 'demopassword';
+		if ($this->Auth->login()) {
+			$this->redirect($this->Auth->redirect());
+		}
+	}
 
 	public function logout() {
 		$this->redirect($this->Auth->logout());
