@@ -178,7 +178,7 @@
                     </div>
                     <ul>
                     	<li><a href="/vendors/vendor_edit">Profile</a></li>
-                        <li><a href="/users/passwordchange/<?php echo $current_user['id']; ?>">Change Password</a></li>
+                        <li><a href="/users/vendor_passwordchange/<?php echo $current_user['id']; ?>">Change Password</a></li>
                         <li><a href="/users/logout">Logout</a></li>
                     </ul>
                 </div>
