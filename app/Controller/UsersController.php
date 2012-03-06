@@ -219,7 +219,7 @@ class UsersController extends AppController {
 				if ($this->request->data['User']['password'] == $p2  && strlen($p2)>='6') {
 					if ($this->User->saveField('password',$this->request->data['User']['password']/*$this->Auth->password($this->request->data['User']['password'])*/)) {
 						$this->Session->setFlash('Password Changed.');
-						$this->redirect(array('controller'=>'settings','action' => 'index'));
+						$this->redirect(array('controller'=>'records','action' => 'vendor_view'));
 					}
 				} else {
 					$this->Session->setFlash('Passwords Did Not Match, Or Your New Password Is Less Than 6 Characters.');
@@ -227,7 +227,7 @@ class UsersController extends AppController {
 			}
 		} else {
 			$this->Session->setFlash('Authentication Error');
-			$this->redirect('/settings');
+			$this->redirect('/records/vendor_view');
 		}
 	}
 	

@@ -46,45 +46,45 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 
 </head>
 <body>
-<div style="background-image:url('img/background-slide.jpg');background-repeat: none;background-size: cover;height:630px;">
+<div style="background-image:url('img/background-slide.jpg');background-repeat: none;background-size: cover;height:700px;">
 
-<!-- Container Start-->
-<div class="container_16" style="padding-left:15px;">
+    <!-- Container Start-->
+    <div class="container_16" style="padding-left:15px;">
+	    
+	<div id="topdot" class="grid_16 margin"></div>
 	
-    <div id="topdot" class="grid_16 margin"></div>
+	<!-- Navigation Start-->
+	<div id="navigation" class="grid_16 margin">
+	    
+	    <!-- #Logo-->
+	    <div class="grid_4 logo margin">
+		    <a href="/"><img src="img/colorlogo.png" alt="Lead Carrier - The Most Affordable Full-Service Lead Distribution Platform" style="width:360px;margin-top:26px;"></a>
+	    </div>
+	    
+	    <!-- #Menu-->
+	    <div class="grid_12 topmenu">
+		    <ul id="menu">
+		    <li><a href="/">Home</a></li>
+		    <li><a href="/pricing">Pricing</a></li>
+		    <li><a href="/features">Features</a></li>
+		    <li><a href="/contact">Contact</a></li>
+		</ul>
+	    </div>        
+	</div>
+	
+	<!-- Slider Start-->
+	<div id="slider" class="grid_16">
+	    <img src="img/home.png" style="width:820px;margin-left:60px;margin-right: 60px;margin-top:45px;"/>
+	    <a href="http://demo.leadcarrier.com/login" target="_blank"><img src="img/launchdemo.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>
+	</div>
+	<!-- Slider End-->
+	
+	<!-- Clear-->
+	<div class="clear"></div>
     
-    <!-- Navigation Start-->
-    <div id="navigation" class="grid_16 margin">
-        
-        <!-- #Logo-->
-        <div class="grid_4 logo margin">
-        	<a href="/"><img src="img/colorlogo.png" alt="Lead Carrier - The Most Affordable Full-Service Lead Distribution Platform" style="width:360px;margin-top:26px;"></a>
-        </div>
-        
-        <!-- #Menu-->
-        <div class="grid_12 topmenu">
-        	<ul id="menu">
-                <li><a href="/">Home</a></li>
-		<li><a href="/pricing">Pricing</a></li>
-                <li><a href="/features">Features</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>        
     </div>
-    
-    <!-- Slider Start-->
-    <div id="slider" class="grid_16">
-	<img src="img/home.png" style="width:820px;margin-left:60px;margin-right: 60px;margin-top:45px;"/>
-	<a href="http://demo.leadcarrier.com/login" target="_blank"><img src="img/scheduledemo.png" style="position:absolute;top:520px;margin-left:70px;width:340px;"/></a>
-    </div>
-    <!-- Slider End-->
-    
-    <!-- Clear-->
-    <div class="clear"></div>
-
 </div>
-</div>
-<div class="container_16" style="padding-left:15px;margin-top:-80px;">
+<div class="container_16" style="padding-left:15px;margin-top:-100px;">
     
     <!-- Tab Menu Start-->
     <div id="tabmenu" class="grid_16 margin">
@@ -151,7 +151,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
                         <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">Work Portfolio One</a></h1>
+                        <h1><a href="#">Dashboard</a></h1>
                         <img src="image/post/col1.png" alt="" class="three-columb-img">
                     </div>
                     </li>
@@ -197,7 +197,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
                         <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">Work Portfolio Two</a></h1>
+                        <h1><a href="#">Management</a></h1>
                         <img src="image/post/col2.png" alt="" class="three-columb-img">
                     </div>
                     </li>
@@ -244,7 +244,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
                         <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">Work Portfolio Three</a></h1>
+                        <h1><a href="#">Operations</a></h1>
                         <img src="image/post/col3.png" alt="" class="three-columb-img">
                     </div>
                     </li>
@@ -364,6 +364,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 	<div class="container_16">
     	<div class="grid_16 footerregister margin">
         	<p>Copright © 2012 Lead Carrier LLC</p>
+		<span style="float:right;"><a style="margin-right:15px;" href="/pages/termsandconditions">Terms & Conditions</a><a href="/pages/privacy">Privacy Policy</a></span>
         </div>
     </div>
 </div>

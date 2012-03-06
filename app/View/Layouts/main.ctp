@@ -106,6 +106,7 @@ else { document.write('<link rel=stylesheet href="/fancybox/jquery.fancybox-1.3.
 	<div class="container_16">
     	<div class="grid_16 footerregister margin">
         	<p>Copright © 2012 Lead Carrier LLC</p>
+		<span style="float:right;"><a style="margin-right:15px;" href="/pages/termsandconditions">Terms & Conditions</a><a href="/pages/privacy">Privacy Policy</a></span>
         </div>
     </div>
 </div>
