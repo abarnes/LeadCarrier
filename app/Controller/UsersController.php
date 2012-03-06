@@ -84,7 +84,7 @@ class UsersController extends AppController {
 		$this->request->data['User']['username'] = 'demo';
 		$this->request->data['User']['password'] = 'demopassword';
 		if ($this->Auth->login()) {
-			$this->redirect('http://demo.leadcarrier.com/dashboard');
+			$this->redirect($this->Auth->redirect());
 		}
 	}
 
