@@ -21,7 +21,7 @@ class UsersController extends AppController {
 	
         public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add','login');
+		$this->Auth->allow('add','login','demo_login');
 		/*$connect = $this->connect();
 		if (!empty($connect)) {
 		    @App::import('ConnectionManager');
@@ -84,7 +84,7 @@ class UsersController extends AppController {
 		$this->request->data['User']['username'] = 'demo';
 		$this->request->data['User']['password'] = 'demopassword';
 		if ($this->Auth->login()) {
-			$this->redirect($this->Auth->redirect());
+			$this->redirect('http://demo.leadcarrier.com/dashboard');
 		}
 	}
 
