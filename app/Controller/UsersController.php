@@ -199,9 +199,17 @@ class UsersController extends AppController {
 	public function vendor_passwordchange($id = null) {
 		$this->layout = 'vendor';
 		$this->User->id = $id;
-		$userinfo = $this->Auth->User();
+		$userInfo = $this->Auth->User();
+		if ($userInfo['vendor_id']==null||$userInfo['vendor_id']<1) {
+			$this->redirect('/dashboard');
+		}
+		
+		$unpaid = $this->Bill->find('all',array('conditions'=>array('Bill.paid'=>'0','Bill.vendor_id'=>$userInfo['vendor_id'])));
+		$this->set('unpaid',$unpaid);
+		$this->set('count',count($unpaid));
+		
 		$u = $this->User->findById($id);
-		if ($u['User']['company_id']==$userinfo['company_id']||$userinfo['admin']=='1') {
+		if ($u['User']['company_id']==$userInfo['company_id']||$userInfo['admin']=='1') {
 			if (empty($this->request->data)) {
 				//$this->request->data = $this->User->read();
 				$this->set('name',$u['User']['username']);
