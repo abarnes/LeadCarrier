@@ -211,11 +211,12 @@ class ClientsController extends AppController {
 		$this->_approve($id);
 	}
 	
-	function _approve($id,$src=null) {
+	function _approve($id) {
 		$this->Client->id = $id;
 		if ($this->Client->saveField('approved','1')) {
 			$records = $this->Client->Record->find('all',array('conditions'=>array('Record.client_id'=>$id)));
 			//find vendors
+			$chosen = array();
 			foreach ($records as $r) {
 				if ($r['Record']['select']=='1') {
 					//for categories with ranges
@@ -231,7 +232,7 @@ class ClientsController extends AppController {
 										'foreignKey' => false,
 										'conditions' => array('FilterTag.id = RangesVendor.vendor_id')
 							))));
-							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','fields'=>array('Vendor.*'),'conditions'=>array('Vendor.category_id'=>$r['Record']['category_id'],'RangesVendor.range_id'=>$r['Record']['range_id'])));
+							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','fields'=>array('Vendor.*'),'conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'Vendor.category_id'=>$r['Record']['category_id'],'RangesVendor.range_id'=>$r['Record']['range_id'])));
 							
 							if (!empty($vendor)) {
 								if ($vendor['Vendor']['total_bill']==null) {
@@ -253,7 +254,7 @@ class ClientsController extends AppController {
 					} else {
 						$i=1;
 						while ($i<200) {
-							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','conditions'=>array('Vendor.category_id'=>$r['Record']['category_id'])));
+							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'Vendor.category_id'=>$r['Record']['category_id'])));
 							if (!empty($vendor)) {
 								if ($vendor['Vendor']['total_bill']==null) {
 									$amt = 0;
@@ -281,7 +282,9 @@ class ClientsController extends AppController {
 						$data['Record']['sent'] = '1';
 						$data['Record']['vendor_id'] = $vendor['Vendor']['id'];
 						$this->Record->save($data);
-						$this->Record->id = false;
+						$this->Record->id = false;						
+						
+						$chosen[] = $vendor['Vendor']['id'];						
 						
 						$this->Vendor->id = $vendor['Vendor']['id'];
 						$d = array();
@@ -303,11 +306,7 @@ class ClientsController extends AppController {
 					unset($i);
 				}
 			}
-			if ($src==''||$src==null) {
-				$this->redirect(array('action'=>'pending'));
-			} else {
-				return true;
-			}
+			$this->redirect(array('action'=>'pending'));
 			
 		} else {
 			$this->Session->setFlash('Error: Failed to Save');
