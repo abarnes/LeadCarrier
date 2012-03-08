@@ -56,7 +56,7 @@ class BillShell extends Shell {
 						
 						$lines = $lines+array('line'=>array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created'])).$r['Client']['first_name'].' '.$r['Client']['last_name']));
 					}
-					//die(print_r($lines));
+					die(print_r($lines));
 					
 					$this->Vendor->id = $v['Vendor']['id'];
 					$this->Vendor->saveField('total_bill','0');
