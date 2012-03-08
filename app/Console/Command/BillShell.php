@@ -1,6 +1,6 @@
 <?php
 class BillShell extends Shell {
-	var $uses = array('Vendor','Bill','Setting','Company');
+	var $uses = array('Vendor','Bill','Setting','Company','Record');
 	//var $tasks = array('Email');
 	//var $Email;
 
