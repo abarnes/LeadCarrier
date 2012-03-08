@@ -1,6 +1,6 @@
 <?php
 class BillShell extends Shell {
-	var $uses = array('Vendor','Bill','Setting','Company','Record');
+	var $uses = array('Vendor','Bill','Setting','Company','Record','Client');
 	//var $tasks = array('Email');
 	//var $Email;
 
@@ -31,6 +31,7 @@ class BillShell extends Shell {
 			
 			$vn = $this->Vendor->find('all');
 			foreach ($vn as $v) {
+				$this->Record->recursive = 2;
 				$records = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.bill_id'=>null,'Record.vendor_id'=>$v['Vendor']['id'],'Record.created >'=>date('Y-m-d', strtotime("March 5, 2012")))));
 				if (count($records)>0) {
 					
@@ -53,7 +54,7 @@ class BillShell extends Shell {
 						$this->Record->saveField('bill_id',$bill_id);
 						$this->Record->id = false;
 						
-						$lines = $lines+array('line'=>array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created']))));
+						$lines = $lines+array('line'=>array('name'=>'Lead: '.$r['Client']['first_name'].' '.$r['Client']['last_name'],'unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created']))));
 					}
 					//die(print_r($lines));
 					
