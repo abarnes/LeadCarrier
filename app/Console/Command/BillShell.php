@@ -107,7 +107,7 @@ class BillShell extends Shell {
 									'lines'=>array(
 										'line'=>array(
 											'name'=>'Lead',
-											'description'=>date('Y-m-d',strtotime($r['Record']['created'])).$r['Client']['first_name'].' '.$r['Client']['last_name'],
+											'description'=>date('Y-m-d',strtotime($r['Record']['created'])).': '.$r['Client']['first_name'].' '.$r['Client']['last_name'],
 											'unit_cost'=>$s['Setting']['lead_price'],
 											'quantity'=>'1'
 										)
