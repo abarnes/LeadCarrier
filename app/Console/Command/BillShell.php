@@ -65,8 +65,8 @@ class BillShell extends Shell {
 					if ($s['Setting']['use_freshbooks']=='1'&&$v['Vendor']['freshbooks_id']!='') {
 						require('/home/lcarrier/public_html/app/webroot/freshbooks_api/FreshBooksRequest.php');
 						
-						$domain = $c['Company']['freshbooks_url'];
-						$token = $c['Company']['freshbooks_api_token'];
+						$domain = $s['Setting']['freshbooks_url'];
+						$token = $s['Setting']['freshbooks_api_token'];
 	
 						FreshBooksRequest::init($domain, $token);
 						
