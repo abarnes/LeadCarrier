@@ -40,7 +40,6 @@ class BillShell extends Shell {
 					$d['Bill']['vendor_id'] = $v['Vendor']['id'];
 					$d['Bill']['week_start'] = $start;
 					$d['Bill']['week_end'] = $end;
-					$d['Bill']['freshbooks_invoice_id'] = $id;
 					$d['Bill']['end_timestamp'] = strtotime("-1 week");
 					$d['Bill']['leads'] = count($records);
 					$d['Bill']['total'] = $s['Setting']['lead_price']*count($records);
@@ -63,7 +62,7 @@ class BillShell extends Shell {
 					
 					$num++;
 					
-					if ($c['Company']['use_freshbooks']=='1'&&$v['Vendor']['freshbooks_id']!='') {
+					if ($s['Setting']['use_freshbooks']=='1'&&$v['Vendor']['freshbooks_id']!='') {
 						require('/home/lcarrier/public_html/app/webroot/freshbooks_api/FreshBooksRequest.php');
 						
 						$domain = $c['Company']['freshbooks_url'];
@@ -114,7 +113,7 @@ class BillShell extends Shell {
 			}
 		}
 		
-		if ($c['Company']['use_freshbooks']=='1') {
+		if ($s['Setting']['use_freshbooks']=='1') {
 			$add = ' Freshbooks Invoices Generate for '.$fbc.' Vendors.';
 		} else {
 			$add = '';
