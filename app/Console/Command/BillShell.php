@@ -53,7 +53,7 @@ class BillShell extends Shell {
 						$this->Record->saveField('bill_id',$bill_id);
 						$this->Record->id = false;
 						
-						$lines = $lines+array('line',array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created']))));
+						$lines = $lines+array('line'=>array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created']))));
 					}
 					die(print_r($lines));
 					
