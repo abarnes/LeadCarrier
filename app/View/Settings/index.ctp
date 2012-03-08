@@ -212,7 +212,7 @@ function button2(action){
 					'div' => false
 				    ),
 				    'class'=>'mws-form',
-				    'action'=>'edit'
+				    'action'=>'freshbooks_edit'
 				)); ?>
 				
 				<?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>

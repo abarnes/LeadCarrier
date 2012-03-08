@@ -75,13 +75,31 @@ class SettingsController extends AppController {
 			$this->request->data = $this->Setting->read();
 		} else {
 			//convert lead price to decimal format
-			$this->request->data['Setting']['lead_price'] = substr($this->request->data['Setting']['lead_price'],1);
+			if (isset($this->request->data['Setting']['lead_price'])) {
+				$this->request->data['Setting']['lead_price'] = substr($this->request->data['Setting']['lead_price'],1);
+			}
 			//save new settings
 			if ($this->Setting->save($this->request->data)) {
 				$this->Session->setFlash('Settings Updated');
 				$this->redirect(array('controller'=>'settings','action' => 'index'));
 			} else {
-				$this->Session->setFlash('Error: Failed to Save Settings (settings,edit)');
+				$this->Session->setFlash('Error: Failed to Save Settings');
+				$this->redirect(array('controller'=>'settings','action' => 'index'));
+			}
+		}
+	}
+	
+	function freshbooks_edit() {
+		$s = $this->Setting->find('first',array('order'=>'Setting.created ASC'));
+		$this->Setting->id = $s['Setting']['id'];
+		
+		if (!empty($this->request->data)) {
+			//save new settings
+			if ($this->Setting->save($this->request->data,array('validate'=>false))) {
+				$this->Session->setFlash('Settings Updated');
+				$this->redirect(array('controller'=>'settings','action' => 'index'));
+			} else {
+				$this->Session->setFlash('Error: Failed to Save Settings');
 				$this->redirect(array('controller'=>'settings','action' => 'index'));
 			}
 		}
