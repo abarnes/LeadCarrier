@@ -41,7 +41,7 @@ class SettingsController extends AppController {
 	
 
 	public function index() {
-		$this->set('users',$this->User->find('all',array('conditions'=>array('vendor_id'=>'','company_id'=>$this->Auth->user('company_id')))));
+		$this->set('users',$this->User->find('all',array('conditions'=>array('vendor_id'=>null,'company_id'=>$this->Auth->user('company_id')))));
 		$this->set('fields',$this->Field->find('all'));
 		
 		//find settings
