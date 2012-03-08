@@ -50,7 +50,7 @@ class BillsController extends AppController {
 		$fb->request();
 		if ($fb->success()) {
 			$result = $fb->getResponse();
-			$this->redirect($result['invoice']['links']['view']);
+			$this->redirect($result['invoice']['links']['client_view']);
 		} else {
 			$this->Session->setFlash('Error opening page: '.$fb->getError());
 			$this->redirect('/vendors/manage');
