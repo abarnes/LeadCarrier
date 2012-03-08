@@ -31,7 +31,7 @@ class BillShell extends Shell {
 			
 			$vn = $this->Vendor->find('all');
 			foreach ($vn as $v) {
-				$records = $this->Record->find('all',array('conditions'=>array('Vendor.bill_id'=>null,'Record.vendor_id'=>$v['Vendor']['id'],'Record.created >'=>date('Y-m-d', strtotime("March 5, 2012")))));
+				$records = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.bill_id'=>null,'Record.vendor_id'=>$v['Vendor']['id'],'Record.created >'=>date('Y-m-d', strtotime("March 5, 2012")))));
 				if (count($records)>0) {
 					
 					//create the bill
