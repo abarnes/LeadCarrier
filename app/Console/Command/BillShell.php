@@ -113,6 +113,7 @@ class BillShell extends Shell {
 									)
 									)
 								));
+								$fb->request();
 							}
 							
 							$this->Bill->id = $bill_id;
