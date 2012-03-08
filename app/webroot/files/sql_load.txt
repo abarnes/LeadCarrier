@@ -181,3 +181,9 @@ CREATE TABLE `vendors` (
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=426 ;
+
+INSERT INTO `fields` VALUES(1, 'first_name', 'First Name', 'varchar', 1, '2012-02-19 13:50:19', '2012-02-19 13:50:19');
+INSERT INTO `fields` VALUES(2, 'last_name', 'Last Name', 'varchar', 1, '2012-02-19 13:50:33', '2012-02-19 13:50:33');
+INSERT INTO `fields` VALUES(3, 'phone', 'Phone Number', 'varchar', 0, '2012-02-19 13:51:09', '2012-02-19 15:14:45');
+INSERT INTO `fields` VALUES(4, 'email', 'Email', 'varchar', 1, '2012-02-19 13:51:23', '2012-02-19 13:51:23');
+INSERT INTO `fields` VALUES(5, 'zip', 'Zip Code', 'varchar', 1, '2012-02-19 13:51:49', '2012-02-19 15:10:13');

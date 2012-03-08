@@ -29,72 +29,88 @@ class BillShell extends Shell {
 			$num = 0;
 			$fbc = 0;
 			
-			$vn = $this->Vendor->find('all',array('conditions'=>array('Vendor.total_bill >'=>'0')));
+			$vn = $this->Vendor->find('all');
 			foreach ($vn as $v) {
-				if ($c['Company']['use_freshbooks']=='1'&&$v['Vendor']['freshbooks_id']!='') {
-					require('/home/lcarrier/public_html/app/webroot/freshbooks_api/FreshBooksRequest.php');
+				$records = $this->Record->find('all',array('conditions'=>array('Vendor.bill_id'=>null,'Record.vendor_id'=>$v['Vendor']['id'])));
+				if (count($records)>0) {
 					
-					$domain = $c['Company']['freshbooks_url'];
-					$token = $c['Company']['freshbooks_api_token'];
-
-					FreshBooksRequest::init($domain, $token);
+					//create the bill
+					$this->Bill->create();
+					$d = array();
+					$d['Bill']['vendor_id'] = $v['Vendor']['id'];
+					$d['Bill']['week_start'] = $start;
+					$d['Bill']['week_end'] = $end;
+					$d['Bill']['freshbooks_invoice_id'] = $id;
+					$d['Bill']['end_timestamp'] = strtotime("-1 week");
+					$d['Bill']['leads'] = count($records);
+					$d['Bill']['total'] = $s['Setting']['lead_price']*count($records);
+					$this->Bill->save($d);
+					$bill_id = $this->Bill->getLastInsertId();
+					$this->Bill->id = false;
 					
-					$fb = new FreshBooksRequest('invoice.create');
-					// Any arguments you want to pass it
-					$fb->post(array('invoice'=>array(
-						'client_id'=>$v['Vendor']['freshbooks_id'],
-						'lines'=>array(
-							'line'=>array(
-								'name'=>'Leads Generated',
-								'description'=>$start.' to '.$end,
-								'unit_cost'=>$s['Setting']['lead_price'],
-								'quantity'=>$v['Vendor']['total_bill']
+					$lines = array();
+					foreach ($records as $r) {
+						$this->Record->id = $r['Record']['id'];
+						$this->Record->saveField('bill_id',$bill_id);
+						$this->Record->id = false;
+						
+						$lines = $lines+array('line',array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created']))));
+					}
+					
+					$this->Vendor->id = $v['Vendor']['id'];
+					$this->Vendor->saveField('total_bill','0');
+					$this->Vendor->id = false;
+					
+					$num++;
+					
+					if ($c['Company']['use_freshbooks']=='1'&&$v['Vendor']['freshbooks_id']!='') {
+						require('/home/lcarrier/public_html/app/webroot/freshbooks_api/FreshBooksRequest.php');
+						
+						$domain = $c['Company']['freshbooks_url'];
+						$token = $c['Company']['freshbooks_api_token'];
+	
+						FreshBooksRequest::init($domain, $token);
+						
+						$fb = new FreshBooksRequest('invoice.create');
+						// Any arguments you want to pass it
+						/*$fb->post(array('invoice'=>array(
+							'client_id'=>$v['Vendor']['freshbooks_id'],
+							'lines'=>array(
+								'line'=>array(
+									'name'=>'Leads Generated',
+									'description'=>$start.' to '.$end,
+									'unit_cost'=>$s['Setting']['lead_price'],
+									'quantity'=>$v['Vendor']['total_bill']
+								)
+							 )
 							)
-						 )
-						)
-					));
-					// Make the request
-					$fb->request();
-					if($fb->success())
-					{
-						$result = $fb->getResponse();
-						$id = $result['invoice_id'];
-						/*FreshBooksRequest::init($domain, $token);
-						$fb = new FreshBooksRequest('invoice.sendByEmail');
-						$fb->post(array('invoice_id'=>$id));
+						));*/
+						$fb->post(array('invoice'=>array(
+							'client_id'=>$v['Vendor']['freshbooks_id'],
+							'lines'=>$lines
+							)
+						));
+						
+						// Make the request
 						$fb->request();
-						if ($fb->success()) {*/
+						if($fb->success())
+						{
+							$result = $fb->getResponse();
+							$id = $result['invoice_id'];
+							
+							$this->Bill->id = $bill_id;
+							$this->Bill->saveField('freshbooks_invoice_id',$id);
+							$this->Bill->id = false;
+							
 							$fbc++;		
-						/*} else {
-							$this->out($c['Company']['name'].'('.$c['Company']['id'].'): Sending Failed - '.$fb->getError());
-						}*/
+						} else {
+						    $this->out($c['Company']['name'].'('.$c['Company']['id'].'): Invoice Creation Failed - '.$fb->getError());
+						    $id = '';	
+						}
+					} else {
+						$id = '';
 					}
-					else
-					{
-					    $this->out($c['Company']['name'].'('.$c['Company']['id'].'): Invoice Creation Failed - '.$fb->getError());
-					    $id = '';	
-					}
-				} else {
-					$id = '';
 				}
-				
-				$this->Bill->create();
-				$d = array();
-				$d['Bill']['vendor_id'] = $v['Vendor']['id'];
-				$d['Bill']['week_start'] = $start;
-				$d['Bill']['week_end'] = $end;
-				$d['Bill']['freshbooks_invoice_id'] = $id;
-				$d['Bill']['end_timestamp'] = strtotime("-1 week");
-				$d['Bill']['leads'] = $v['Vendor']['total_bill'];
-				$d['Bill']['total'] = $s['Setting']['lead_price']*$v['Vendor']['total_bill'];
-				$this->Bill->save($d);
-				$this->Bill->id = false;
-				
-				$this->Vendor->id = $v['Vendor']['id'];
-				$this->Vendor->saveField('total_bill','0');
-				$this->Vendor->id = false;
-
-				$num++;
 			}
 		}
 		
