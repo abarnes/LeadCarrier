@@ -98,10 +98,11 @@ class BillShell extends Shell {
 							$result = $fb->getResponse();
 							$id = $result['invoice_id'];
 							
+							$add_errors = '';
 							foreach ($records as $r) {
 								FreshBooksRequest::init($domain, $token);
 								$fb = new FreshBooksRequest('invoice.lines.add');
-								$fb->post(array('invoice'=>array(
+								$fb->post(array(
 									'invoice_id'=>$id,
 									'lines'=>array(
 										'line'=>array(
@@ -112,8 +113,14 @@ class BillShell extends Shell {
 										)
 									)
 									)
-								));
+								);
 								$fb->request();
+								if(!$fb->success()) {
+									$add_errors += $fb->getError()+'\n';
+								}
+							}
+							if ($add_errors!='') {
+								$this->out($c['Company']['name'].'('.$c['Company']['id'].'): Adding Items to Invoice Failed - '.$add_errors);
 							}
 							
 							$this->Bill->id = $bill_id;

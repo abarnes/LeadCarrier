@@ -345,13 +345,20 @@ class ClientsController extends AppController {
 		$token = $setting['Setting']['freshbooks_api_token'];
 		
 		FreshBooksRequest::init($domain, $token);
-		$fb = new FreshBooksRequest('client.list');
-			// Any arguments you want to pass it
-			/*$fb->post(array(
-			    'email' => 'meredith.gedrose@gmail.com'
-			));*/
-			// Make the request
-			$fb->request();
+								$fb = new FreshBooksRequest('invoice.lines.add');
+								$fb->post(array(
+									'invoice_id'=>'35439',
+									'lines'=>array(
+										'line'=>array(
+											'name'=>'Lead',
+											'description'=>'desc',
+											'unit_cost'=>$setting['Setting']['lead_price'],
+											'quantity'=>'1'
+										)
+									)
+									)
+								);
+								$fb->request();
 			if($fb->success())
 			{
 			    echo 'successful! the full response is in an array below';
