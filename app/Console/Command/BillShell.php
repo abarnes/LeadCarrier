@@ -48,13 +48,13 @@ class BillShell extends Shell {
 					$bill_id = $this->Bill->getLastInsertId();
 					$this->Bill->id = false;
 					
-					$lines = array();
+					//$lines = array();
 					foreach ($records as $r) {
 						$this->Record->id = $r['Record']['id'];
 						$this->Record->saveField('bill_id',$bill_id);
 						$this->Record->id = false;
 						
-						$lines[] = array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created'])).$r['Client']['first_name'].' '.$r['Client']['last_name']);
+						//$lines[] = array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created'])).$r['Client']['first_name'].' '.$r['Client']['last_name']);
 					}
 					//die(print_r($lines));
 					
@@ -87,8 +87,7 @@ class BillShell extends Shell {
 							)
 						));*/
 						$fb->post(array('invoice'=>array(
-							'client_id'=>$v['Vendor']['freshbooks_id'],
-							'lines'=>$lines
+							'client_id'=>$v['Vendor']['freshbooks_id']
 							)
 						));
 						
@@ -98,6 +97,23 @@ class BillShell extends Shell {
 						{
 							$result = $fb->getResponse();
 							$id = $result['invoice_id'];
+							
+							foreach ($records as $r) {
+								FreshBooksRequest::init($domain, $token);
+								$fb = new FreshBooksRequest('invoice.lines.add');
+								$fb->post(array('invoice'=>array(
+									'invoice_id'=>$id,
+									'lines'=>array(
+										'line'=>array(
+											'name'=>'Lead',
+											'description'=>date('Y-m-d',strtotime($r['Record']['created'])).$r['Client']['first_name'].' '.$r['Client']['last_name'],
+											'unit_cost'=>$s['Setting']['lead_price'],
+											'quantity'=>'1'
+										)
+									)
+									)
+								));
+							}
 							
 							$this->Bill->id = $bill_id;
 							$this->Bill->saveField('freshbooks_invoice_id',$id);
