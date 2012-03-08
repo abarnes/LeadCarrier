@@ -106,7 +106,7 @@
 				    </td>
 				    <td class="hid">
 					<?php if ($h['Bill']['freshbooks_invoice_id']!='') { ?>
-					    <a href="/vendors/view_freshbooks_bill/<?php echo $h['Bill']['freshbooks_invoice_id']; ?>" target="_blank" style="text-decoration:none;"><input type="button" value="Freshbooks" class="mws-button green mws-i-24 small"></a>	
+					    <a href="/bills/view_freshbooks_bill/<?php echo $h['Bill']['freshbooks_invoice_id']; ?>" target="_blank" style="text-decoration:none;"><input type="button" value="Freshbooks" class="mws-button green mws-i-24 small"></a>	
 					<?php } else { ?>
 					    <a href="/bill/view/<?php echo $h['Bill']['id']; ?>" target="_blank" style="text-decoration:none;"><input type="button" value="View Bill" class="mws-button green mws-i-24 small"></a>							
 					<?php } ?>

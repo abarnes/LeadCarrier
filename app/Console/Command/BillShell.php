@@ -48,15 +48,11 @@ class BillShell extends Shell {
 					$bill_id = $this->Bill->getLastInsertId();
 					$this->Bill->id = false;
 					
-					//$lines = array();
 					foreach ($records as $r) {
 						$this->Record->id = $r['Record']['id'];
 						$this->Record->saveField('bill_id',$bill_id);
 						$this->Record->id = false;
-						
-						//$lines[] = array('name'=>'Lead','unit_cost'=>$s['Setting']['lead_price'],'quantity'=>'1','description'=>date('Y-m-d',strtotime($r['Record']['created'])).$r['Client']['first_name'].' '.$r['Client']['last_name']);
 					}
-					//die(print_r($lines));
 					
 					$this->Vendor->id = $v['Vendor']['id'];
 					$this->Vendor->saveField('total_bill','0');
@@ -140,11 +136,11 @@ class BillShell extends Shell {
 		}
 		
 		if ($s['Setting']['use_freshbooks']=='1') {
-			$add = ' Freshbooks Invoices Generate for '.$fbc.' Vendors.';
+			$add = ' Freshbooks invoices generated for '.$fbc.' Vendors.';
 		} else {
 			$add = '';
 		}
-		$this->out($c['Company']['name'].'('.$c['Company']['id'].'): bills Generated for '.$num.' vendors.'.$add);
+		$this->out($c['Company']['name'].'('.$c['Company']['id'].'): bills generated for '.$num.' vendors.'.$add);
 	}
 		
 }
