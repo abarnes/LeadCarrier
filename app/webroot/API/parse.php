@@ -10,6 +10,7 @@ foreach ($vars as $row=>$value) {
 if ($submit_type=='separate'&&isset($post['id'])) {
   $parse_url = 'parse_selections';
 }
+//die(print_r($post));
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $leadcarrier_url."/".$parse_url);

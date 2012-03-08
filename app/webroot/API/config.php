@@ -9,12 +9,12 @@ $company_name='Barnespos';                                                      
 $apitoken = 'apitoken';                                                               //your company's API token
 $site_url = 'http://localhost:8888';                                                  //your own website URL (not your lead carrier access URL)        
 $leadcarrier_url = 'http://austintest.leadcarrier.com';                                                  //your company's Lead Carrier access url (e.g. company.leadcarrier.com)
-$submit_type = 'together';                                                            //If you are submitting client information AND industry selections at once, set this to 'together'
+$submit_type = 'separate';                                                            //If you are submitting client information AND industry selections at once, set this to 'together'
 // If $submit_type is set to separate:                                                //For separate information and industry selection submissions, set this to 'separate'
-    $selection_url = 'http://localhost:8888/selectiontest.html';                      //if using separate pages for information and selections, specify the URL of the selections page
+    $selection_url = 'http://localhost:8888/API/tests/selectiontest.html';                  //if using separate pages for information and selections, specify the URL of the selections page
 
     
-$redirect_url = 'http://google.com';                 //URL to redirect to when information and selections are submitted (end page)
+$redirect_url = 'http://localhost:8888/API/tests/infotest.html';                 //URL to redirect to when information and selections are submitted (end page)
                                                     
                                                     
 /*------------------------Style variables-------------------------------*/

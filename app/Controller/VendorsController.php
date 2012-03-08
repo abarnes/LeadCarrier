@@ -155,7 +155,7 @@ class VendorsController extends AppController {
 					
 					$domain = $setting['Setting']['freshbooks_url'];
 					$token = $setting['Setting']['freshbooks_api_token'];
-
+					
 					FreshBooksRequest::init($domain, $token);
 					
 					$fb = new FreshBooksRequest('client.create');

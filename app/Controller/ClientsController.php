@@ -337,7 +337,7 @@ class ClientsController extends AppController {
 		return true;
 	}
 	
-	/*function findfb(){
+	function findfb(){
 		$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 		require('freshbooks_api/FreshBooksRequest.php');
 					
@@ -351,7 +351,7 @@ class ClientsController extends AppController {
 			    'email' => 'meredith.gedrose@gmail.com'
 			));*/
 			// Make the request
-			/*$fb->request();
+			$fb->request();
 			if($fb->success())
 			{
 			    echo 'successful! the full response is in an array below';
@@ -362,7 +362,7 @@ class ClientsController extends AppController {
 			    echo $fb->getError();
 			    print_r($fb->getResponse());
 			}
-	}*/
+	}
 }
 
 ?>
