@@ -190,7 +190,13 @@ function button2(action){
 								</div>
                     				</div>
                     			</div>
-					
+					<div class="mws-form-row">
+                    				<label>Billing Period</label>
+                    				<div class="mws-form-item large">
+						<?php echo $this->Form->input('bill_period', array('class'=>'mws-textinput','options'=>array('weekly'=>'weekly','bi-weekly'=>'bi-weekly','monthly'=>'monthly'))); ?>
+                    					
+                    				</div>
+                    			</div>
                     		</div>
                     		<div class="mws-button-row">
                     			<input type="submit" value="Save" class="mws-button black">
