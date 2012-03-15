@@ -126,9 +126,17 @@ class ClientsController extends AppController {
 	}
 	
 	function add() {
+		$this->set('fields',$this->Field->find('all'));
 		if (!empty($this->request->data)) {
-			$w = $this->request->data['Client']['wedding_date'];
-			$this->request->data['Client']['wedding_date'] = date('Y-m-d',strtotime($w));			   
+			$this->Client->create();
+			foreach ($this->request->data as $row=>$value) {
+					$field = $this->Field->findByName($row);
+					if ($field['Field']['type']=='date') {
+						$this->request->data['Client'][$row] = date('Y-m-d',strtotime($value));
+					} elseif ($field['Field']['type']=='datetime') {
+						$this->request->data['Client'][$row] = date('Y-m-d H:i:s',strtotime($value));
+					}
+			}			   
 			if ($this->Client->save($this->request->data)) {
 				//$this->Session->setFlash('Thank you!  You will receive quotes shortly.');
 				$i = $this->Client->find('first',array('order'=>'Client.created DESC','conditions'=>array('Client.last_name'=>$this->request->data['Client']['last_name'],'Client.zip'=>$this->request->data['Client']['zip'])));
