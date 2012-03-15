@@ -129,7 +129,7 @@
                     				</div>
                     			</div>
 					
-					<?php if (!empty($ranges)) { ?>
+					<?php /*if (!empty($ranges)) { ?>
 						<div class="mws-form-row">
 							<label>Price Ranges</label>
 								<div class="mws-form-item medium">
@@ -138,7 +138,25 @@
 									</u>
 								</div>
 						</div>
+					<?php }*/ ?>
+					<?php foreach ($categories as $c) {
+					    if ($c['Category']['use_ranges']=='1') { ?>
+					    <div class="mws-form-row">
+							<label><?php echo $c['Category']['name']; ?> <br/>Price Ranges</label>
+								<div class="mws-form-item medium">
+									<ul class="mws-form-list inline">
+									<?php
+									$opts = array();
+									foreach ($c['Range'] as $r) {
+									    $opts[$r['id']] = $r['name'];
+									} ?>
+									<?php echo $this->Form->input('c_'.$c['Category']['id'], array('options'=>$opts,'label' => '','multiple'=>'checkbox','div'=>false,'before'=>'<li>','after'=>'</li>')); ?>
+									</u>
+								</div>
+					    </div>
+					    <?php } ?>
 					<?php } ?>
+					
                     		</div>
                     		<div class="mws-button-row">
                     			<!--<input type="submit" value="Prev" class="mws-button gray left">-->

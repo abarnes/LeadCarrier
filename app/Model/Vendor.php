@@ -1,7 +1,7 @@
 <?php
 class Vendor extends AppModel {
     var $name = 'Vendor';
-    var $belongsTo = array('Category');
+    //var $belongsTo = array('Category');
     var $useDbConfig = 'new';
     var $hasMany = array('Record','Bill');
     var $hasAndBelongsToMany = array(
@@ -20,7 +20,7 @@ class Vendor extends AppModel {
                 'finderQuery'            => '',
                 'deleteQuery'            => '',
                 'insertQuery'            => ''
-            )/*,
+            ),
         'Category' =>
             array(
                 'className'              => 'Category',
@@ -36,7 +36,7 @@ class Vendor extends AppModel {
                 'finderQuery'            => '',
                 'deleteQuery'            => '',
                 'insertQuery'            => ''
-            )*/
+            )
     );
     /*var $validate = array(
         'name' => array(

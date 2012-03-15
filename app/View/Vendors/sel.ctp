@@ -66,7 +66,9 @@
                     			<div class="mws-form-row">
                     				<label>Industry</label>
                     				<div class="mws-form-item large">
-							<?php echo $this->Form->input('category_id', array( 'style' => 'width:50%;')); ?>
+							<ul class="mws-form-list inline">
+							    <?php echo $this->Form->input('Category', array( 'label' => '','multiple'=>'checkbox','div'=>false,'before'=>'<li>','after'=>'</li>')); ?>
+							</u>
                     				</div>
                     			</div>
                     		</div>

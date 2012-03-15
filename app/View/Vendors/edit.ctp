@@ -127,17 +127,37 @@
                     					<?php //echo $this->Form->input('leads_per_week', array( 'class' => 'mws-textinput','type'=>'text')); ?>
                     				</div>
                     			</div>
+
+					<?php
+					//build array of pre-selected ranges
+					$in = array();
+					foreach ($this->data['Range'] as $c) {
+					    $in[$c['category_id']][$c['id']] = $c['id'];
+					} ?>
 					
-					<?php if (!empty($ranges)) { ?>
-						<div class="mws-form-row">
-							<label>Price Ranges</label>
+					<?php foreach ($this->data['Category'] as $cat) {
+					    if ($cat['use_ranges']=='1') {
+					    ?>
+					    <div class="mws-form-row">
+							<label><?php echo $cat['name']; ?> <br/>Price Ranges</label>
 								<div class="mws-form-item medium">
-									<ul class="mws-form-list inline">
-									<?php echo $this->Form->input('Range', array( 'label' => '','multiple'=>'checkbox','div'=>false,'before'=>'<li>','after'=>'</li>')); ?>
-									</u>
+									<ul class="mws-form-list inline"><li>
+									    <?php foreach ($opts[$cat['id']] as $key=>$value) {?>
+										<div class="checkbox">
+										    <?php if (in_array($key,$in[$cat['id']])) { ?>
+											<input type="checkbox" checked=true name="data[Vendor][c_<?php echo $cat['id']; ?>][]" value="<?php echo $key; ?>" id="VendorC<?php echo $cat['id'].$key; ?>">
+										    <?php } else { ?>
+											<input type="checkbox" name="data[Vendor][c_<?php echo $cat['id']; ?>][]" value="<?php echo $key; ?>" id="VendorC<?php echo $cat['id'].$key; ?>">
+										    <?php } ?>
+										    <label for="VendorC<?php echo $cat['id'].$key; ?>"><?php echo $value; ?></label>
+										</div>
+									    <?php } ?>
+									</li></ul>
 								</div>
-						</div>
-					<?php } ?>
+					    </div>
+					    <?php } ?>
+					<?php } ?>    
+					
                     		</div>
                     		<div class="mws-button-row">
                     			<!--<input type="submit" value="Prev" class="mws-button gray left">-->

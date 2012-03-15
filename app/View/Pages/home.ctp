@@ -150,41 +150,9 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
                     <li>
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
+                        <div class="corner_ribbon_top_left_black"><a href="img/screenshots/dashboard.jpg" title="The Lead Carrier Dashbaord" class="team corner_zoom"></a></div>
                         <h1><a href="#">Dashboard</a></h1>
-                        <img src="image/post/col1.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Two Is Here</a></h1>
-                        <img src="image/post/c1.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Three Is Here</a></h1>
-                        <img src="image/post/c2.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Four Is Here</a></h1>
-                        <img src="image/post/c3.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Five Is Here</a></h1>
-                        <img src="image/post/c4.png" alt="" class="three-columb-img">
+                        <img src="img/screenshots/dashboard.jpg" alt="" class="three-columb-img">
                     </div>
                     </li>
                 </ul>
@@ -196,44 +164,27 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
                     <li>
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
+                        <div class="corner_ribbon_top_left_black"><a href="img/screenshots/industries.jpg" title="Easily group your vendors into industries, and manage industry price ranges." class="team corner_zoom"></a></div>
                         <h1><a href="#">Management</a></h1>
-                        <img src="image/post/col2.png" alt="" class="three-columb-img">
+                        <img src="img/screenshots/industries.jpg" alt="" class="three-columb-img">
                     </div>
                     </li>
                     <li>
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Two Is Here</a></h1>
-                         <img src="image/post/c5.png" alt="" class="three-columb-img">
+                        <div class="corner_ribbon_top_left_black"><a href="img/screenshots/vendors.jpg" title="Manage vendors easily, and allow your vendors to log in and view their leads and invoices." class="team corner_zoom"></a></div>
+                        <h1><a href="#">Simple Organization</a></h1>
+                         <img src="img/screenshots/vendors.jpg" alt="" class="three-columb-img">
                     </div>
                     </li>
                     <li>
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Three Is Here</a></h1>
-                         <img src="image/post/c6.png" alt="" class="three-columb-img">
+                        <div class="corner_ribbon_top_left_black"><a href="img/screenshots/settings.jpg" title="Customize your account settings to fit your business, and " class="team corner_zoom"></a></div>
+                        <h1><a href="#">Customized for your needs</a></h1>
+                         <img src="img/screenshots/settings.jpg" alt="" class="three-columb-img">
                     </div>
                     </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Four Is Here</a></h1>
-                         <img src="image/post/c7.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Five Is Here</a></h1>
-                         <img src="image/post/c8.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    
                 </ul>
               </div>
               
@@ -243,33 +194,9 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
                     <li>
                     <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
                     <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
+                        <div class="corner_ribbon_top_left_black"><a href="img/screenshots/pending.jpg" title="Screen leads before sending them to your vendors to ensure quality." class="team corner_zoom"></a></div>
                         <h1><a href="#">Operations</a></h1>
-                        <img src="image/post/col3.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Two Is Here</a></h1>
-                         <img src="image/post/c9.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Three Is Here</a></h1>
-                         <img src="image/post/c10.png" alt="" class="three-columb-img">
-                    </div>
-                    </li>
-                    <li>
-                    <div class="columb-shadow"><img src="image/theme/minishadow.png" alt=""></div>
-                    <div class="corner_ribbon">
-                        <div class="corner_ribbon_top_left_black"><a href="image/post/bigimage.png" title="Lorem ipsum is simply dummy data text printing." class="team corner_zoom"></a></div>
-                        <h1><a href="#">The Title Four Is Here</a></h1>
-                         <img src="image/post/c11.png" alt="" class="three-columb-img">
+                        <img src="img/screenshots/pending.jpg" alt="" class="three-columb-img">
                     </div>
                     </li>
                 </ul>
@@ -332,7 +259,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         	<ul>
             	<li><div class="margin4 fright"></div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
                 <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
-                <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark John Gothenberg Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark G. Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
             </ul>
         </div>
     </div>
@@ -341,7 +268,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
     <!-- Bigg Boss -->
     <div class="grid_8 margin">
     	<div class="title-2cloumb">
-        	<h1>The Big Boss Says</h1>
+        	<h1>Used By Advertising 360</h1>
         	<p>Lorem ipsum is simply printing swith data text</p>
         </div>
         <div class="bussiness-boss">

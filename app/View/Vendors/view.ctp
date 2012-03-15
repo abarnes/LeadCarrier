@@ -42,14 +42,22 @@
 		
 		<div class="mws-panel grid_5">
 		    <div class="mws-panel-header">
-                    	<span class="mws-i-24 i-companies">Vendor Information</span>
+                    	<span class="mws-i-24 i-apartment-building">Vendor Information</span>
                     </div>
                     <div class="mws-panel-body">
 			<table class="mws-table">
                             <tbody>
-                                <tr class="even">
+                                <tr class="odd">
                                     <td>Name</td>
                                     <td><?php echo $c['Vendor']['name']; ?></td>
+                                </tr>
+				<tr class="even">
+                                    <td>Industry</td>
+                                    <td>
+					<?php foreach($c['Category'] as $b) {
+					    echo $b['name'].'<br/>';
+					} ?>
+				    </td>
                                 </tr>
 				<tr class="odd">
                                     <td>Total Leads</td>
@@ -120,8 +128,15 @@
                     </div>
                     <div class="mws-panel-body">
 			<ul class="mws-summary">
-				<?php foreach ($c['Range'] as $r) { ?>
-					<li><?php echo $r['name']; ?></li>
+			    <?php foreach($c['Category'] as $b) {
+				    if ($b['use_ranges']=='1') {
+				    echo '<b>'.$b['name'].'</b><br/>';
+					foreach ($c['Range'] as $r) { ?>
+						<?php if ($r['category_id']==$b['id']) { ?>
+						    <li><?php echo $r['name']; ?></li>
+						<?php } ?>
+					<?php } ?>
+				    <?php } ?>
 				<?php } ?>
 			</ul>
 		    </div>

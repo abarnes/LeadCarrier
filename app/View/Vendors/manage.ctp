@@ -177,7 +177,9 @@ function button(action){
 					    <?php echo $u['Vendor']['zip']; ?>
 					</td>
 					<td>
-					    <?php echo $u['Category']['name']; ?>
+					    <?php foreach($u['Category'] as $c) {
+						echo $c['name'].'<br/>';
+					    } ?>
 					</td>
 					<td>
 					    <?php echo date('m-j-Y',strtotime($u['Vendor']['created'])); ?>

@@ -4,7 +4,7 @@ class VendorsController extends AppController {
 	var $name = 'Vendors';
         var $layout = 'admin';
 	var $helpers = array('Html', 'Form', 'Time');
-	var $uses = array('Vendor','Bill','Category','Record','Setting','Client','Range','Field');
+	var $uses = array('Vendor','Bill','Category','Record','Setting','Client','Range','Field','CategoriesVendor','RangesVendor');
 	public $components = array(
 		'Session',
 		'Email',
@@ -130,23 +130,69 @@ class VendorsController extends AppController {
 	}
 	
 	function sel() {
-		$this->set('categories', $this->Category->find('list',array('order'=>'Category.name ASC')));
+		$this->set('categories', $this->Category->find('list',array('fields'=>array('Category.id','Category.name'))));
 		if (!empty($this->request->data)) {
-			$this->redirect(array('action'=>'add/'.$this->request->data['Vendor']['category_id']));
+			$string = '';
+			foreach($this->request->data['Category'] as $c) {
+				foreach ($c as $v) {
+					//die(print_r($v));
+					$string = $string.$v.'=';
+				}
+			}
+			if ($string!='') {
+				$this->redirect(array('action'=>'add/'.$string));
+			} else {
+				$this->Session->setFlash('Please select at least one industry.');
+			}
 		}
 	}
 	
 	function add($cat) {
 		$this->set('cat',$cat);
-		$this->set('ranges', $this->Vendor->Range->find('list',array('conditions'=>array('Range.category_id'=>$cat),'fields'=>array('Range.id','Range.name'))));
+		
+		$cat = explode('=',$cat);
+		unset($cat[count($cat)-1]);
+		//die(print_r($cat));
+		
+		$this->set('categories',$this->Category->find('all',array('conditions'=>array('Category.id'=>$cat))));
+
 		if (!empty($this->request->data)) {
-			$this->request->data['Vendor']['category_id'] = $cat;
+			//die(print_r($this->request->data));
+			
 			if ($this->request->data['Vendor']['leads_per_week']==null || $this->request->data['Vendor']['leads_per_week']=='0' || $this->request->data['Vendor']['leads_per_week']=='') {
 				$this->request->data['Vendor']['leads_per_week']='99999';
 			}
+						
 			$username = $this->Password->__randomPassword('8');
 			$this->request->data['Vendor']['token'] = $username;
 			if ($this->Vendor->save($this->request->data)) {
+				$vid = $this->Vendor->getLastInsertId();
+				
+				//save category_vendor table
+				foreach ($cat as $c) {
+					$data = array();
+					$data['CategoriesVendor']['category_id'] = $c;
+					$data['CategoriesVendor']['vendor_id'] = $vid;
+					$this->CategoriesVendor->save($data);
+					$this->CategoriesVendor->id = false;
+				}
+				
+				//save range_vendor table
+				$new_array = array();
+				foreach ($this->request->data['Vendor'] as $key=>$value) {
+					if (substr($key,0,2)=='c_') {
+						foreach ($value as $v) {
+							$new_array[] = $v;
+						}
+					}
+				}
+				
+				$data = array();
+				$this->Vendor->id = $vid;
+				$data['Range']['Range'] = $new_array;
+				$this->Vendor->save($data);
+				$this->Vendor->id = false;
+				
 				//freshbooks create
 				$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 				if ($setting['Setting']['use_freshbooks']=='1') {
@@ -225,22 +271,77 @@ class VendorsController extends AppController {
 			}
 		}
 	}
+	
+	function convert() {
+		$all = $this->Vendor->find('all',array('conditions'=>array('Vendor.category_id !='=>'0')));
+		foreach ($all as $a) {
+			$data = array();
+			$data['CategoriesVendor']['category_id'] = $a['Vendor']['category_id'];
+			$data['CategoriesVendor']['vendor_id'] = $a['Vendor']['id'];
+			$this->CategoriesVendor->save($data);
+			$this->CategoriesVendor->id = false;
+		}
+		$this->redirect('/vendors/manage');
+	}
     
 	function edit($id) {
 		$this->set('id',$id);
 		$this->Vendor->id = $id;
 		$c = $this->Vendor->findById($id);
+		
 		if (empty($this->request->data)) {
 			$this->request->data = $this->Vendor->read();
+			$cats = array();
+			foreach ($this->request->data['Range'] as $r) {
+				$ids[$r['category_id']] = $r['category_id'];
+			}
 			$this->set('categories', $this->Category->find('list',array('order'=>'Category.name ASC')));
-			$this->set('ranges', $this->Range->find('list',array('conditions'=>array('Range.category_id'=>$c['Vendor']['category_id']),'fields'=>array('Range.id','Range.name'))));
+			$this->Range->recursive = 0;
+			$ranges = $this->Range->find('all',array('conditions'=>array('Range.category_id'=>$ids),'fields'=>array('Range.id','Range.name','Range.category_id')));
+			$opts = array();
+			foreach ($ranges as $c) {
+				$opts[$c['Range']['category_id']][$c['Range']['id']] = $c['Range']['name'];
+			}
+			//die(print_r($this->request->data));
+			$this->set('opts',$opts);
 			$this->set('name',$this->request->data['Vendor']['name']);
 		} else {
 			if ($this->request->data['Vendor']['leads_per_week']==null || $this->request->data['Vendor']['leads_per_week']=='0' || $this->request->data['Vendor']['leads_per_week']=='') {
 				$this->request->data['Vendor']['leads_per_week']='99999';
 			}
+			//die(print_r($this->request->data));
 			if ($this->Vendor->save($this->request->data)) {
-								//freshbooks create
+				/*$cats = array();
+				$this->request->data = $this->Vendor->read();
+				foreach ($this->request->data['Range'] as $r) {
+					$cats[$r['category_id']] = $r['category_id'];
+				}
+				
+				//save category_vendor table
+				foreach ($cats as $c) {
+					$data = array();
+					$data['CategoriesVendor']['category_id'] = $c;
+					$data['CategoriesVendor']['vendor_id'] = $id;
+					$this->CategoriesVendor->save($data);
+					$this->CategoriesVendor->id = false;
+				}*/
+				
+				//save range_vendor table
+				$new_array = array();
+				foreach ($this->request->data['Vendor'] as $key=>$value) {
+					if (substr($key,0,2)=='c_') {
+						foreach ($value as $v) {
+							$new_array[] = $v;
+						}
+					}
+				}
+				$data = array();
+				$this->Vendor->id = $id;
+				$data['Range']['Range'] = $new_array;
+				$this->Vendor->save($data);
+				$this->Vendor->id = false;
+				
+				//freshbooks create
 				$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 				if ($setting['Setting']['use_freshbooks']=='1'&&$c['Vendor']['freshbooks_id']!='') {
 					require('freshbooks_api/FreshBooksRequest.php');
@@ -273,17 +374,17 @@ class VendorsController extends AppController {
 					if($fb->success())
 					{
 						$this->Session->setFlash('Vendor Has Been Updated.');
-						$this->redirect(array('action'=>'view/'.$id));
+						$this->redirect(array('action'=>'edit/'.$id));
 					}
 					else
 					{
 					    $this->Session->setFlash('Freshbooks Error: '.$fb->getError());
-					    $this->redirect(array('controller'=>'vendors','action' => 'view/'.$id));
+					    $this->redirect(array('controller'=>'vendors','action' => 'edit/'.$id));
 					    //print_r($fb->getResponse());
 					}
 				} else {
 					$this->Session->setFlash('Vendor Has Been Updated.');
-					$this->redirect(array('action'=>'view/'.$id));
+					$this->redirect(array('action'=>'edit/'.$id));
 				}
 			} else {
 				$this->Session->setFlash('Error: Failed to Save Vendor');
