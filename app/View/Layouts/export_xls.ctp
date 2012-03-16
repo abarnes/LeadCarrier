@@ -4,7 +4,7 @@
 header ("Cache-Control: no-cache, must-revalidate");
 header ("Pragma: no-cache");
 header ("Content-Disposition: attachment; filename=\"Clients.xls\"" );
-header("Content-Type: application/vnd.ms-excel");
+header("Content-Type: application/ms-excel");
 //header ("Content-Description: Generated Report" );
 ?>
 <?php //echo $content_for_layout ?>
