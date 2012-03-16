@@ -345,6 +345,20 @@ class ClientsController extends AppController {
 		return true;
 	}
 	
+	function export() { 
+		//$this->layout = 'ajax';
+		$this->Client->recursive = 0;
+		$this->set('data', $this->Client->find('all',array('fields'=>array('first_name','last_name'), 'order' => 'Client.last_name ASC'))); 
+	}
+	
+	function export_xml() {
+		$this->Client->recursive = 0;
+		$data = $this->Client->find('all',array('fields'=>array('first_name','last_name'), 'order' => 'Client.last_name ASC'));
+		
+		$this->set('rows',$data);
+		$this->render('export_xls','export_xls');
+	}
+	
 	/*function findfb(){
 		$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 		require('freshbooks_api/FreshBooksRequest.php');

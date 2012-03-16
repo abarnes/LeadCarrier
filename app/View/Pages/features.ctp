@@ -24,9 +24,9 @@
     </div>
     <div class="r50">
         <h1>Simple Integration</h1>
-        <p>
-            <b></b>
-        </p>
+        <ul>
+	    <li></li>
+	</ul>
     </div>
     
     <!-------end content-------->
@@ -35,7 +35,7 @@
     <div id="advert" class="grid_16 advert">
     	<div id="advertback"></div>
         <h1>"We were sold when we saw the demo."</h1>
-        <div class="margin3 fright"><a href="http://demo.leadcarrier.com/login" target="_blank" class="minibutton">Live Demo</a></div>
+        <div class="margin3 fright"><a href="http://demo.leadcarrier.com/users/demo_login" target="_blank" class="minibutton">Live Demo</a></div>
     </div>
     <!-- Advert End -->
     
