@@ -168,17 +168,14 @@ class VendorsController extends AppController {
 			if ($this->Vendor->save($this->request->data)) {
 				$vid = $this->Vendor->getLastInsertId();
 				
-				//save category_vendor table
+				//save categories_vendors table
+				$new_array = array();
 				foreach ($cat as $c) {
-					$data = array();
-					$data['CategoriesVendor']['category_id'] = $c;
-					$data['CategoriesVendor']['vendor_id'] = $vid;
-					$this->CategoriesVendor->save($data);
-					$this->CategoriesVendor->id = false;
-				}
+					$new_array[] = $c;
+				}				
 				
 				//save range_vendor table
-				$new_array = array();
+				$new_array2 = array();
 				foreach ($this->request->data['Vendor'] as $key=>$value) {
 					if (substr($key,0,2)=='c_') {
 						foreach ($value as $v) {
@@ -189,7 +186,8 @@ class VendorsController extends AppController {
 				
 				$data = array();
 				$this->Vendor->id = $vid;
-				$data['Range']['Range'] = $new_array;
+				$data['Range']['Range'] = $new_array2;
+				$data['Category']['Category'] = $new_array;
 				$this->Vendor->save($data);
 				$this->Vendor->id = false;
 				
@@ -315,19 +313,13 @@ class VendorsController extends AppController {
 				$this->request->data = $this->Vendor->read();
 				foreach ($this->request->data['Range'] as $r) {
 					$cats[$r['category_id']] = $r['category_id'];
-				}
-				
-				//save category_vendor table
-				foreach ($cats as $c) {
-					$data = array();
-					$data['CategoriesVendor']['category_id'] = $c;
-					$data['CategoriesVendor']['vendor_id'] = $id;
-					$this->CategoriesVendor->save($data);
-					$this->CategoriesVendor->id = false;
 				}*/
 				
+				//save category_vendor table
+				
+				
 				//save range_vendor table
-				$new_array = array();
+				$new_array2 = array();
 				foreach ($this->request->data['Vendor'] as $key=>$value) {
 					if (substr($key,0,2)=='c_') {
 						foreach ($value as $v) {
@@ -337,7 +329,7 @@ class VendorsController extends AppController {
 				}
 				$data = array();
 				$this->Vendor->id = $id;
-				$data['Range']['Range'] = $new_array;
+				$data['Range']['Range'] = $new_array2;
 				$this->Vendor->save($data);
 				$this->Vendor->id = false;
 				

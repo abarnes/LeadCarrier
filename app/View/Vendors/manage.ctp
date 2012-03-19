@@ -177,6 +177,7 @@ function button(action){
 					    <?php echo $u['Vendor']['zip']; ?>
 					</td>
 					<td>
+						<?php //die(print_r($u)); ?>
 					    <?php foreach($u['Category'] as $c) {
 						echo $c['name'].'<br/>';
 					    } ?>
