@@ -42,7 +42,7 @@
 					'div' => false
 				    ),
 				    'class'=>'mws-form',
-				    'action'=>'edit/'.$id
+				    'action'=>'vendor_edit/'.$id
 				)); ?>
 				<?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>
                     		<div class="mws-form-inline">

@@ -441,17 +441,17 @@ class VendorsController extends AppController {
 					if($fb->success())
 					{
 						$this->Session->setFlash('Vendor Has Been Updated.');
-						$this->redirect(array('action'=>'view/'.$id));
+						$this->redirect(array('action'=>'vendor_edit'));
 					}
 					else
 					{
 					    $this->Session->setFlash('Freshbooks Error: '.$fb->getError());
-					    $this->redirect(array('controller'=>'vendors','action' => 'view/'.$id));
+					    $this->redirect(array('controller'=>'vendors','action' => 'vendor_edit'));
 					    //print_r($fb->getResponse());
 					}
 				} else {
 					$this->Session->setFlash('Vendor Has Been Updated.');
-					$this->redirect(array('action'=>'view/'.$id));
+					$this->redirect(array('action'=>'vendor_edit'));
 				}
 			} else {
 				$this->Session->setFlash('Error: Failed to Save Vendor');
