@@ -440,7 +440,7 @@ class VendorsController extends AppController {
 					$fb->request();
 					if($fb->success())
 					{
-						$this->Session->setFlash('Vendor Has Been Updated.');
+						$this->Session->setFlash('Profile Updated.');
 						$this->redirect(array('action'=>'vendor_edit'));
 					}
 					else
@@ -450,7 +450,7 @@ class VendorsController extends AppController {
 					    //print_r($fb->getResponse());
 					}
 				} else {
-					$this->Session->setFlash('Vendor Has Been Updated.');
+					$this->Session->setFlash('Profile Updated.');
 					$this->redirect(array('action'=>'vendor_edit'));
 				}
 			} else {

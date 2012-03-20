@@ -42,7 +42,7 @@
 					'div' => false
 				    ),
 				    'class'=>'mws-form',
-				    'action'=>'passwordchange/'.$id
+				    'action'=>'vendor_passwordchange/'.$id
 				)); ?>
                     		<div class="mws-form-inline">
 					<div class="mws-form-row">

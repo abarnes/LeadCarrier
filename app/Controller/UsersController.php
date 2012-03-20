@@ -90,7 +90,14 @@ class UsersController extends AppController {
 	}
 
 	public function logout() {
-		$this->redirect($this->Auth->logout());
+		$userInfo = $this->Auth->user();
+		if ($userInfo['User']['vendor_id']!='') {
+			$vendor = $this->Vendor->findById($userInfo['User']['vendor_id']);
+			$this->Auth->logout();
+			$this->redirect('/v/'.$user['Vendor']['token']);
+		} else {
+			$this->redirect($this->Auth->logout());
+		}
 	}
 	
 	//admins can add a user, either to a company or as another admin
