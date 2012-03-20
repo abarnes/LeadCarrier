@@ -93,6 +93,7 @@ class UsersController extends AppController {
 		$userInfo = $this->Auth->user();
 		if ($userInfo['User']['vendor_id']!='') {
 			$vendor = $this->Vendor->findById($userInfo['User']['vendor_id']);
+			die(print('test'));
 			$this->Auth->logout();
 			$this->redirect('/v/'.$user['Vendor']['token']);
 		} else {
