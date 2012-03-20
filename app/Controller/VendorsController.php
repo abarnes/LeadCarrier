@@ -228,13 +228,13 @@ class VendorsController extends AppController {
 						$this->Vendor->saveField('freshbooks_id',$result['client_id']);
 						
 						$d = array();
+						$this->User->create();
 						$d['User']['username'] = $username;
 						$password = $this->Password->__randomPassword('8');
 						$d['User']['password'] = $password;
 						$vid = $this->Vendor->getLastInsertId();
 						$d['User']['vendor_id']=$vid;
 						$d['User']['company_id'] = $this->Auth->user('company_id');
-						$this->User->create();
 						$this->User->save($d);
 						
 						$this->_vendor_join_email($this->Auth->user('company_id'),$vid,$password);

@@ -290,7 +290,7 @@ class CompaniesController extends AppController {
 		if (!empty($this->request->data)) {
 			$this->request->data['User']['username'] = $token;
 			$this->request->data['User']['password'] = $this->request->data['Company']['password'];
-			die(print_r($this->request->data));
+			//die(print_r($this->request->data));
 			
 			if ($this->Auth->login()) {
 				//record last login
