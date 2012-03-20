@@ -4,7 +4,7 @@ class UsersController extends AppController {
 	var $name = 'Users';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form');
-	var $uses = array('User','Setting','Client','Bill');
+	var $uses = array('User','Setting','Client','Bill','Vendor');
 	public $components = array(
 		'Session',
 		'Cookie',
