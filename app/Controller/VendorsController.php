@@ -235,7 +235,7 @@ class VendorsController extends AppController {
 						$vid = $this->Vendor->getLastInsertId();
 						$d['User']['vendor_id']=$vid;
 						$d['User']['company_id'] = $this->Auth->user('company_id');
-						$this->User->save($d);
+						$this->User->save($d,array('validate'=>false));
 						
 						$this->_vendor_join_email($this->Auth->user('company_id'),$vid,$password);
 						
