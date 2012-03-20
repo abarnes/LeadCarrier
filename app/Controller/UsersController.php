@@ -97,6 +97,7 @@ class UsersController extends AppController {
 			$this->Auth->logout();
 			$this->redirect('/v/'.$user['Vendor']['token']);
 		} else {
+			die(print('test2'));
 			$this->redirect($this->Auth->logout());
 		}
 	}
