@@ -230,7 +230,7 @@ class VendorsController extends AppController {
 						$d = array();
 						$d['User']['username'] = $username;
 						$password = $this->Password->__randomPassword('8');
-						$d['user']['password'] = $password;
+						$d['User']['password'] = $password;
 						$vid = $this->Vendor->getLastInsertId();
 						$d['User']['vendor_id']=$vid;
 						$d['User']['company_id'] = $this->Auth->user('company_id');
