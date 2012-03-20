@@ -91,13 +91,13 @@ class UsersController extends AppController {
 
 	public function logout() {
 		$userInfo = $this->Auth->user();
-		if ($userInfo['User']['vendor_id']!='') {
-			$vendor = $this->Vendor->findById($userInfo['User']['vendor_id']);
-			die(print('test'));
+		if ($userInfo['vendor_id']!='') {
+			$vendor = $this->Vendor->findById($userInfo['vendor_id']);
+			//die(print('test'));
 			$this->Auth->logout();
 			$this->redirect('/v/'.$user['Vendor']['token']);
 		} else {
-			die(print('test2'));
+			//die(print('test2'));
 			$this->redirect($this->Auth->logout());
 		}
 	}
