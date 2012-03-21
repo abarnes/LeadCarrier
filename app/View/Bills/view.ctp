@@ -59,12 +59,12 @@
 						} ?>
 					</td>
 				</tr>
-				<?php if ($bill['Bill']['freshbooks_invoice_id']!='') { ?>
-				<tr>
+				<?php /*if ($bill['Bill']['freshbooks_invoice_id']!='') { ?>
+				<!--<tr>
 					<td></td>
 					<td><a href="/bills/view_freshbooks_bill/<?php echo $bill['Bill']['freshbooks_invoice_id']; ?>" target="_blank" style="text-decoration:none;"><input type="button" value="Freshbooks" class="mws-button green mws-i-24 small"></a></td>
-				</tr>
-				<?php } ?>
+				</tr>-->
+				<?php } */?>
                             </tbody>
                         </table>
 		    </div>
