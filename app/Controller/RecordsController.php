@@ -298,5 +298,16 @@ class RecordsController extends AppController {
 		$this->set('leads',$this->Client->find('all',array('conditions'=>array('Client.id'=>$records))));
 		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
 	}
+	
+	function reset_bills(){
+		$rec = $this->Record->find('all');
+		foreach ($rec as $r) {
+			$this->Record->id = $r['Record']['id'];
+			$data = array();
+			$data['Record']['bill_id'] = NULL;
+			$this->Record->save($data);
+			$this->Record->id = false;
+		}
+	}
 }
 ?>

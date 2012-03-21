@@ -4,7 +4,7 @@ class BillsController extends AppController {
 	var $name = 'Bills';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form');
-	var $uses = array('Company','Client','Setting','Bill','Field','User');
+	var $uses = array('Company','Client','Setting','Bill','Field','User','Vendor','Record');
 	public $components = array(
 		'Session',
 		'Password',
@@ -72,7 +72,7 @@ class BillsController extends AppController {
 	
 	public function run_bill(){
 		$userInfo = $this->Auth->user();
-		$c = $this->Company->findById($userInfo['User']['company_id']);
+		$c = $this->Company->findById($userInfo['company_id']);
 		$s = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 		
 		$run = '1';
@@ -85,7 +85,8 @@ class BillsController extends AppController {
 				$vn = $this->Vendor->find('all');
 				foreach ($vn as $v) {
 					$this->Record->recursive = 2;
-					$records = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.bill_id'=>null,'Record.vendor_id'=>$v['Vendor']['id'],'Record.created >'=>date('Y-m-d', strtotime("March 5, 2012")))));
+					$records = $this->Record->find('all',array('conditions'=>array('Record.sent'=>'1','Record.bill_id'=>null,'Record.vendor_id'=>$v['Vendor']['id'],'Record.created >'=>date('Y-m-d', strtotime("March 5, 2011")))));
+					//die(print_r($records));
 					if (count($records)>0) {
 						
 						//create the bill
@@ -193,7 +194,7 @@ class BillsController extends AppController {
 					$add = '';
 				}
 				$this->Session->setFlash('Bills Generated. '.$add);
-				$this->redirect('dashboard');
+				$this->redirect('/dashboard');
 			}
 	}
 }
