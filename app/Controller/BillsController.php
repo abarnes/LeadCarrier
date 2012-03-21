@@ -37,7 +37,13 @@ class BillsController extends AppController {
 		$this->layout = 'vendor';
 		$bill = $this->Bill->findById($id);
 		$userInfo = $this->Auth->user();
-		if ($userInfo['vendor_id']!=''&&$userInfo['vendor_id']==$bill['Bill']['vendor_id']) {
+		if ($userInfo['vendor_id']=='') {
+			$this->set('vendor','0');
+			$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
+		} else {
+			$this->set('vendor','1');
+		}
+		if ($userInfo['vendor_id']==''||$userInfo['vendor_id']==$bill['Bill']['vendor_id']) {
 			$this->set('bill',$bill);
 			
 			$unpaid = $this->Bill->find('all',array('conditions'=>array('Bill.paid'=>'0','Bill.vendor_id'=>$userInfo['vendor_id'])));

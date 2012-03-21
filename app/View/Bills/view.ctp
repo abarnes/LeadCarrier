@@ -10,9 +10,22 @@
             <!-- Main Navigation -->
             <div id="mws-navigation">
             	<ul>
+		<?php if ($vendor=='1') { ?>
                 	<li><a href="/records/vendor_view" class="mws-i-24 i-group-2">Leads</a></li>
                 	<li class="active"><a href="/bills" class="mws-i-24 i-archive">Bills</a></li>
                 	<li><a href="/vendors/vendor_edit" class="mws-i-24 i-cog-4">Profile</a></li>
+		<?php } else { ?>
+			<li><a href="/dashboard" class="mws-i-24 i-home">Dashboard</a></li>
+			<li>
+				<a href="/pending" class="mws-i-24 i-plus">
+					Pending <span class="mws-nav-tooltip">+<?php echo $pendings; ?></span>
+				</a>
+			</li>
+                	<li><a href="/clients" class="mws-i-24 i-group-2">Clients</a></li>
+                	<li><a href="/vendors/manage" class="mws-i-24 i-apartment-building">Vendors</a></li>
+                	<li class="active"><a href="/categories" class="mws-i-24 i-companies">Industries</a></li>
+                	<li><a href="/settings" class="mws-i-24 i-cog-4">Admin</a></li>
+		<?php } ?>
                 </ul>
             </div>
             <!-- End Navigation -->
@@ -26,7 +39,11 @@
 		<div style="float:left;width:100%;">
 			<h2 style="max-width:500px;float:left;">Bill <?php echo $bill['Bill']['week_start'].' - '.$bill['Bill']['week_end']; ?></h2>
 			<div style="float:right;">
-				<a href="/bills"><input type="button" value="All Bills" class="mws-button black mws-i-24 i-archive large"></a>
+				<?php if ($vendor=='1') { ?>
+					<a href="/bills"><input type="button" value="All Bills" class="mws-button black mws-i-24 i-archive large"></a>
+				<?php } else { ?>
+					<a href="/vendor/view/<?php echo $bill['Bill']['vendor_id']; ?>/billing"><input type="button" value="Back to Vendor" class="mws-button black mws-i-24 i-aparment-building large"></a>
+				<?php } ?>
 			</div>	
 		</div>
 		

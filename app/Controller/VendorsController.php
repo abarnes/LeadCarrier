@@ -53,7 +53,7 @@ class VendorsController extends AppController {
 	
 	function manage () {
 		$this->set('categories', $this->Category->find('list',array('order'=>'Category.name ASC')));
-		$this->Vendor->recursive = 2;
+		$this->Vendor->recursive = 1;
 		$vendors = $this->Vendor->find('all');	
 		$this->set(compact('vendors'));
 	}
