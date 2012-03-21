@@ -4,7 +4,7 @@ class BillsController extends AppController {
 	var $name = 'Bills';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form');
-	var $uses = array('Company','Client','Setting','Bill','Field');
+	var $uses = array('Company','Client','Setting','Bill','Field','User');
 	public $components = array(
 		'Session',
 		'Password',
