@@ -72,7 +72,7 @@
     	<!-- Logo Wrapper -->
     	<div id="mws-logo-container">
         	<div id="mws-logo-wrap">
-			<img src="/images/logo.png" alt="mws admin" />
+			<img src="/img/colorlogo.png" alt="Lead Carrier - The Most Affordable Full-Service Lead Distribution Platform" style="width:280px;margin-top:5px;">
 		</div>
         </div>
         

@@ -8,6 +8,7 @@ class UsersController extends AppController {
 	public $components = array(
 		'Session',
 		'Cookie',
+		'Email',
 		'Auth' => array(
 		    'loginAction' => array(
 			'controller' => 'users',
@@ -21,7 +22,7 @@ class UsersController extends AppController {
 	
         public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add','login','demo_login');
+		$this->Auth->allow('add','login','demo_login','amnesia','newpassword');
 		/*$connect = $this->connect();
 		if (!empty($connect)) {
 		    @App::import('ConnectionManager');
@@ -340,6 +341,80 @@ class UsersController extends AppController {
 			$this->redirect('/settings');
 		}
 	}
+	
+	function amnesia() {
+            $emailTo = '';
+            $emailFrom = '';
+            $emailSubject = '';
+            $emailBody = '';
+            
+            if($this->request->data) {
+                $userInfo = $this->User->findByEmail($this->request->data['User']['email']);
+                if(!empty($userInfo)) {
+                    $tmpHash = hash('md5',uniqid());
+                    $userInfo['User']['password_token'] = $tmpHash;
+                    if($this->User->save($userInfo, false)) {
+                        $this->Email->to = $userInfo['User']['email'];
+				$this->Email->subject = 'Password Reset';
+				$this->Email->replyTo = 'info@leadcarrier.com';
+				$this->Email->from = 'Lead Carrier <info@leadcarrier.com>';
+				$this->Email->template = 'amnesia'; 
+				$this->Email->sendAs = 'both';
+				$this->set('hash',$tmpHash);
+				$this->set('name',$userInfo['User']['username']);
+                        if($this->Email->send()) {
+                                                        $this->Session->setFlash('Password reset email sent');
+							$this->redirect('/users/login');
+                                                    } else {
+                                                        $this->Session->setFlash('Password reset email could not be sent.');
+                                                    }
+                    } else {
+                        $this->Session->setFlash('Cannot send your password reset email.');
+                    }
+                } else {
+                    $this->Session->setFlash('Email address not found in our system.');
+                }
+            }
+        }
+		
+	function newpassword($hash = null) {
+			// Check if user had a hash
+			if(isset($hash)||isset($this->request->data['User']['hash'])){
+				if(!isset($hash)){ $hash = $this->request->data['User']['hash']; }
+				$localUserInfo = $this->User->findByPasswordToken($hash);
+				$this->set(compact('hash'));
+				
+				if(empty($localUserInfo)) {
+					// Key wasn't valid. Send them away.
+					$this->Session->setFlash('Invalid key.');
+					$this->redirect('/');
+					exit();
+				} else {
+					// Key valid, do your thing.
+					if($this->request->data) {
+						// If they submitted the form... process it.
+						$p2 = $this->request->data['User']['password_confirm'];
+						if ($this->request->data['User']['password'] == $p2  && strlen($p2)>='6') {
+							$this->request->data['User']['id'] = $localUserInfo['User']['id'];
+							$this->request->data['User']['password_token'] = NULL;
+							if($this->User->save($this->request->data,false)) {
+								$this->Session->setFlash('Password Changed. Please login.');
+								$this->redirect('/users/login');
+								exit();
+							} else {
+								$this->Session->setFlash('Password Not Changed.');
+								$this->redirect('/users/amnesia');
+								exit();
+							}	
+						} else {
+							$this->Session->setFlash('Passwords Did Not Match, Or Your New Password Is Less Than 6 Characters.');
+							$this->redirect('/users/newpassword/'.$hash);
+						}
+					}
+				}
+			}
+	}
+
 
 }
 

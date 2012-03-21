@@ -57,6 +57,7 @@
                         </div>
                         <div class="mws-form-row">
 			<?php echo $this->Form->end(array('label'=>'Sign In','class'=>'mws-button green mws-login-button')); ?>
+			<a href="/users/amnesia" style="color:white;font-size:.9em;">Forgot Username or Password?</a>
                         </div>
                 </div>
             </div>
