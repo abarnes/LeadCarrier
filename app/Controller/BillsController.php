@@ -69,5 +69,11 @@ class BillsController extends AppController {
 			$this->redirect('/vendors/manage');
 		}
 	}
+	
+	public function run_bill(){
+		exec('/home/lcarrier/public_html/app/Console/cake bill');
+		$this->Session->setFlash('Bills Generated.');
+		$this->redirect('dashboard');
+	}
 }
 ?>
