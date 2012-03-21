@@ -46,7 +46,7 @@
                         </div>
                         <div class="mws-form-row">
                             <div class="mws-form-item large">
-				<?php echo $this->Form->input('password_confirm', array('label'=>'','placeholder'=>'confirm password','class'=>'mws-login-password mws-textinput')); ?>
+				<?php echo $this->Form->input('password_confirm', array('label'=>'','type'=>'password','placeholder'=>'confirm password','class'=>'mws-login-password mws-textinput')); ?>
                             </div>
                         </div>
                         <div class="mws-form-row">
