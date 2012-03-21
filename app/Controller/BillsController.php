@@ -4,7 +4,7 @@ class BillsController extends AppController {
 	var $name = 'Bills';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form');
-	var $uses = array('Company','Client','Setting','Bill');
+	var $uses = array('Company','Client','Setting','Bill','Field');
 	public $components = array(
 		'Session',
 		'Password',
@@ -33,8 +33,21 @@ class BillsController extends AppController {
 		$this->set('bills',$this->Bill->find('all',array('conditions'=>array('Bill.vendor_id'=>$userInfo['vendor_id']))));
 	}
 	
-	public function view() {
-		
+	public function view($id) {
+		$this->layout = 'vendor';
+		$bill = $this->Bill->findById($id);
+		$userInfo = $this->Auth->user();
+		if ($userInfo['vendor_id']!=''&&$userInfo['vendor_id']==$bill['Bill']['vendor_id']) {
+			$this->set('bill',$bill);
+			
+			$unpaid = $this->Bill->find('all',array('conditions'=>array('Bill.paid'=>'0','Bill.vendor_id'=>$userInfo['vendor_id'])));
+			$this->set('unpaid',$unpaid);
+			$this->set('count',count($unpaid));
+			$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
+		} else {
+			$this->Session->setFlash('You do not have permission to view this.');
+			$this->redirect('/clients/vendor_view');
+		}
 	}
 	
 	public function view_freshbooks_bill($fid) {
