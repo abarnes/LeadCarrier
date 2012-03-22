@@ -225,30 +225,61 @@ class ClientsController extends AppController {
 			$records = $this->Client->Record->find('all',array('conditions'=>array('Record.client_id'=>$id)));
 			//find vendors
 			$chosen = array();
+			//set up joins for each type of search
+			$j = array(
+									array( 
+									  'table' => 'categories_vendors', 
+									  'alias' => 'CategoriesVendor', 
+									  'type' => 'inner',  
+									  'conditions'=> array('CategoriesVendor.vendor_id = Vendor.id') 
+									), 
+									array( 
+									  'table' => 'categories', 
+									  'alias' => 'Category', 
+									  'type' => 'inner',  
+									  'conditions'=> array( 
+									      'Category.id = CategoriesVendor.category_id'
+									  )
+									),
+									array( 
+									  'table' => 'ranges_vendors', 
+									  'alias' => 'RangesVendor', 
+									  'type' => 'inner',  
+									  'conditions'=> array('RangesVendor.vendor_id = Vendor.id') 
+									), 
+									array( 
+									  'table' => 'ranges', 
+									  'alias' => 'Range', 
+									  'type' => 'inner',  
+									  'conditions'=> array( 
+									      'Range.id = RangesVendor.range_id'
+									) 
+			));			
+			$joins = array(
+									array( 
+									  'table' => 'categories_vendors', 
+									  'alias' => 'CategoriesVendor', 
+									  'type' => 'inner',  
+									  'conditions'=> array('CategoriesVendor.vendor_id = Vendor.id') 
+									), 
+									array( 
+									  'table' => 'categories', 
+									  'alias' => 'Category', 
+									  'type' => 'inner',  
+									  'conditions'=> array( 
+									      'Category.id = CategoriesVendor.category_id'
+									  ) 
+			));
 			foreach ($records as $r) {
 				if ($r['Record']['select']=='1') {
 					//for categories with ranges
-					if ($r['Record']['range_id']!=null) {
+					if ($r['Record']['range_id']!=NULL) {
 						//need to get latest vendor per category
 						$i=1;
 						while ($i<200) {
-							$this->Vendor->bindModel(array(
-								'hasOne' => array(
-									'RangesVendor',
-									'FilterTag' => array(
-										'className' => 'Range',
-										'foreignKey' => false,
-										'conditions' => array('FilterTag.id = RangesVendor.vendor_id')
-							))));
-							$this->Vendor->bindModel(array(
-								'hasOne' => array(
-									'CategoriesVendor',
-									'FilterTag' => array(
-										'className' => 'Category',
-										'foreignKey' => false,
-										'conditions' => array('FilterTag.id = CategoriesVendor.vendor_id')
-							))));
-							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','fields'=>array('Vendor.*'),'conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'CategoriesVendor.category_id'=>$r['Record']['category_id'],'RangesVendor.range_id'=>$r['Record']['range_id'])));
+							$this->Vendor->unbindModel(array('hasAndBelongsToMany'=>array('Category')));
+							$this->Vendor->unbindModel(array('hasAndBelongsToMany'=>array('Range')));
+							$vendor = $this->Vendor->find('first',array('joins'=>$j,'order'=>'Vendor.last_sent ASC','fields'=>array('Vendor.*'),'conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'CategoriesVendor.category_id'=>$r['Record']['category_id'],'RangesVendor.range_id'=>$r['Record']['range_id'])));
 							
 							if (!empty($vendor)) {
 								if ($vendor['Vendor']['total_bill']==null) {
@@ -270,15 +301,8 @@ class ClientsController extends AppController {
 					} else {
 						$i=1;
 						while ($i<200) {
-							$this->Vendor->bindModel(array(
-								'hasOne' => array(
-									'CategoriesVendor',
-									'FilterTag' => array(
-										'className' => 'Category',
-										'foreignKey' => false,
-										'conditions' => array('FilterTag.id = CategoriesVendor.vendor_id')
-							))));
-							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'CategoriesVendor.category_id'=>$r['Record']['category_id'])));
+							$this->Vendor->unbindModel(array('hasAndBelongsToMany'=>array('Category')));
+							$vendor = $this->Vendor->find('first',array('joins'=>$joins,'order'=>'Vendor.last_sent ASC','conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'CategoriesVendor.category_id'=>$r['Record']['category_id'])));
 							if (!empty($vendor)) {
 								if ($vendor['Vendor']['total_bill']==null) {
 									$amt = 0;

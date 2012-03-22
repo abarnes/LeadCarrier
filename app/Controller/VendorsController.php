@@ -172,23 +172,28 @@ class VendorsController extends AppController {
 				$new_array = array();
 				foreach ($cat as $c) {
 					$new_array[] = $c;
-				}				
+				}
+				/*$data = array();
+				$this->Vendor->id = $vid;
+				$data['Category']['Category'] = $new_array;
+				$this->Vendor->save($data);
+				$this->Vendor->id = false;*/
 				
 				//save range_vendor table
 				$new_array2 = array();
 				foreach ($this->request->data['Vendor'] as $key=>$value) {
 					if (substr($key,0,2)=='c_') {
 						foreach ($value as $v) {
-							$new_array[] = $v;
+							$new_array2[] = $v;
 						}
 					}
 				}
 				
-				$data = array();
+				$d = array();
 				$this->Vendor->id = $vid;
-				$data['Range']['Range'] = $new_array2;
-				$data['Category']['Category'] = $new_array;
-				$this->Vendor->save($data);
+				$d['Category']['Category'] = $new_array;
+				$d['Range']['Range'] = $new_array2;
+				$this->Vendor->save($d);
 				$this->Vendor->id = false;
 				
 				//freshbooks create

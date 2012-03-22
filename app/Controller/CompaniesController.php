@@ -302,6 +302,13 @@ class CompaniesController extends AppController {
 			}
 		}
 	}
+	
+	function api() {
+		$this->layout = 'admin';
+		$comp = $this->Company->findById($this->Auth->user('company_id'));
+		$this->set('company',$comp);
+		$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
+	}
 }
 
 ?>

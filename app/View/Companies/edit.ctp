@@ -250,7 +250,9 @@ function button(action){
 						</tr>
 				</tbody>
 				</table>
-                    </div>    	
+                    </div>
+		    <br/>
+		    <a href="/companies/api" style="float:right;"><input type="button" value="API Information" class="mws-button blue mws-i-24 i-link-2 large"></a>
                 </div>
 
             </div>

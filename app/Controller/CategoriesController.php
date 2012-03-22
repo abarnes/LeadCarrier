@@ -149,7 +149,8 @@ class CategoriesController extends AppController {
 				}
 			}
 			//$this->Session->setFlash('Thank you! You will receive your quotes soon.');
-			$this->redirect(array('controller'=>'pages','action' => 'thankyou'));
+			//$this->redirect(array('controller'=>'pages','action' => 'thankyou'));
+			$this->redirect('/clients/add');
 		}
 	}
     

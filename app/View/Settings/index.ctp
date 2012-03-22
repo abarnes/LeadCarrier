@@ -129,7 +129,7 @@ function button2(action){
 		<div style="float:left;width:100%;">
 			<h2 style="max-width:500px;float:left;">Admin Panel</h2>
 			<div style="float:right;">
-
+				<a href="/companies/api" style="float:right;"><input type="button" value="API Information" class="mws-button blue mws-i-24 i-link-2 large"></a>
 			</div>	
 		</div>
 		
@@ -206,7 +206,8 @@ function button2(action){
                 </div>
 		
 		<div class="mws-panel grid_4">
-                	<div class="mws-panel-header">
+				
+		    <div class="mws-panel-header">
                     	<span class="mws-i-24 i-list">Freshbooks Settings</span>
                     </div>
                     <div class="mws-panel-body">
