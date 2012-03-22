@@ -262,7 +262,7 @@ class ClientsController extends AppController {
 					} else {
 						$i=1;
 						while ($i<200) {
-							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'Vendor.category_id'=>$r['Record']['category_id'])));
+							$vendor = $this->Vendor->find('first',array('order'=>'Vendor.last_sent ASC','conditions'=>array('Vendor.active'=>'1',"Not"=>array('Vendor.id'=>$chosen),'VendorsCategory.category_id'=>$r['Record']['category_id'])));
 							if (!empty($vendor)) {
 								if ($vendor['Vendor']['total_bill']==null) {
 									$amt = 0;

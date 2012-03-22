@@ -45,7 +45,7 @@ class CategoriesController extends AppController {
 	
 	function index () {
 		$this->layout = 'admin';
-		$this->Category->recursive = 2;
+		$this->Category->recursive = 1;
 		$cats = $this->Category->find('all');
 		$this->set(compact('cats'));
 	}
