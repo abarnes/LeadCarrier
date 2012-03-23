@@ -45,7 +45,7 @@ If you do not wish to receive cookies, you may set your browser to reject cookie
 
 <h5>Retention of Personal Information</h5>
 
-<p>Lead Carrier retains the personal information collected on Lead Carrier Internet Sites as long as necessary to provide the services, products and information you request or as permitted by applicable law. Questions about this Policy or our Privacy Statements If you have any questions about this Policy or our use of your personal information, please write to us at Lead Carrier, LLC, Global Privacy Policy, 2000 S. 35E, Dallas, TX 75287, USA.</p>
+<p>Lead Carrier retains the personal information collected on Lead Carrier Internet Sites as long as necessary to provide the services, products and information you request or as permitted by applicable law. Questions about this Policy or our Privacy Statements If you have any questions about this Policy or our use of your personal information, please write to us at Lead Carrier, LLC, Global Privacy Policy, PO Box 703864, Dallas, TX 75370-3064, USA.</p>
 
 <h5>Changes to this Policy</h5>
 
