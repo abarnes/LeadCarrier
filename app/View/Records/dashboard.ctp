@@ -186,9 +186,9 @@
                     <div class="mws-panel-body">
                     	<div class="mws-panel-content">
 	                    	<h4><ol>
-					<li><a href="/categories/add" style="">Create Industries & Price Ranges</a></li>
-					<li><a href="/vendors/add" style="color:#ffffff;">Add Vendors</a></li>
-					<li><a href="/companies/api" style="color:#ffffff;">Integrate with Your Site</a></li>
+					<li><a href="/categories/add" style="text-decoration:none;color:#323232;">Create Industries & Price Ranges</a></li>
+					<li><a href="/vendors/add" style="text-decoration:none;color:#323232;">Add Vendors</a></li>
+					<li><a href="/companies/api" style="text-decoration:none;color:#323232;">Integrate with Your Site</a></li>
 					<li>Start Distributing Leads!</li>
 				</ol></h4>
                         </div>
