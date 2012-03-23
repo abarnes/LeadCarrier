@@ -37,7 +37,7 @@
 					<li class="row_style_2"><span>Annual Savings</span></li>
 					<li class="row_style_4"><span>Leads per Month</span></li>
 					<li class="row_style_2"><span>Integrated API Access</span></li>
-					<li class="row_style_4"><span>Mailchimp Integration</span></li>
+					<!--<li class="row_style_4"><span>Mailchimp Integration</span></li>-->
 					<li class="row_style_2"><span>Freshbooks Integration</span></li>
 					<li class="row_style_4"><span>Dedicated Support Representative</span></li>
 					<li class="row_style_2"><span>Number of Users</span></li>
@@ -60,7 +60,7 @@
 					<li class="row_style_1 align_center"><span>-</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
-					<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<!--<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>-->
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<li class="row_style_3 align_center"><span>Yes</span></li>
 					<li class="row_style_1 align_center"><span>unlimited</span></li>
@@ -83,7 +83,7 @@
 					<li class="row_style_2 align_center"><span>$600</span></li>
 					<li class="row_style_4 align_center"><span>unlimited</span></li>
 					<li class="row_style_2 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
-					<li class="row_style_4 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<!--<li class="row_style_4 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>-->
 					<li class="row_style_2 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<li class="row_style_4 align_center"><span>Yes</span></li>
 					<li class="row_style_2 align_center"><span>unlimited</span></li>
@@ -106,7 +106,7 @@
 					<li class="row_style_1 align_center"><span>$1,800</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
-					<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
+					<!--<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>-->
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<li class="row_style_3 align_center"><span>Yes</span></li>
 					<li class="row_style_1 align_center"><span>unlimited</span></li>
