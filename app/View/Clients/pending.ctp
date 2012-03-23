@@ -38,6 +38,8 @@ function chk() {
 function button(action){
 	if (action=='delete') {
 		var answer = confirm('Are you sure you want to delete these?  This cannot be undone.');
+	} else {
+		var answer = true;
 	}
 	if (answer) {
 		$('#ClientAction').val(action);
