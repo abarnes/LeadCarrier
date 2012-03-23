@@ -61,7 +61,7 @@
             <?php } else { ?>
                 <fieldset><?php echo $this->Form->input('subdomain',array('value'=>'Subdomain','onfocus'=>"if(this.value=='Subdomain')this.value='';","onblur"=>"if(this.value=='')this.value='Subdomain';")); ?></fieldset>
              <?php } ?>
-             <?php echo $this->Form->checkbox('terms', array('hiddenField' => false,'error'=>true)); ?> I have read and agree to the <a href="/terms">Terms and Conditions</a><br/><br/>
+             <?php echo $this->Form->checkbox('terms', array('hiddenField' => false,'error'=>true)); ?> I have read and agree to the <a href="/pages/termsandconditions" target="_blank">Terms and Conditions</a> and <a href="/pages/privacy" target="_blank">Privacy Policy</a><br/><br/>
             
             <div class="fleft"><fieldset><input type="submit" value="Register" /></fieldset></div>
 	    </form>

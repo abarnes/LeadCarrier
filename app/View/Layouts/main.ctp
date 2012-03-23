@@ -55,7 +55,7 @@ else { document.write('<link rel=stylesheet href="/fancybox/jquery.fancybox-1.3.
     <div class="grid_16 margin">
       
     </div>
-    
+    <a href="/login" style="position:absolute;top:20px;margin-left:880px;"><input type="submit" value="login" class="minibutton-black"></a>
     <!-- Navigation Start-->
     <div id="navigation" class="grid_16 margin">
         

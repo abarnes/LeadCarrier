@@ -53,6 +53,8 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 	    
 	<div id="topdot" class="grid_16 margin"></div>
 	
+	<a href="/login" style="position:absolute;top:20px;margin-left:880px;"><input type="submit" value="login" class="minibutton-black"></a>
+	
 	<!-- Navigation Start-->
 	<div id="navigation" class="grid_16 margin">
 	    
@@ -257,7 +259,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         </div>
         <div class="leftcloumb-list">
         	<ul>
-            	<li><div class="margin4 fright"></div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
+            	<li><div class="margin4 fright"></div><img src="image/post/t3.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
                 <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
                 <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark G. Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
             </ul>
@@ -274,7 +276,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         <div class="bussiness-boss">
             <img src="image/post/biggboss.png" class="bussiness-boss-img" alt="">
             <div class="bussiness-shadow"><img src="image/theme/bigshadow2.png" alt=""></div>
-            <!--<h1>Micheal Smith Fisher:</h1>-->
+            <h1>Peter Nguyen</h1>
             <p>"I recommend Lead Carrier to anyone who wants to launch the next major lead generation company. Lead Carrier is lean yet powerful and is the perfect backend office for a starting lead generation company with plans to grow."</p>
         </div>
     </div>
