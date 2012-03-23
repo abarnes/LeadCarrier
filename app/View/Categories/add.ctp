@@ -10,7 +10,7 @@
             <!-- Main Navigation -->
             <div id="mws-navigation">
             	<ul>
-                	<li><a href="/dashboard" class="mws-i-24 i-home">Dashboard</a></li>d
+                	<li><a href="/dashboard" class="mws-i-24 i-home">Dashboard</a></li>
 			<li>
 				<a href="/pending" class="mws-i-24 i-plus">
 					Pending <span class="mws-nav-tooltip">+<?php echo $pendings; ?></span>

@@ -268,14 +268,14 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
     <!-- Bigg Boss -->
     <div class="grid_8 margin">
     	<div class="title-2cloumb">
-        	<h1>Used By Advertising 360</h1>
-        	<p>Lorem ipsum is simply printing swith data text</p>
+        	<h1>Advertiser360 Official Partner</h1>
+        	<p>Lead Carrier is the #1 recommended Lead Distribution software of Advertiser360</p>
         </div>
         <div class="bussiness-boss">
             <img src="image/post/biggboss.png" class="bussiness-boss-img" alt="">
             <div class="bussiness-shadow"><img src="image/theme/bigshadow2.png" alt=""></div>
-            <h1>Micheal Smith Fisher:</h1>
-            <p>"Phasellus dapibus rutrum mi, sed elementum felis placerat ac. Aenean gravida elementum arcu non ultrices. Proin pharetra ipsum vitae augue dignissim pharetra. Maecenas turpis leo, dignissim a elementum id, feugiat eget leo. Ut vitae neque aliquam orci blandit elementum eu id nibh. Class aptent taciti sociosqu ad litora."</p>
+            <!--<h1>Micheal Smith Fisher:</h1>-->
+            <p>"I recommend Lead Carrier to anyone who wants to launch the next major lead generation company. Lead Carrier is lean yet powerful and is the perfect backend office for a starting lead generation company with plans to grow."</p>
         </div>
     </div>
     <!-- Bigg Boss End -->
