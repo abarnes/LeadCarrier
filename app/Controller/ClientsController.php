@@ -88,7 +88,7 @@ class ClientsController extends AppController {
 					foreach ($this->request->data['Client'] as $row=>$value) {
 						if ($row!='action') {
 							if ($value=='1') {
-								$this->_approve(substr($row,5),'submit');
+								$this->_approve(substr($row,5),'1');
 							}
 						}
 					}
@@ -219,7 +219,7 @@ class ClientsController extends AppController {
 		$this->_approve($id);
 	}
 	
-	function _approve($id) {
+	function _approve($id,$mult=null) {
 		$this->Client->id = $id;
 		if ($this->Client->saveField('approved','1')) {
 			$records = $this->Client->Record->find('all',array('conditions'=>array('Record.client_id'=>$id)));
@@ -354,8 +354,11 @@ class ClientsController extends AppController {
 					unset($i);
 				}
 			}
-			$this->redirect(array('action'=>'pending'));
-			
+			if ($mult=='1') {
+				return true;
+			} else {
+				$this->redirect(array('action'=>'pending'));
+			}
 		} else {
 			$this->Session->setFlash('Error: Failed to Save');
 		}
