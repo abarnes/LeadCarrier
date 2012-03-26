@@ -1,4 +1,9 @@
 <?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class RecordsController extends AppController {
  
 	var $name = 'Records';
@@ -18,32 +23,12 @@ class RecordsController extends AppController {
 	}
         
         function beforeFilter() {
-		parent::beforeFilter();
-		
-            //$this->Auth->allow('view');
-	    
-	    /*$connect = $this->connect();
-	    if (!empty($connect)) {
-		@App::import('ConnectionManager');
-		$a = array(
-			'datasource' => 'Database/Mysql',
-			'persistent' => false,
-			'host' => 'localhost',
-			'login' => $connect['db_name'],
-			'password' => $connect['db_password'],
-			'database' => $connect['db_name'],
-			'prefix' => '');
-		try {
-			ConnectionManager::create('new', $a);
-		} catch (MissingDatabaseException $e) {
-			$this->Session->setFlash('DB error: '.$e->getMessage());
+		$allow = array();
+		if ($this->Auth->user('id')==null && !in_array($this->params['action'],$allow)) {
+			$this->Session->setFlash('You are not authorized to view that page.');
+			$this->redirect('/login');
 		}
-		$this->Record->setDataSource('new');
-		$this->Vendor->setDataSource('new');
-		$this->Category->setDataSource('new');
-		$this->Setting->setDataSource('new');
-		$this->Client->setDataSource('new');
-	    }*/
+		parent::beforeFilter();
         }
 	
 	public function dashboard(){

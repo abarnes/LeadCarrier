@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 <h1 style="position: relative;top:20px;">Terms and Conditions</h1><br/>
 <p>The content on this site and any other Lead Carrier, LLC sites is property of Lead Carrier, LLC, so please do not use it without our express written consent. We can not be held liable for any damages incurred from using this site. If you would like all of the details, read on.</p>
 

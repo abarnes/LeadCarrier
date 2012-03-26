@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 <?php if ($setup=='0') { ?>
 	<div id="mws-sidebar">
         	<!--<div id="mws-searchbox" class="mws-inset">

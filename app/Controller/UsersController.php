@@ -1,4 +1,9 @@
 <?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class UsersController extends AppController {
  
 	var $name = 'Users';
@@ -21,27 +26,13 @@ class UsersController extends AppController {
 	);
 	
         public function beforeFilter() {
+		$allow = array('add','login','demo_login','amnesia','newpassword','lg');
+		if ($this->Auth->user('id')==null && !in_array($this->params['action'],$allow)) {
+			$this->Session->setFlash('You are not authorized to view that page.');
+			$this->redirect('/login');
+		}
 		parent::beforeFilter();
 		$this->Auth->allow('add','login','demo_login','amnesia','newpassword');
-		/*$connect = $this->connect();
-		if (!empty($connect)) {
-		    @App::import('ConnectionManager');
-		    $a = array(
-			    'datasource' => 'Database/Mysql',
-			    'persistent' => false,
-			    'host' => 'localhost',
-			    'login' => $connect['db_name'],
-			    'password' => $connect['db_password'],
-			    'database' => $connect['db_name'],
-			    'prefix' => '');
-		    try {
-			    ConnectionManager::create('new', $a);
-		    } catch (MissingDatabaseException $e) {
-			    $this->Session->setFlash('DB error: '.$e->getMessage());
-		    }
-		    $this->Setting->setDataSource('new');
-		    $this->Client->setDataSource('new');
-		}	*/	
         }
 	
         public function login() {

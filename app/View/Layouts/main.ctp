@@ -45,6 +45,11 @@ else { document.write('<link rel=stylesheet href="/fancybox/jquery.fancybox-1.3.
 
 </head>
 <body style="background-color:#DBDBDB;">
+    <!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 
 <!-- Container Start-->
 <div class="container_16" style="padding-left:15px;">

@@ -1,4 +1,9 @@
-<?php 
+<?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class Setting extends AppModel {
     var $name = 'Setting';
     var $useDbConfig = 'new';
@@ -35,8 +40,8 @@ class Setting extends AppModel {
         ),
         'leads_per_industry'=>array(
             'rule1'=>array(
-                'rule'=>array('range',1,20),
-                'message'=>'This field must be between 1 and 20'
+                'rule'=>array('range',0,11),
+                'message'=>'This field must be between 1 and 10'
             )
         )
     );

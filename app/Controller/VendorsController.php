@@ -1,4 +1,9 @@
 <?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class VendorsController extends AppController {
  
 	var $name = 'Vendors';
@@ -16,33 +21,14 @@ class VendorsController extends AppController {
 	);
         
         function beforeFilter() {
+		$allow = array('vadd','party','index');
+		if ($this->Auth->user('id')==null && !in_array($this->params['action'],$allow)) {
+			$this->Session->setFlash('You are not authorized to view that page.');
+			$this->redirect('/login');
+		}
+		
 		parent::beforeFilter();
             $this->Auth->allow('vadd','party','index');
-	    //establish DB connection based on logged in user
-	    /*$connect = $this->connect();
-	    if (!empty($connect)) {
-		@App::import('ConnectionManager');
-		$a = array(
-			'datasource' => 'Database/Mysql',
-			'persistent' => false,
-			'host' => 'localhost',
-			'login' => $connect['db_name'],
-			'password' => $connect['db_password'],
-			'database' => $connect['db_name'],
-			'prefix' => '');
-		try {
-			ConnectionManager::create('new', $a);
-		} catch (MissingDatabaseException $e) {
-			$this->Session->setFlash('DB error: '.$e->getMessage());
-		}
-		$this->Vendor->setDataSource('new');
-		$this->Category->setDataSource('new');
-		$this->Range->setDataSource('new');
-		$this->Bill->setDataSource('new');
-		$this->Record->setDataSource('new');
-		$this->Setting->setDataSource('new');
-		$this->Client->setDataSource('new');
-	    }*/
 	    $this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
         }
         
@@ -275,6 +261,7 @@ class VendorsController extends AppController {
 		}
 	}
 	
+	//function called by URL only - to convert Vendor.category_id to CategoriesVendors table
 	function convert() {
 		$all = $this->Vendor->find('all',array('conditions'=>array('Vendor.category_id !='=>'0')));
 		foreach ($all as $a) {
@@ -295,8 +282,9 @@ class VendorsController extends AppController {
 		if (empty($this->request->data)) {
 			$this->request->data = $this->Vendor->read();
 			$cats = array();
-			foreach ($this->request->data['Range'] as $r) {
-				$ids[$r['category_id']] = $r['category_id'];
+			$ids = array();
+			foreach ($this->request->data['Category'] as $r) {
+				$ids[$r['id']] = $r['id'];
 			}
 			$this->set('categories', $this->Category->find('list',array('order'=>'Category.name ASC')));
 			$this->Range->recursive = 0;
@@ -305,7 +293,6 @@ class VendorsController extends AppController {
 			foreach ($ranges as $c) {
 				$opts[$c['Range']['category_id']][$c['Range']['id']] = $c['Range']['name'];
 			}
-			//die(print_r($this->request->data));
 			$this->set('opts',$opts);
 			$this->set('name',$this->request->data['Vendor']['name']);
 		} else {
@@ -314,26 +301,20 @@ class VendorsController extends AppController {
 			}
 			//die(print_r($this->request->data));
 			if ($this->Vendor->save($this->request->data)) {
-				/*$cats = array();
-				$this->request->data = $this->Vendor->read();
-				foreach ($this->request->data['Range'] as $r) {
-					$cats[$r['category_id']] = $r['category_id'];
-				}*/
 				
-				//save category_vendor table
-				
-				
-				//save range_vendor table
+				//save range_vendor table and categories_vendors table
 				$new_array2 = array();
 				foreach ($this->request->data['Vendor'] as $key=>$value) {
 					if (substr($key,0,2)=='c_') {
 						foreach ($value as $v) {
-							$new_array[] = $v;
+							$new_array2[] = $v;
 						}
 					}
 				}
+				//die(print_r($this->request->data));
 				$data = array();
 				$this->Vendor->id = $id;
+				//$data['Category']['Category'] = $new_array;
 				$data['Range']['Range'] = $new_array2;
 				$this->Vendor->save($data);
 				$this->Vendor->id = false;

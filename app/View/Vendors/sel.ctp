@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
         <div id="mws-sidebar">
         	<!--<div id="mws-searchbox" class="mws-inset">
             	<form action="table.html">
@@ -68,7 +73,7 @@
                     				<div class="mws-form-item large">
 							<ul class="mws-form-list inline">
 							    <?php echo $this->Form->input('Category', array( 'label' => '','multiple'=>'checkbox','div'=>false,'before'=>'<li>','after'=>'</li>')); ?>
-							</u>
+							</ul>
                     				</div>
                     			</div>
                     		</div>

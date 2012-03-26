@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 <?php if ($go=='1') { ?>
 	<!-----chart function ---->
 	<script type="text/javascript">

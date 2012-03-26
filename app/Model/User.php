@@ -1,4 +1,9 @@
-<?php 
+<?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class User extends AppModel {
     var $name = 'User';
     var $belongsTo = array('Company');

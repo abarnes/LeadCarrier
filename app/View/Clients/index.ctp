@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 <script type="text/javascript">
 $(document).ready(function(){
 		$("#master").click(function(){
@@ -83,6 +88,7 @@ function button(action){
 		<div style="float:left;width:100%;">
 			<h2 style="max-width:500px;float:left;"><?php echo $show; ?> Clients</h2>
 			<div style="float:right;">
+				<a href="/clients/export_xls" target="_blank" style="margin-right:26px;"><input type="button" value="Export to Excel" class="mws-button orange mws-i-24 i-table-1 large"></a>
 				<a href="/clients"><input type="button" value="All" class="mws-button black mws-i-24 i-multiple-users large" <?php if ($show=='All') {echo 'disabled="disabled"';} ?>/></a>
 				<a href="/clients/index/approved"><input type="button" value="Approved" class="mws-button green mws-i-24 i-check large" <?php if ($show=='Approved') {echo 'disabled="disabled"';} ?>></a>
 				<a href="/clients/index/rejected"><input type="button" value="Rejected" class="mws-button red mws-i-24 i-acces-denied-sign large" <?php if ($show=='Rejected') {echo 'disabled="disabled"';} ?>></a>

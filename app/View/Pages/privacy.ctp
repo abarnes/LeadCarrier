@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 <h1 style="position: relative;top:20px;">Privacy Policy</h1><br/>
 
 <h2 style="line-height:1.2em;">Our privacy policy is simple; we will only contact you if you voluntarily submit your contact information. We will never sell your information.</h2>

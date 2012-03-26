@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 <h3>Select Vendors for this Price Range</h3>
 <h5><?php echo $name; ?></h5>
     

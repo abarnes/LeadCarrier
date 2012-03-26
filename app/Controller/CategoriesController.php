@@ -1,4 +1,9 @@
 <?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class CategoriesController extends AppController {
  
 	var $name = 'Categories';
@@ -14,32 +19,15 @@ class CategoriesController extends AppController {
 	);
         
         function beforeFilter() {
-	    parent::beforeFilter();
-            $this->Auth->allow('view','select');
-	    
-	    /*$connect = $this->connect();
-	    if (!empty($connect)) {
-		@App::import('ConnectionManager');
-		$a = array(
-			'datasource' => 'Database/Mysql',
-			'persistent' => false,
-			'host' => 'localhost',
-			'login' => $connect['db_name'],
-			'password' => $connect['db_password'],
-			'database' => $connect['db_name'],
-			'prefix' => '');
-		try {
-			ConnectionManager::create('new', $a);
-		} catch (MissingDatabaseException $e) {
-			$this->Session->setFlash('DB error: '.$e->getMessage());
+		$allow = array();
+		if ($this->Auth->user('id')==null && !in_array($this->params['action'],$allow)) {
+			$this->Session->setFlash('You are not authorized to view that page.');
+			$this->redirect('/login');
 		}
-		//$this->Category->setDataSource('new');
-		//$this->Range->setDataSource('new');
-		$this->Client->setDataSource('new');
-		$this->Record->setDataSource('new');
-		$this->RangesVendor->setDataSource('new');
-	    }*/
-	    $this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
+		
+		parent::beforeFilter();
+		$this->Auth->allow();
+		$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
         }
         
 	

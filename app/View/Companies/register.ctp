@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
  <div class="grid_10 margin leftsays">
         <div class="title-2cloumb">
         	<h1>Sign Up</h1>

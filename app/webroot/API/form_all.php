@@ -1,4 +1,10 @@
 <?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
+
 /*--------------------------------------------------------------------------
  This file automatically renders a complete form, both client information and selections.
  

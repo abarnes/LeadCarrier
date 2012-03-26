@@ -1,4 +1,9 @@
 <?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class CompaniesController extends AppController {
  
 	var $name = 'Companies';
@@ -16,16 +21,14 @@ class CompaniesController extends AppController {
 	);
         
     public function beforeFilter() {
+		$allow = array('register','inactive','find');
+		if ($this->Auth->user('id')==null && !in_array($this->params['action'],$allow)) {
+			$this->Session->setFlash('You are not authorized to view that page.');
+			$this->redirect('/login');
+		}
+		
 		parent::beforeFilter();
 		$this->Auth->allow('register','inactive','find');
-	    /*$admin = array('admin_index','admin_delete','admin_view');
-	    if (in_array(Router::url($this->request->here, true),$admin)) {
-		$userInfo = $this->Auth->user();
-		if (empty($userInfo)||$userInfo['User']['admin']!='1') {
-			$this->Session->setFlash('Access to this page is restricted to system administrators.');
-			$this->redirect('/');
-		}
-	    }*/
     }
 	
 	public function register($plan) {

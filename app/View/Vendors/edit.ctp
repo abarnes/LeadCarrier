@@ -1,3 +1,19 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
+<?php //die(print_r($categories)); ?>
+<script type="text/javascript">
+$(document).ready(function() {
+	<?php foreach ($categories as $key=>$value) { ?>
+		$('#CategoryCategory<?php echo $key; ?>').click(function() {
+			$('.theform').submit();
+		});
+	<?php } ?>
+});
+</script>
+
 	<div id="mws-sidebar">
         	<!--<div id="mws-searchbox" class="mws-inset">
             	<form action="table.html">
@@ -48,7 +64,7 @@
 					'label' => false,
 					'div' => false
 				    ),
-				    'class'=>'mws-form',
+				    'class'=>'mws-form theform',
 				    'action'=>'edit/'.$id
 				)); ?>
 				<?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>
@@ -127,7 +143,19 @@
                     					<?php //echo $this->Form->input('leads_per_week', array( 'class' => 'mws-textinput','type'=>'text')); ?>
                     				</div>
                     			</div>
+					<div class="mws-form-inline">
+						<div class="mws-form-row">
+							<label>Industry</label>
+							<div class="mws-form-item large">
+								<ul class="mws-form-list inline">
+								    <?php echo $this->Form->input('Category', array( 'label' => '','multiple'=>'checkbox','div'=>false,'before'=>'<li id="theopts">','after'=>'</li>')); ?>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
 
+			
 					<?php
 					//build array of pre-selected ranges
 					$in = array();
@@ -144,7 +172,7 @@
 									<ul class="mws-form-list inline"><li>
 									    <?php foreach ($opts[$cat['id']] as $key=>$value) {?>
 										<div class="checkbox">
-										    <?php if (in_array($key,$in[$cat['id']])) { ?>
+										    <?php if (!empty($in[$cat['id']])&&in_array($key,$in[$cat['id']])) { ?>
 											<input type="checkbox" checked=true name="data[Vendor][c_<?php echo $cat['id']; ?>][]" value="<?php echo $key; ?>" id="VendorC<?php echo $cat['id'].$key; ?>">
 										    <?php } else { ?>
 											<input type="checkbox" name="data[Vendor][c_<?php echo $cat['id']; ?>][]" value="<?php echo $key; ?>" id="VendorC<?php echo $cat['id'].$key; ?>">

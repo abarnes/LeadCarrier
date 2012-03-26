@@ -1,48 +1,8 @@
-<script type="text/javascript">
-$(document).ready(function(){
-		$("#master").click(function(){
-		  var checked_status = this.checked;
-                    $("input[class=ck]").each(function()
-                    {
-			/*if (this.checked==false) {
-				this.checked=true;
-			} else {
-				this.checked=false;
-			}*/
-                     this.checked = true;
-                    });
-		    chk();
-		    return true;
-		 });
-});
-
-function chk() {
-	var $b = $('input[type=checkbox]');
-	var cnt = $b.filter(':checked').length;
-	if (document.getElementById('master').checked == true) {
-		var max = 2;
-	} else {
-		var max = 1;
-	}
-	if (cnt>max) {
-		document.getElementById('edit').style.display='none';
-		document.getElementById('password').style.display='none';
-	} else {
-		document.getElementById('edit').style.display='block';
-		document.getElementById('password').style.display='block';
-	}
-	return false;
-}
-
-function button(action){
-	if (action=='delete') {
-		confirm('Are you sure you want to delete these users?  This cannot be undone.');
-	}
-	$('#UserAction').val(action);
-	$('#UserSubmitForm').submit();
-}
-</script>        
-	
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->       
 	<div id="mws-sidebar">
         	<!--<div id="mws-searchbox" class="mws-inset">
             	<form action="table.html">

@@ -17,6 +17,12 @@ echo $this->fetch('script');
 </head>
 <body>
 
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
+
 <!-- If you'd like some sort of menu to
 show up on all of your views, include it here -->
 <div id="header">

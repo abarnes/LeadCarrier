@@ -8,33 +8,15 @@ class ClientsController extends AppController {
 	var $components = array('Auth','Session','Email');
         
         function beforeFilter() {
-		parent::beforeFilter();
-            $this->Auth->allow('add');
-	    
-	    /*$connect = $this->connect();
-	    if (!empty($connect)) {
-		@App::import('ConnectionManager');
-		$a = array(
-			'datasource' => 'Database/Mysql',
-			'persistent' => false,
-			'host' => 'localhost',
-			'login' => $connect['db_name'],
-			'password' => $connect['db_password'],
-			'database' => $connect['db_name'],
-			'prefix' => '');
-		try {
-			ConnectionManager::create('new', $a);
-		} catch (MissingDatabaseException $e) {
-			$this->Session->setFlash('DB error: '.$e->getMessage());
+		$allow = array('add');
+		if ($this->Auth->user('id')==null && !in_array($this->params['action'],$allow)) {
+			$this->Session->setFlash('You are not authorized to view that page.');
+			$this->redirect('/login');
 		}
-		$this->Client->setDataSource('new');
-		$this->Category->setDataSource('new');
-		$this->Range->setDataSource('new');
-		$this->Vendor->setDataSource('new');
-		$this->Setting->setDataSource('new');
-		$this->Record->setDataSource('new');
-	    }*/
-	    $this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
+		
+		parent::beforeFilter();
+		$this->Auth->allow('add');
+		$this->set('pendings',$this->Client->find('count',array('conditions'=>array('Client.approved'=>'0'))));
         }
         
 	function index ($w=null) {
@@ -388,53 +370,21 @@ class ClientsController extends AppController {
 		return true;
 	}
 	
-	function export() { 
-		//$this->layout = 'ajax';
+	function export_xls() {
+		$this->layout = 'export_xls';
 		$this->Client->recursive = 0;
-		$this->set('data', $this->Client->find('all',array('fields'=>array('first_name','last_name'), 'order' => 'Client.last_name ASC'))); 
-	}
-	
-	function export_xml() {
-		$this->Client->recursive = 0;
-		$data = $this->Client->find('all',array('fields'=>array('first_name','last_name'), 'order' => 'Client.last_name ASC'));
+		
+		$fields = $this->Field->find('list');
+		$fields[] = 'approved';
+		array_unshift($fields,'id');
+		
+		$data = $this->Client->find('all',array('fields'=>$fields,'order' => 'Client.id ASC'));
 		
 		$this->set('rows',$data);
-		$this->render('export_xls','export_xls');
+		$this->response->header(array('Content-Disposition: attachment; filename="leads'.date('m-d-Y').'.xls"'));
+		$this->response->type(array('xls' => 'application/vnd.ms-excel'));
+		$this->response->type('xls');
 	}
-	
-	/*function findfb(){
-		$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
-		require('freshbooks_api/FreshBooksRequest.php');
-					
-		$domain = $setting['Setting']['freshbooks_url'];
-		$token = $setting['Setting']['freshbooks_api_token'];
-		
-		FreshBooksRequest::init($domain, $token);
-								$fb = new FreshBooksRequest('invoice.lines.add');
-								$fb->post(array(
-									'invoice_id'=>'35439',
-									'lines'=>array(
-										'line'=>array(
-											'name'=>'Lead',
-											'description'=>'desc',
-											'unit_cost'=>$setting['Setting']['lead_price'],
-											'quantity'=>'1'
-										)
-									)
-									)
-								);
-								$fb->request();
-			if($fb->success())
-			{
-			    echo 'successful! the full response is in an array below';
-			    print_r($fb->getResponse());
-			}
-			else
-			{
-			    echo $fb->getError();
-			    print_r($fb->getResponse());
-			}
-	}*/
 }
 
 ?>

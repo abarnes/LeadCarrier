@@ -1,4 +1,9 @@
 <?php
+/*
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+*/
 class BillsController extends AppController {
  
 	var $name = 'Bills';
@@ -16,6 +21,12 @@ class BillsController extends AppController {
 	);
         
 	public function beforeFilter() {
+		$allow = array();
+		if ($this->Auth->user('id')==null && !in_array($this->params['action'],$allow)) {
+			$this->Session->setFlash('You are not authorized to view that page.');
+			$this->redirect('/login');
+		}
+		
 		parent::beforeFilter();
 	}
 	

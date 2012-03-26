@@ -1,3 +1,8 @@
+<!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
 <script type="text/javascript">
 $(document).ready(function(){
 		$("#master").click(function(){
@@ -148,7 +153,7 @@ function button2(action){
 					'div' => false
 				    ),
 				    'class'=>'mws-form',
-				    'action'=>'edit'
+				    'action'=>'index'
 				)); ?>
 				
 				<?php echo $this->Form->input('id', array( 'type'=>'hidden')); ?>

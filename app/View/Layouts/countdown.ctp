@@ -162,6 +162,11 @@ $(document).ready(function() {
 
   </head>
   <body>
+  <!------------------------------------------------------
+ All code copyright 2012 Victoris Holdings, LLC
+ 
+ Copying and/or modification of this code is prohibited.
+-------------------------------------------------------->
         <?php echo $content_for_layout; ?>
   </body>
 </html>
