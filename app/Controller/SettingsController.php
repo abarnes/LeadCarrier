@@ -9,7 +9,7 @@ class SettingsController extends AppController {
 	var $name = 'Settings';
         var $layout = 'admin';
 	//var $helpers = array('Html', 'Form', 'Time', 'javascript');
-	public $uses = array('Setting','Client','User','Field');
+	public $uses = array('Setting','Client','User','Field','Vendor');
 	public $components = array(
 		'Session',
 		'Auth' => array(
