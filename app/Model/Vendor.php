@@ -43,11 +43,15 @@ class Vendor extends AppModel {
                 'insertQuery'            => ''
             )
     );
-    /*var $validate = array(
+    var $validate = array(
         'name' => array(
-            'rule' => '/^[a-z0-9A-Z\s]{1,}$/i',
-            'message' => 'Only letters and numbers allowed.'
+            'rule'=>'notEmpty',
+            'message'=>'Please provide your company\'s name.'
+        ),
+        'email' => array(
+            'rule'=>'email',
+            'message'=>'Please provide a valid email address.'
         )
-    );*/
+    );
 }
 ?>
