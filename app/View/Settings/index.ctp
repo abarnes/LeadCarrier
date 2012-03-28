@@ -303,8 +303,8 @@ function button2(action){
 					    <?php echo $u['User']['email']; ?>
 					</td>
 					<td class="hid" style="width:300px;">
-					    <a href="/users/edit/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" value="Edit" class="mws-button green mws-i-24 small"></a>
-					    <a href="/users/passwordchange/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" value="Change Password" class="mws-button blue mws-i-24 small"></a>
+					    <a href="/users/edit/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" onClick="location.href = '/users/edit/<?php echo $u['User']['id']; ?>'" value="Edit" class="mws-button green mws-i-24 small"></a>
+					    <a href="/users/passwordchange/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" onClick="location.href = '/users/passwordchange/<?php echo $u['User']['id']; ?>'" value="Change Password" class="mws-button blue mws-i-24 small"></a>
 					    <a href="/users/delete/<?php echo $u['User']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete this?')"><input type="button" value="Delete" class="mws-button red mws-i-24 small"></a>
 					</td>
 				</tr>
@@ -371,7 +371,7 @@ function button2(action){
 					</td>
 					<td class="hid" style="width:300px;">
 					    <a href="/fields/delete/<?php echo $u['Field']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete these fields?  This cannot be undone and all data will be lost.')"><input type="button" value="Delete" class="mws-button red mws-i-24 small"></a>
-					    <a href="/fields/toggle_display/<?php echo $u['Field']['id']; ?>" style="text-decoration:none;"><input type="button" value="Toggle Display" class="mws-button blue mws-i-24 small"></a>
+					    <a href="/fields/toggle_display/<?php echo $u['Field']['id']; ?>" style="text-decoration:none;"><input type="button" onClick="location.href = '/fields/toggle_display/<?php echo $u['Field']['id']; ?>'" value="Toggle Display" class="mws-button blue mws-i-24 small"></a>
 					</td>
 				</tr>
 			    <?php } ?>

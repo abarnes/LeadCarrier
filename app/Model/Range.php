@@ -27,5 +27,29 @@ class Range extends AppModel {
                 'insertQuery'            => ''
             )
     );
+    var $validate = array(
+        'high_end'=>array(
+            'rule2'=>array(
+                'rule'=>array('dec'),
+                'message'=>'Enter a valid high-end value (no dollar sign $)'
+            )
+        ),
+        'low_end'=>array(
+            'rule2'=>array(
+                'rule'=>array('dec'),
+                'message'=>'Enter a valid low-end value (no dollar sign $)'
+            )
+        )
+    );
+    
+    function dec($check){
+        foreach ($check as $check) {
+            if (is_numeric($check)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }
 ?>

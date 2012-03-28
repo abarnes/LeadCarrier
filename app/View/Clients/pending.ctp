@@ -163,8 +163,8 @@ function button(action){
 						</td>
 					<?php } ?>
 					<td>
-						<a href="/clients/approve/<?php echo $u['Client']['id']; ?>"><input type="button" value="Approve" class="mws-button green mws-i-24 small"></a>
-						<a href="/clients/reject/<?php echo $u['Client']['id']; ?>"><input type="button" value="Reject" class="mws-button red mws-i-24 small"></a>
+						<a href="/clients/approve/<?php echo $u['Client']['id']; ?>"><input type="button" onClick="location.href = '/clients/approve/<?php echo $u['Client']['id']; ?>'" value="Approve" class="mws-button green mws-i-24 small"></a>
+						<a href="/clients/reject/<?php echo $u['Client']['id']; ?>"><input type="button" onClick="location.href = '/clients/reject/<?php echo $u['Client']['id']; ?>'" value="Reject" class="mws-button red mws-i-24 small"></a>
 					</td>
 				</tr>
 				<?php } ?>
