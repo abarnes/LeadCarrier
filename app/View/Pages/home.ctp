@@ -265,8 +265,8 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         <div class="leftcloumb-list">
         	<ul>
             	<li><div class="margin4 fright"></div><img src="image/post/t3.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
-                <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
-                <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark G. Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/testimonial2.jpg" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/testimonial3.jpg" alt="" class="leftcloumb-list-img"> <h1>Mark G. Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
             </ul>
         </div>
     </div>
