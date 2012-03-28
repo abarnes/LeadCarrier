@@ -153,14 +153,14 @@ function button(action){
 					</td>
 					
 					<td class="hid">
-					    <a href="/categories/edit/<?php echo $u['Category']['id']; ?>" style="text-decoration:none;"><input type="button" value="Edit" class="mws-button green mws-i-24 small">
+					    <a href="/categories/edit/<?php echo $u['Category']['id']; ?>" style="text-decoration:none;"><input type="button" onClick="location.href = '/categories/edit/<?php echo $u['Category']['id']; ?>'" value="Edit" class="mws-button green mws-i-24 small">
 					    </a>
 					    <a href="/categories/delete/<?php echo $u['Category']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete this?  All vendors in this industry will be deleted as well.')">
-						<input type="button" value="Delete" class="mws-button red mws-i-24 small">
+						<input type="button" onClick="location.href = '/categories/delete/<?php echo $u['Category']['id']; ?>'" value="Delete" class="mws-button red mws-i-24 small">
 					    </a>
 					    <?php if ($u['Category']['use_ranges']=='1') { ?>
 					    <a href="/ranges/index/<?php echo $u['Category']['id']; ?>" style="text-decoration:none;">
-						<input type="button" value="Manage Ranges" class="mws-button black mws-i-24 small">
+						<input type="button" onClick="location.href = '/ranges/index/<?php echo $u['Category']['id']; ?>'" value="Manage Ranges" class="mws-button black mws-i-24 small">
 					    </a>
 					    <?php } ?>
 					    
