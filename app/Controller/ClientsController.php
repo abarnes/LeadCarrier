@@ -24,16 +24,17 @@ class ClientsController extends AppController {
 		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
 		if (isset($w)) {
 			if ($w=='approved') {
-				$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved'=>'1'),'fields'=>array('DISTINCT Client.id','Client.first_name','Client.last_name','Client.wedding_date','Client.email','Client.approved','Client.zip','Client.phone','Client.created'));
+				$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved'=>'1'));
 				$this->set('show','Approved');
 			} else {
-				$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved'=>'2'),'fields'=>array('DISTINCT Client.id','Client.first_name','Client.last_name','Client.wedding_date','Client.email','Client.approved','Client.zip','Client.phone','Client.created'));
+				$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved'=>'2'));
 				$this->set('show','Rejected');
 			}
 		} else {
-			$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved !='=>'0'),'fields'=>array('DISTINCT Client.id','Client.first_name','Client.last_name','Client.wedding_date','Client.email','Client.approved','Client.zip','Client.phone','Client.created'));
+			$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved !='=>'0'));
 			$this->set('show','All');
 		}
+		$opts = array_unique($opts);
 		$clients = $this->Client->find('all',$opts);
 		$this->set(compact('clients'));
 		//die(print_r($clients));
@@ -102,8 +103,9 @@ class ClientsController extends AppController {
 	function pending () {
 		$this->layout = 'admin';
 		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
-		$this->paginate = array('limit' => 18,'fields'=>array('DISTINCT Client.id','Client.first_name','Client.last_name','Client.wedding_date','Client.email','Client.approved','Client.zip','Client.created','Client.phone'),'conditions'=>array('Client.approved'=>'0'));
-		$clients = $this->paginate('Client');
+		$options = array('limit' => 18,'conditions'=>array('Client.approved'=>'0'));
+		$clients = $this->Client->find('all',$options);
+		$clients = array_unique($clients);
 		$this->set(compact('clients'));
 	}
 	

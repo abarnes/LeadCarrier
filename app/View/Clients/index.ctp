@@ -3,6 +3,7 @@
  
  Copying and/or modification of this code is prohibited.
 -------------------------------------------------------->
+<?php// die(print_r($clients)); ?>
 <script type="text/javascript">
 $(document).ready(function(){
 		$("#master").click(function(){

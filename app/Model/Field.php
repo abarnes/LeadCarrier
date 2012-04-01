@@ -21,6 +21,10 @@ class Field extends AppModel {
             'Rule-3' => array(
                 'rule'    => array('sql_reserved'),
                 'message' =>'May not be set to any of the following: "text", "decimal", "varchar", "date", "datetime", "tinyint", "check", or "int".'
+            ),
+            'Rule-4'=>array(
+                'rule'=>'alphaNumeric',
+                'message'=>'The name may only contain letters and numbers.'
             )
         ),
         'display_name' => array(
