@@ -353,8 +353,7 @@ class ClientsController extends AppController {
 	function _mail($to,$id,$range=null){
 		$s = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
 		$client = $this->Client->findById($id);
-		$this->set('name',$s['Setting']['site_url']);
-		$this->set('c',$client);
+
 		if ($range!=null) {
 			$r = $this->Range->findById($range);
 			$this->set('rr','Price Range: '.$r['Range']['name']);
