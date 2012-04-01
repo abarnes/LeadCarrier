@@ -29,17 +29,18 @@ class LeadShell extends Shell {
 				$vendor = $this->Vendor->findById($r['Record']['vendor_id']);
 				$client = $this->Client->findById($r['Record']['client_id']);
 				
-				/*$email->set('name',$s['Setting']['site_url']);
+				$email->set('name',$s['Setting']['site_url']);
 				$email->set('c',$client);
 				if ($range!=null) {
 					$r = $this->Range->findById($range);
-					$email->set('rr','Price Range: '.$r['Range']['name']);
+					$rr = 'Price Range: '.$r['Range']['name'];
 				} else {
-					$email->set('rr','');
-				}*/
+					$rr = '';
+				}
 				
 				// Let the vendor know
-				$opts = array();	
+				$opts = array();
+				$email->viewVars(array('name' => $s['Setting']['site_url'],'c'=>$client,'rr'=>$rr));
 				$email->to($vendor['Vendor']['email']);
 				$email->subject('Lead from '.$s['Setting']['site_url']);
 				//$this->Email->replyTo = $s['Setting']['replyto_email'];
