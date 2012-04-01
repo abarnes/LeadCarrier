@@ -104,7 +104,7 @@ class ClientsController extends AppController {
 		$this->layout = 'admin';
 		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
 		$clients = $this->Client->find('all',array('conditions'=>array('Client.approved'=>'0')));
-		$clients = array_unique($clients);
+		//$clients = array_unique($clients);
 		$this->set(compact('clients'));
 	}
 	
