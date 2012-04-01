@@ -7,8 +7,8 @@
         <h5>Information</h5>
         <p>
         
-            <?php foreach ($fields as $f) { ?>
-                <?php
+            <?php foreach ($fields as $f) {
+                                                   echo $f['Field']['name'].': ';
 								switch ($f['Field']['type']) {
 									case 'date':
 										echo date('m-j-Y',strtotime($u['Client'][$f['Field']['name']]));
@@ -30,9 +30,10 @@
 											echo '<a href="mailto:'.$u['Client'][$f['Field']['name']].'">'.$u['Client'][$f['Field']['name']].'</a>';	
 										}
 										break;
-								}				
-		    ?>
-            <?php } ?>
+								}
+                                                                echo '<br/>';
+
+            } ?>
             
             <?php echo $rr; ?>
         </p>
