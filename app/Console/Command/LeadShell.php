@@ -11,9 +11,11 @@ class LeadShell extends Shell {
 	    }*/
 	
 	public function main() {
-		App::uses('Controller', 'Controller'); 
+		App::uses('Controller', 'Controller');
+		App::uses('ComponentCollection', 'Controller');
 		App::uses('EmailComponent', 'Controller/Component');
-		$this->Email = new EmailComponent();
+		$controller = new Controller();
+		$this->Email = new EmailComponent($controller);
 		
 		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
