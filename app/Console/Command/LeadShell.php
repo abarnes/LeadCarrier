@@ -40,12 +40,12 @@ class LeadShell extends Shell {
 				
 				// Let the vendor know
 				$opts = array();	
-				$email->to = $vendor['Vendor']['email'];
-				$email->subject = 'Lead from '.$s['Setting']['site_url'];
+				$email->to($vendor['Vendor']['email']);
+				$email->subject('Lead from '.$s['Setting']['site_url']);
 				//$this->Email->replyTo = $s['Setting']['replyto_email'];
-				$email->from =  array('email'=>$s['Setting']['replyto_email'],'name'=>$s['Setting']['site_url']);
-				$email->template = 'lead'; 
-				$email->sendAs = 'both';
+				$email->from(array('email'=>$s['Setting']['replyto_email'],'name'=>$s['Setting']['site_url']));
+				$email->template('lead'); 
+				$email->emailFormat('both');
 				$email->send();
 				
 				$this->Record->id = $r['Record']['id'];
