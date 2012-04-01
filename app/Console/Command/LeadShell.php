@@ -5,7 +5,7 @@ class LeadShell extends Shell {
 	var $Email;
 
 	public function main() {
-		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1','Company.name !='=>'MyWeddingConnector')));
+		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);
 			if (!empty($connect)) {

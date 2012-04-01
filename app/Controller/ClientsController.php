@@ -103,8 +103,7 @@ class ClientsController extends AppController {
 	function pending () {
 		$this->layout = 'admin';
 		$this->set('fields',$this->Field->find('all',array('conditions'=>array('Field.display'=>'1'))));
-		$options = array('limit' => 18,'conditions'=>array('Client.approved'=>'0'));
-		$clients = $this->Client->find('all',$options);
+		$clients = $this->Client->find('all',array('conditions'=>array('Client.approved'=>'0')));
 		$clients = array_unique($clients);
 		$this->set(compact('clients'));
 	}
