@@ -1,16 +1,20 @@
 <?php
 class LeadShell extends Shell {
 	var $uses = array('Vendor','Setting','Company','Record','Client');
-	var $tasks = array('Email');
+	//var $tasks = array('Email');
 	//var $Email;
 	
-	function startup() {
+	/*function startup() {
 		$this->Email->settings(array(
 		    'subject' => 'Test'
 		));
-	    }
+	    }*/
 	
 	public function main() {
+		App::uses('Controller', 'Controller'); 
+		App::uses('EmailComponent', 'Controller/Component');
+		$this->Email = new EmailComponent();
+		
 		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);
@@ -41,7 +45,7 @@ class LeadShell extends Shell {
 					$this->Email->set('rr','Price Range: '.$r['Range']['name']);
 				} else {
 					$this->Email->set('rr','');
-				}
+				} 
 				
 				// Let the vendor know
 				$opts = array();	
