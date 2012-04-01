@@ -1,6 +1,6 @@
 <?php  
-App::import('Core', 'Controller'); 
-App::import('Component', 'Email'); 
+App::uses('Core', 'Controller'); 
+App::uses('Component', 'Email'); 
 
 class EmailTask extends Shell { 
 /** 
