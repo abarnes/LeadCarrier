@@ -1,6 +1,6 @@
 <?php
 class LeadShell extends Shell {
-	var $uses = array('Vendor','Setting','Company','Record','Client');
+	var $uses = array('Vendor','Setting','Company','Record','Client','Field');
 	
 	public function main() {
 		App::uses('CakeEmail', 'Network/Email');
@@ -29,8 +29,6 @@ class LeadShell extends Shell {
 				$vendor = $this->Vendor->findById($r['Record']['vendor_id']);
 				$client = $this->Client->findById($r['Record']['client_id']);
 				
-				$email->set('name',$s['Setting']['site_url']);
-				$email->set('c',$client);
 				if ($range!=null) {
 					$r = $this->Range->findById($range);
 					$rr = 'Price Range: '.$r['Range']['name'];
@@ -39,8 +37,8 @@ class LeadShell extends Shell {
 				}
 				
 				// Let the vendor know
-				$opts = array();
-				$email->viewVars(array('name' => $s['Setting']['site_url'],'c'=>$client,'rr'=>$rr));
+				$fields = $this->Field->find('all');
+				$email->viewVars(array('name' => $s['Setting']['site_url'],'c'=>$client,'rr'=>$rr),'fields'=>$fields);
 				$email->to($vendor['Vendor']['email']);
 				$email->subject('Lead from '.$s['Setting']['site_url']);
 				//$this->Email->replyTo = $s['Setting']['replyto_email'];
