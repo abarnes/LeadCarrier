@@ -28,13 +28,13 @@ class LeadShell extends Shell {
 				$vendor = $this->Vendor->findById($r['Record']['vendor_id']);
 				$client = $this->Client->findById($r['Record']['client_id']);
 				
-				$this->set('name',$s['Setting']['site_url']);
-				$this->set('c',$client);
+				$this->Email->set('name',$s['Setting']['site_url']);
+				$this->Email->set('c',$client);
 				if ($range!=null) {
 					$r = $this->Range->findById($range);
-					$this->set('rr','Price Range: '.$r['Range']['name']);
+					$this->Email->set('rr','Price Range: '.$r['Range']['name']);
 				} else {
-					$this->set('rr','');
+					$this->Email->set('rr','');
 				}
 				
 				// Let the vendor know

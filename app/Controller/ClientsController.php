@@ -330,7 +330,7 @@ class ClientsController extends AppController {
 					} else {
 						$this->Record->id = $r['Record']['id'];
 						$data = array();
-						$data['Record']['sent'] = '1';
+						$data['Record']['sent'] = '0';
 						$data['Record']['vendor_id'] = null;
 						$this->Record->save($data);
 						$this->Record->id = false;
