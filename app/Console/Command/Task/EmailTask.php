@@ -40,8 +40,9 @@ class EmailTask extends Shell {
 */ 
     function initialize() { 
         $this->Controller =& new Controller(); 
-        $this->Email =& new EmailComponent(null); 
-        $this->Email->startup($this->Controller); 
+        $this->Email =& new EmailComponent();
+        $this->Email->initialize($controller);
+        //$this->Email->startup($this->Controller); 
     } 
 
 /** 
