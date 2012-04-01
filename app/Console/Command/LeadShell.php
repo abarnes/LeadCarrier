@@ -60,7 +60,6 @@ class LeadShell extends Shell {
 				$this->out($c['Company']['name'].': Lead Sent to '.$vendor['Vendor']['name'].' (id #'.$client['Client']['id'].')');
 			}
 		}
-		//end function
 	}
 }
 ?>
