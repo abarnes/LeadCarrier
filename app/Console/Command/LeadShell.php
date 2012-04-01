@@ -5,8 +5,8 @@ class LeadShell extends Shell {
 	//var $Email;
 
 	public function main() {
-		App::uses('CakeEmail', 'Network/Email');
-		$email = new CakeEmail();
+		App::import('Core', 'Controller');
+		App::import('Component', 'Email');
 		
 		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
@@ -31,23 +31,23 @@ class LeadShell extends Shell {
 				$vendor = $this->Vendor->findById($r['Record']['vendor_id']);
 				$client = $this->Client->findById($r['Record']['client_id']);
 				
-				$this->set('name',$s['Setting']['site_url']);
-				$this->set('c',$client);
+				$this->Email->set('name',$s['Setting']['site_url']);
+				$this->Email->set('c',$client);
 				if ($range!=null) {
 					$r = $this->Range->findById($range);
-					$this->set('rr','Price Range: '.$r['Range']['name']);
+					$this->Email->set('rr','Price Range: '.$r['Range']['name']);
 				} else {
-					$this->set('rr','');
+					$this->Email->set('rr','');
 				}
 				
 				// Let the vendor know
-				$email->to = $v['Vendor']['email'];
-				$email->subject = 'Lead from '.$s['Setting']['site_url'];
-				$email->replyTo = $s['Setting']['replyto_email'];
-				$email->from =  $s['Setting']['site_url'].' <'.$s['Setting']['replyto_email'].'>';
-				$email->template = 'lead'; 
-				$email->sendAs = 'both';
-				$email->send();
+				$this->Email->to = $v['Vendor']['email'];
+				$this->Email->subject = 'Lead from '.$s['Setting']['site_url'];
+				$this->Email->replyTo = $s['Setting']['replyto_email'];
+				$this->Email->from =  $s['Setting']['site_url'].' <'.$s['Setting']['replyto_email'].'>';
+				$this->Email->template = 'lead'; 
+				$this->Email->sendAs = 'both';
+				$this->Email->send();
 				
 				$this->Record->id = $r['Record']['id'];
 				$this->Record->saveField('sent','1');
