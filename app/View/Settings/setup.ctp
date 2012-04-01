@@ -5,7 +5,11 @@
 -------------------------------------------------------->
 <script type="text/javascript">
 $(document).ready(function(){
-    $("#hidden").css("display","none");
+    <?php if (isset($this->data)&&$this->data['Setting']['use_freshbooks']=='1') { ?>
+        $("#hidden").css("display","block");
+    <?php } else { ?>
+        $("#hidden").css("display","none");
+    <?php } ?>
 
     // Add onclick handler to checkbox w/id checkme
 	   $("#SettingUseFreshbooks").click(function(){

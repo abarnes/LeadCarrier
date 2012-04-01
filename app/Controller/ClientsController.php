@@ -71,7 +71,7 @@ class ClientsController extends AppController {
 					foreach ($this->request->data['Client'] as $row=>$value) {
 						if ($row!='action') {
 							if ($value=='1') {
-								$this->_approve(substr($row,5),'1');
+								$this->_approve(substr($row,5),'0');
 							}
 						}
 					}
@@ -200,10 +200,11 @@ class ClientsController extends AppController {
 	}
 	
 	function approve($id) {
-		$this->_approve($id);
+		$this->_approve($id,'1');
 	}
 	
-	function _approve($id,$mult=null) {
+	function _approve($id,$mult) {
+		
 		$this->Client->id = $id;
 		if ($this->Client->saveField('approved','1')) {
 			$records = $this->Client->Record->find('all',array('conditions'=>array('Record.client_id'=>$id)));
@@ -307,11 +308,13 @@ class ClientsController extends AppController {
 					//make sure a vendor was found
 					if (!empty($vendor)) {
 						//common to each type
-						$this->_mail($vendor['Vendor']['email'],$id,$r['Record']['range_id']);
+						if ($mult=='1') {
+							$this->_mail($vendor['Vendor']['email'],$id,$r['Record']['range_id']);
+						}
 						
 						$this->Record->id = $r['Record']['id'];
 						$data = array();
-						$data['Record']['sent'] = '1';
+						$data['Record']['sent'] = $mult;
 						$data['Record']['vendor_id'] = $vendor['Vendor']['id'];
 						$this->Record->save($data);
 						$this->Record->id = false;						

@@ -195,16 +195,17 @@ class SettingsController extends AppController {
 	function _freshbooks_check() {
 		$vendors = $this->Vendor->find('all');
 		$setting = $this->Setting->find('first',array('order'=>'Setting.created DESC'));
-		require('freshbooks_api/FreshBooksRequest.php');			
+		require_once('freshbooks_api/FreshBooksRequest.php');			
 		$domain = $setting['Setting']['freshbooks_url'];
 		$token = $setting['Setting']['freshbooks_api_token'];
+		FreshBooksRequest::init($domain, $token);
 		
 		foreach ($vendors as $v) {
 			if ($v['Vendor']['freshbooks_id']!='') {
 				//already has a freshbooks ID - verify it
-				FreshBooksRequest::init($domain, $token);
+				//FreshBooksRequest::init($domain, $token);
 				$fb = new FreshBooksRequest('client.get');
-				$fb->post(array('client_id'=>$v['Vendor']['client_id']));
+				$fb->post(array('client_id'=>$v['Vendor']['freshbooks_id']));
 				
 				// Make the request
 				$fb->request();
@@ -213,10 +214,10 @@ class SettingsController extends AppController {
 					$result = $fb->getResponse();
 					//make sure it matches our database.  recreate if not
 					if ($result['client']['organization']!=$v['Vendor']['name']) {
-						FreshBooksRequest::init($domain, $token);
-						$fb = new FreshBooksRequest('client.create');
+						//FreshBooksRequest::init($domain, $token);
+						$fb2 = new FreshBooksRequest('client.create');
 						
-						$fb->post(array('client'=>array(
+						$fb2->post(array('client'=>array(
 							'first_name' => '',		
 							'last_name' => $v['Vendor']['contact_name'],
 							'organization' => $v['Vendor']['name'],
@@ -232,24 +233,26 @@ class SettingsController extends AppController {
 							)
 						));
 						// Make the request
-						$fb->request();
-						if($fb->success())
+						$fb2->request();
+						if($fb2->success())
 						{
-							$result = $fb->getResponse();
+							$result = $fb2->getResponse();
 							$this->Vendor->id = $v['Vendor']['id'];
 							$this->Vendor->saveField('freshbooks_id',$result['client_id']);
 						} else {
-							return $fb->getError();
+							return $fb2->getError();
 							exit();
 						}
 					}
 				} else {
-					return $fb->getError();
-					exit();
+					/*return $fb->getError();
+					exit();*/
 				}
+				unset($fb);
+				unset($fb2);
 			} else {
 				//need to create a new client					
-					FreshBooksRequest::init($domain, $token);
+					//FreshBooksRequest::init($domain, $token);
 					$fb = new FreshBooksRequest('client.create');
 					
 					$fb->post(array('client'=>array(
@@ -279,8 +282,9 @@ class SettingsController extends AppController {
 						exit();
 					}
 			}
-			return 'success';
+			unset($fb);
 		}
+		return 'success';
 	}
     
 }
