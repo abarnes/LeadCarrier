@@ -1,16 +1,16 @@
 <?php
 class LeadShell extends Shell {
 	var $uses = array('Vendor','Setting','Company','Record','Client');
-	//var $tasks = array('Email');
+	var $tasks = array('Email');
 	//var $Email;
-
+	
+	function startup() {
+		$this->Email->settings(array(
+		    'subject' => 'Test'
+		));
+	    }
+	
 	public function main() {
-		App::import('Core', 'Controller');
-		App::import('Component', 'Email');
-		$this->Controller =& new Controller();
-		$this->Email =& new EmailComponent(null);
-		$this->Email->initialize($this->Controller);
-		
 		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
 			$connect = array('db_name'=>$c['Company']['db_name'],'db_password'=>$c['Company']['db_password']);
@@ -44,13 +44,14 @@ class LeadShell extends Shell {
 				}
 				
 				// Let the vendor know
-				$this->Email->to = $v['Vendor']['email'];
-				$this->Email->subject = 'Lead from '.$s['Setting']['site_url'];
-				$this->Email->replyTo = $s['Setting']['replyto_email'];
-				$this->Email->from =  $s['Setting']['site_url'].' <'.$s['Setting']['replyto_email'].'>';
-				$this->Email->template = 'lead'; 
-				$this->Email->sendAs = 'both';
-				$this->Email->send();
+				$opts = array();	
+				$opts['to'] = $v['Vendor']['email'];
+				$opts['subject'] = 'Lead from '.$s['Setting']['site_url'];
+				//$this->Email->replyTo = $s['Setting']['replyto_email'];
+				$opts['from'] =  $s['Setting']['site_url'].' <'.$s['Setting']['replyto_email'].'>';
+				$opts['template'] = 'lead'; 
+				$opts['sendAs'] = 'both';
+				$this->Email->send($opts);
 				
 				$this->Record->id = $r['Record']['id'];
 				$this->Record->saveField('sent','1');
