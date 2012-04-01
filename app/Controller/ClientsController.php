@@ -34,7 +34,7 @@ class ClientsController extends AppController {
 			$opts = array('order'=>'Client.created DESC','conditions'=>array('Client.approved !='=>'0'));
 			$this->set('show','All');
 		}
-		$opts = array_unique($opts);
+		//$opts = array_unique($opts);
 		$clients = $this->Client->find('all',$opts);
 		$this->set(compact('clients'));
 		//die(print_r($clients));
