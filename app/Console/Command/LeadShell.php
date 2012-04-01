@@ -1,5 +1,5 @@
 <?php
-class LeademailShell extends Shell {
+class LeadShell extends Shell {
 	var $uses = array('Vendor','Setting','Company','Record','Client');
 	var $tasks = array('Email');
 	var $Email;
