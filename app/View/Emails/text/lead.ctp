@@ -4,6 +4,7 @@ Information:
         
 <?php foreach ($fields as $f) { ?>
 							<?php
+							echo $f['Field']['display_name'].': ';
 								switch ($f['Field']['type']) {
 									case 'date':
 										echo date('m-j-Y',strtotime($u['Client'][$f['Field']['name']]));
@@ -27,6 +28,7 @@ Information:
 										break;
 								}
 							
+							echo '\n';
 							?>
 					<?php } ?>
             <?php echo $rr; ?>

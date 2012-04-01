@@ -8,7 +8,7 @@
         <p>
         
             <?php foreach ($fields as $f) {
-                                                   echo $f['Field']['name'].': ';
+                                                   echo $f['Field']['display_name'].': ';
 								switch ($f['Field']['type']) {
 									case 'date':
 										echo date('m-j-Y',strtotime($u['Client'][$f['Field']['name']]));
