@@ -7,6 +7,9 @@ class LeadShell extends Shell {
 	public function main() {
 		App::import('Core', 'Controller');
 		App::import('Component', 'Email');
+		$this->Controller =& new Controller();
+		$this->Email =& new EmailComponent(null);
+		$this->Email->initialize($this->Controller);
 		
 		$companies = $this->Company->find('all',array('order'=>'Company.id ASC','conditions'=>array('Company.active'=>'1','Company.id !='=>'1')));
 		foreach ($companies as $c) {
