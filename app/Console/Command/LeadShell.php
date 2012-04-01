@@ -38,7 +38,7 @@ class LeadShell extends Shell {
 				
 				// Let the vendor know
 				$fields = $this->Field->find('all');
-				$email->viewVars(array('name' => $s['Setting']['site_url'],'c'=>$client,'rr'=>$rr),'fields'=>$fields);
+				$email->viewVars(array('name' => $s['Setting']['site_url'],'c'=>$client,'rr'=>$rr,'fields'=>$fields));
 				$email->to($vendor['Vendor']['email']);
 				$email->subject('Lead from '.$s['Setting']['site_url']);
 				//$this->Email->replyTo = $s['Setting']['replyto_email'];
