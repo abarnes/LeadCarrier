@@ -46,7 +46,7 @@ class Vendor extends AppModel {
     var $validate = array(
         'name' => array(
             'rule'=>'notEmpty',
-            'message'=>'Please provide your company\'s name.'
+            'message'=>'Please provide the vendor\'s name.'
         ),
         'email' => array(
             'rule'=>'email',

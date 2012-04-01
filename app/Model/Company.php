@@ -128,8 +128,10 @@ class Company extends AppModel {
             }
         }
     }
+    
     function check_name($check) {
-        $uname = 'lcarrier_'.substr(str_replace(" ", "", $check['name']),0,7);
+        $newcompany = ereg_replace("[^A-Za-z0-9]", "", $check['name']);
+        $uname = 'lcarrier_'.substr(str_replace(" ", "", $newcompany),0,7);
         if ($this->find('count',array('conditions'=>array('Company.db_name'=>$uname)))>0) {
             return false;
         } else {

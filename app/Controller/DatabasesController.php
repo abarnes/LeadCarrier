@@ -30,7 +30,8 @@ class DatabasesController extends AppController {
 		}
 				
 		$company = $c['Company']['name'];
-		$uname = 'lcarrier_'.substr(str_replace(" ", "", $company),0,7);
+		$newcompany = ereg_replace("[^A-Za-z0-9]", "", $company);
+		$uname = 'lcarrier_'.substr(str_replace(" ", "", $newcompany),0,7);
 		$p = $this->Password->__randomPassword();
 
 		$create_db = 'CREATE DATABASE '.$uname.";";
