@@ -37,7 +37,7 @@ class RangesController extends AppController {
 		$r = $this->Range->Category->findById($id);
 		if ($r['Category']['use_ranges']=='0') {
 			$this->Session->setFlash('This industry does not use price ranges.');
-			$this->redirect('/vendors/manage');
+			$this->redirect('/industries');
 		}
 		$this->set('r',$r);
 		
