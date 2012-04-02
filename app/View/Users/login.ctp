@@ -21,6 +21,22 @@
 
 <script type="text/javascript" src="/plugins/placeholder/jquery.placeholder-min.js"></script>
 
+<script type="text/javascript">
+$('[placeholder]').focus(function() {
+  var input = $(this);
+  if (input.val() == input.attr('placeholder')) {
+    input.val('');
+    input.removeClass('placeholder');
+  }
+}).blur(function() {
+  var input = $(this);
+  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+    input.addClass('placeholder');
+    input.val(input.attr('placeholder'));
+  }
+}).blur();
+</script>
+
 <title>Lead Carrier - Login</title>
 
 </head>
