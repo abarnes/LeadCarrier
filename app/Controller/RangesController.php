@@ -31,9 +31,15 @@ class RangesController extends AppController {
         
 	
 	function index ($id) {
+		
 		$this->layout = 'admin';
 		$this->set('down','industries');
-		$this->set('r',$this->Range->Category->findById($id));
+		$r = $this->Range->Category->findById($id);
+		if ($r['Category']['use_ranges']=='0') {
+			$this->Session->setFlash('This industry does not use price ranges.');
+			$this->redirect('/vendors/manage');
+		}
+		$this->set('r',$r);
 		
 		//$this->set('ranges', $this->Range->Vendor->find('list'));
 		$ranges = $this->Range->find('all',array('order'=>'Range.low_end ASC','conditions'=>array('Range.category_id'=>$id)));
