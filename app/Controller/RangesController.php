@@ -31,7 +31,7 @@ class RangesController extends AppController {
         
 	
 	function index ($id) {
-		
+		$this->set('id',$id);
 		$this->layout = 'admin';
 		$this->set('down','industries');
 		$r = $this->Range->Category->findById($id);
@@ -123,6 +123,41 @@ class RangesController extends AppController {
 		$this->Range->delete($id);
 		$this->Session->setFlash('Range Successfully Deleted.');
 		$this->redirect(array('action'=>'index/'.$r['Range']['category_id']));
+	}
+	
+	//handles submissions from manage page
+	function submit($id) {
+		if (!empty($this->request->data)) {
+			switch ($this->request->data['Range']['action']) {
+				case 'delete':
+					//delete code
+					foreach ($this->request->data['Range'] as $row=>$value) {
+						if ($row!='action') {
+							if ($value=='1') {
+								$this->Range->delete(substr($row,5));
+							}
+						}
+					}
+					$this->redirect('/ranges/index/'.$id);
+					break;
+				case 'edit':
+					//edit code
+					foreach ($this->request->data['Range'] as $row=>$value) {
+						if ($row!='action') {
+							if ($value=='1') {
+								$this->redirect('/ranges/edit/'.substr($row,5));
+							}
+						}
+					}
+					break;
+				default:
+					$this->redirect('/ranges/index/'.$id);
+					break;
+			}
+			$this->redirect('/ranges/index/'.$id);
+		} else {
+			$this->redirect('/ranges/index/'.$id);
+		}
 	}
 	
 }

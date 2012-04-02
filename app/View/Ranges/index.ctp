@@ -39,6 +39,18 @@ function chk() {
 	}
 	return false;
 }
+
+function button(action){
+	if (action=='delete') {
+		var answer = confirm('Are you sure you want to delete these price ranges?  This cannot be undone.');
+	} else {
+		var answer = true;
+	}
+	if (answer) {
+		$('#RangeAction').val(action);
+		$('#RangeSubmitForm').submit();
+	}
+}
 </script>        
 	
 	<div id="mws-sidebar">
@@ -89,12 +101,12 @@ function chk() {
                     <div class="mws-panel-body">
 			<div class="mws-panel-toolbar top clearfix">
                         	<ul>
-                            	<li><a href="#" class="mws-ic-16 ic-delete">Delete</a></li>
-				<li id="edit"><a href="#" class="mws-ic-16 ic-page-white-text">Edit</a></li>
-				<li id="view"><a href="#" class="mws-ic-16 ic-page-2">View</a></li>
+				<li><a href="#" onclick="button('delete');" class="mws-ic-16 ic-delete">Delete</a></li>
+				<li id="view"><a href="#" onclick="button('edit');" class="mws-ic-16 ic-page-white-text">Edit</a></li>
                             </ul>
                         </div>
-			<?php echo $this->Form->create('Category',array('action'=>'submit')); ?>
+			<?php echo $this->Form->create('Range',array('action'=>'submit/'.$id)); ?>
+			<?php echo $this->Form->input('action',array('type'=>'hidden')); ?>
                         <table class="mws-datatable-fn mws-table">
                             <thead>
                                 <tr>
@@ -116,8 +128,11 @@ function chk() {
 					</td>
 					
 					<td>
-					    <a href="/ranges/edit/<?php echo $u['Range']['id']; ?>" style="text-decoration:none;">Edit</a>
-					    <a href="/ranges/delete/<?php echo $u['Range']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete this price range?')">Remove</a>
+				             <a href="/ranges/edit/<?php echo $u['Range']['id']; ?>" style="text-decoration:none;"><input type="button" onClick="location.href = '/ranges/edit/<?php echo $u['Range']['id']; ?>'" value="Edit" class="mws-button green mws-i-24 small">
+					    </a>
+					    <a href="/ranges/delete/<?php echo $u['Range']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete this price range?')">
+						<input type="button" onClick="location.href = '/ranges/delete/<?php echo $u['Range']['id']; ?>'" value="Delete" class="mws-button red mws-i-24 small">
+					    </a>
 					    
 					    <?php //echo $this->Html->link('Edit',array('action'=>'edit/'.$u['Category']['id'])); ?>
 					    <?php /*echo $this->Html->link(
