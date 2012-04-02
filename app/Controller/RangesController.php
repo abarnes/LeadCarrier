@@ -126,7 +126,8 @@ class RangesController extends AppController {
 	}
 	
 	//handles submissions from manage page
-	function submit($id) {
+	function submit() {
+		$id = $this->data['Range']['i'];
 		if (!empty($this->request->data)) {
 			switch ($this->request->data['Range']['action']) {
 				case 'delete':

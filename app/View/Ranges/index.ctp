@@ -31,10 +31,8 @@ function chk() {
 		var max = 1;
 	}
 	if (cnt>max) {
-		document.getElementById('view').style.display='none';
 		document.getElementById('edit').style.display='none';
 	} else {
-		document.getElementById('view').style.display='block';
 		document.getElementById('edit').style.display='block';
 	}
 	return false;
@@ -101,12 +99,13 @@ function button(action){
                     <div class="mws-panel-body">
 			<div class="mws-panel-toolbar top clearfix">
                         	<ul>
-				<li><a href="#" onclick="button('delete');" class="mws-ic-16 ic-delete">Delete</a></li>
-				<li id="view"><a href="#" onclick="button('edit');" class="mws-ic-16 ic-page-white-text">Edit</a></li>
+				<li id="delete"><a href="#" onclick="button('delete');" class="mws-ic-16 ic-delete">Delete</a></li>
+				<li id="edit"><a href="#" onclick="button('edit');" class="mws-ic-16 ic-page-white-text">Edit</a></li>
                             </ul>
                         </div>
-			<?php echo $this->Form->create('Range',array('action'=>'submit/'.$id)); ?>
+			<?php echo $this->Form->create('Range',array('action'=>'submit')); ?>
 			<?php echo $this->Form->input('action',array('type'=>'hidden')); ?>
+			<?php echo $this->Form->input('i',array('type'=>'hidden','value'=>$id)); ?>
                         <table class="mws-datatable-fn mws-table">
                             <thead>
                                 <tr>
@@ -119,7 +118,7 @@ function button(action){
                             <tbody>
 			    <?php foreach ($ranges as $u) { ?>
 				<tr>
-					<td><?php echo $this->Form->input('check',array('type'=>'checkbox','label'=>'','class'=>'ck','onclick'=>'chk();')); ?></td>
+				        <td><?php echo $this->Form->input('check'.$u['Range']['id'],array('type'=>'checkbox','label'=>'','class'=>'ck','onclick'=>'chk();')); ?></td>
 					<td>
 					    $<?php echo $u['Range']['low_end']; ?>
 					</td>
