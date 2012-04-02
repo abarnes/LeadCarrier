@@ -119,7 +119,7 @@ class VendorsController extends AppController {
 		$this->set('categories', $this->Category->find('list',array('fields'=>array('Category.id','Category.name'))));
 		if (!empty($this->request->data)) {
 			$string = '';
-			if (!empty($this->request->data['Category'])) {
+			if (!empty($this->request->data['Category']['Category'])) {
 				foreach($this->request->data['Category'] as $c) {
 					foreach ($c as $v) {
 						$string = $string.$v.'=';

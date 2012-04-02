@@ -88,7 +88,9 @@ class ApisController extends AppController {
 							if ($value==false) {
 								$data['Record']['select'] = '0';
 							} else {
-								$data['Record']['range_id'] = $this->request->data['Category']['v'.substr($row,1)];
+								if (isset($vars['v'.substr($row,1)])) {
+									$data['Record']['range_id'] = $vars['v'.substr($row,1)];
+								}
 								$data['Record']['select'] = '1';
 							}
 						} else {
@@ -154,7 +156,9 @@ class ApisController extends AppController {
 								if ($value==false) {
 									$data['Record']['select'] = '0';
 								} else {
-									$data['Record']['range_id'] = $vars['v'.substr($row,1)];
+									if (isset($vars['v'.substr($row,1)])) {
+										$data['Record']['range_id'] = $vars['v'.substr($row,1)];
+									}
 									$data['Record']['select'] = '1';
 								}
 							} else {
