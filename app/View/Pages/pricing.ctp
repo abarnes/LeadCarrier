@@ -36,7 +36,7 @@
 			<div class="caption_column">
 				<ul>
 					<!-- column header -->
-					<li class="header_row_1 align_center radius5_topleft"></li>
+					<li class="header_row_1 align_center radius5_topleft">Payment Schedule</li>
 					<li class="header_row_2"><h2 class="caption">select <span>your</span> plan</h2></li>
 					<!-- data rows -->
 					<li class="row_style_2"><span>Annual Savings</span></li>
