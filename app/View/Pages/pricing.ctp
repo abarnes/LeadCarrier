@@ -21,8 +21,9 @@
         });	
         </script>
         <div class="bloglisting2">
-        	<h1>Pricing</h1>
-		<br/>
+        	<h1 style="float:left;width:50%">Pricing</h1>
+		<h1 style="float:right;width:200px;font-style: italic;font-size: 2.2em;margin-right: 30px;">Start your 14 day trial</h1>
+		<br/><br/>
         </div>
         
         <!-- Clear -->
@@ -36,7 +37,7 @@
 			<div class="caption_column">
 				<ul>
 					<!-- column header -->
-					<li class="header_row_1 align_center radius5_topleft"><span>Payment Schedule</span></li>
+					<li class="header_row_1 align_center radius5_topleft"><h2 class="col1">Payment Schedule</h2></li>
 					<li class="header_row_2"><h2 class="caption">select <span>your</span> plan</h2></li>
 					<!-- data rows -->
 					<li class="row_style_2"><span>Annual Savings</span></li>

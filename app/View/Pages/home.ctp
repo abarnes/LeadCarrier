@@ -82,7 +82,9 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 	<!-- Slider Start-->
 	<div id="slider" class="grid_16">
 	    <img src="img/home.png" style="width:820px;margin-left:60px;margin-right: 60px;margin-top:45px;"/>
-	    <a href="http://demo.leadcarrier.com/users/demo_login" target="_blank"><img src="img/launchdemo.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>
+	    <!--<a href="http://demo.leadcarrier.com/users/demo_login" target="_blank"><img src="img/launchdemo.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>-->
+	    <a href="/pricing" target="_blank"><img src="img/trialbutton.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>
+	    <a href="http://demo.leadcarrier.com/users/demo_login" target="_blank" style="margin-top:-90px;margin-left:236px;position: relative;bottom: 30px;color:white;font-size: 1.3em;">View Demo</a>
 	</div>
 	<!-- Slider End-->
 	
