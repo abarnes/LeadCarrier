@@ -230,7 +230,6 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/charlie.jpg" alt="" class="home-team-img"><h1>Charlie Gasmire</h1><p>Founder</p></li>
 		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/david.jpg" alt="" class="home-team-img"><h1>David Grubbs</h1><p>Founder</p></li>
 		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/kyle.jpg" alt="" class="home-team-img"><h1>Kyle Mills</h1><p>Founder</p></li>
-		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/gib.jpg" alt="" class="home-team-img"><h1>Gib Reynolds</h1><p>Founder</p></li>
                 </ul>
               </div>
               <div class="clear"></div>
