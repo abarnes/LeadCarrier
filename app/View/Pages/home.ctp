@@ -114,7 +114,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
           <div id="classytabs">
             <!-- Tab Menu-->
             <ul class="tabs">
-	    <li><a href="#team" class="tabbutton1"><img src="image/icon/3.png" alt=""> <h1> Team </h1></a><p></p> </li>
+	    <li><a href="#team" class="tabbutton1"><img src="image/icon/3.png" alt=""> <h1> Endorsements </h1></a><p></p> </li>
             <li><a href="#aboutus" class="tabbutton2"><img src="image/icon/2.png" alt=""> <h1> About Us </h1></a> </li>
 	    <li> <a href="#work" class="tabbutton3 first selected"> <img src="image/icon/1.png" alt=""> <h1> Product Tour </h1></a> </li>
             </ul>        
@@ -223,16 +223,17 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
           
           <!-- #3 -->
           <div id="team" class="tab-content">
-              <div class="home-team">
-              	<ul>
-                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/austin.jpg" alt="" class="home-team-img"><h1>Austin Barnes</h1><p>Founder</p></li>
-                    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/cole.jpg" alt="" class="home-team-img"><h1>Cole Chapman</h1><p>Founder</p></li>
-		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/charlie.jpg" alt="" class="home-team-img"><h1>Charlie Gasmire</h1><p>Founder</p></li>
-		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/david.jpg" alt="" class="home-team-img"><h1>David Grubbs</h1><p>Founder</p></li>
-		    <li><div class="columb-shadow2"><img src="image/theme/minishadow3.png" alt=""></div><img src="img/headshots/kyle.jpg" alt="" class="home-team-img"><h1>Kyle Mills</h1><p>Founder</p></li>
-                </ul>
+              <div class="homepage-team">
+                <h1>Recommended By</h1>
+                <table style="width:100%;margin-top:-10px;">
+		    <tr>
+			<td style="width:25%;"><a href="http://www.guerillaconsultant.com" target="_blank"><img src="/img/endorsements/guerilla.png" style="width:185px;"/></a></td>
+			<td style="width:25%;"><a href="http://www.orderofthekey.org" target="_blank"><img src="/img/endorsements/otk.png" style="width:215px;margin-top: 50px;"/></a></td>
+			<td style="width:25%;"><a href="http://www.advertiser360.com" target="_blank"><img src="/img/endorsements/a360.png" style="width:215px;margin-top: 70px;"/></a></td>
+			<td style="width:25%;"><a href="http://www.myweddingconnector.com" target="_blank"><img src="/img/endorsements/mwc.png" style="width:215px;margin-top: 55px;"/></a></td>
+		    </tr>
+		</table>
               </div>
-              <div class="clear"></div>
           </div>
           </div>
         </div>
