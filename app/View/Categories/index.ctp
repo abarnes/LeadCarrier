@@ -44,6 +44,8 @@ function button(action){
 	//alert(action);
 	if (action=='delete') {
 		var answer = confirm('Are you sure you want to delete this?  All vendors in this industry will be deleted as well.');
+	} else {
+		var answer = true;
 	}
 	if (answer) {
 		$('#CategoryAction').val(action);
