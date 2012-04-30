@@ -61,7 +61,7 @@
 				<ul>
 					<!-- column header -->
 					<li class="header_row_1 align_center"><h2 class="col1">monthly</h2></li>
-					<li class="header_row_2 align_center"><h1 class="col1">$<span>749.99</span></h1><h3 class="col1">per month</h3></li>
+					<li class="header_row_2 align_center"><h1 class="col1">$<span>499.99</span></h1><h3 class="col1">per month</h3></li>
 					<!-- data rows -->
 					<li class="row_style_1 align_center"><span>-</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
@@ -84,7 +84,7 @@
 				<ul>
 					<!-- column header -->
 					<li class="header_row_1 align_center"><h2 class="col2">quarterly</h2></li>
-					<li class="header_row_2 align_center"><h1 class="col2">$<span>699.99</span></h1><h3 class="col2">per month</h3></li>
+					<li class="header_row_2 align_center"><h1 class="col2">$<span>449.99</span></h1><h3 class="col2">per month</h3></li>
 					<!-- data rows -->
 					<li class="row_style_2 align_center"><span>$600</span></li>
 					<li class="row_style_4 align_center"><span>unlimited</span></li>
@@ -107,9 +107,9 @@
 				<ul>
 					<!-- column header -->
 					<li class="header_row_1 align_center radius5_topright"><h2 class="col4">annual</h2></li>
-					<li class="header_row_2 align_center"><h1 class="col4">$<span>599.99</span></h1><h3 class="col4">per month</h3></li>
+					<li class="header_row_2 align_center"><h1 class="col4">$<span>399.99</span></h1><h3 class="col4">per month</h3></li>
 					<!-- data rows -->
-					<li class="row_style_1 align_center"><span>$1,800</span></li>
+					<li class="row_style_1 align_center"><span>$1,200</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<!--<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>-->
@@ -148,13 +148,14 @@
     <div class="grid_8 margin leftsays">
     	<div id="full-bottom"></div>
     	<div class="title-2cloumb">
-        	<h1>What People Are Saying...</h1>
+        	<h1>What people are saying...</h1>
+        	<p></p>
         </div>
         <div class="leftcloumb-list">
         	<ul>
-            	<li><div class="margin4 fright"></div><img src="image/post/say1.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
-                <li><div class="margin4 fright"></div><img src="image/post/say2.png" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
-                <li><div class="margin4 fright"></div><img src="image/post/say3.png" alt="" class="leftcloumb-list-img"> <h1>Mark G. Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
+            	<li><div class="margin4 fright"></div><img src="image/post/t3.png" alt="" class="leftcloumb-list-img"> <h1>Kyle M. Says:</h1><p>“Lead Carrier was able to get us setup in hours and handled all the traffic we threw at it without skipping a beat.”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/testimonial2.jpg" alt="" class="leftcloumb-list-img"> <h1>Robert Q. B. Says:</h1><p>“I was running hundreds of leads through this system a day and I never had an issue. Very impressed with the system”</p></li>
+                <li><div class="margin4 fright"></div><img src="image/post/testimonial3.jpg" alt="" class="leftcloumb-list-img"> <h1>Mark G. Says:</h1><p>“Fair pricing. Check. Awesome feature listings. Check. Great customer service. Check.  This is the total package, I’d recommend it to anyone.”</p></li>
             </ul>
         </div>
     </div>
@@ -163,14 +164,16 @@
     <!-- Bigg Boss -->
     <div class="grid_8 margin">
     	<div class="title-2cloumb">
-        	<h1>The Big Boss Says</h1>
-        	<p>Lorem ipsum is simply printing swith data text</p>
+        	<h1>Advertiser360 Official Partner</h1>
+        	<p>Lead Carrier is the #1 recommended Lead Distribution software of Advertiser360</p>
         </div>
-        <div class="bussiness-boss">
-            <img src="image/post/biggboss.png" class="bussiness-boss-img" alt="">
-            <div class="bussiness-shadow"><img src="image/theme/bigshadow2.png" alt=""></div>
-            <h1>Micheal Smith Fisher:</h1>
-            <p>"Phasellus dapibus rutrum mi, sed elementum felis placerat ac. Aenean gravida elementum arcu non ultrices. Proin pharetra ipsum vitae augue dignissim pharetra. Maecenas turpis leo, dignissim a elementum id, feugiat eget leo. Ut vitae neque aliquam orci blandit elementum eu id nibh. Class aptent taciti sociosqu ad litora."</p>
+        <div>
+            <img src="/img/PeterNguyen.jpg" alt="Lead Carrier endorsed by Advertising 360" style="width:160px;float:left;-webkit-border-radius: 12px;-moz-border-radius: 12px;border-radius: 12px;">
+		<div style="float:right;width:280px;height:270px;">
+		    <h1>Peter Nguyen</h1><br/>
+		    <p style="font-size: 1.2em;line-height: 1.7em;">"I recommend Lead Carrier to anyone who wants to launch the next major lead generation company. Lead Carrier is lean yet powerful and is the perfect backend office for a starting lead generation company with plans to grow."</p>
+		</div>
+		<a href="http://www.advertiser360.com" target="_blank"><img src="/img/endorsements/a360.png" style="float:left;margin-left:100px;"/></a>
         </div>
     </div>
     <!-- Bigg Boss End -->

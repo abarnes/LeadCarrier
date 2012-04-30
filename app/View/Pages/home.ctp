@@ -281,12 +281,12 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         	<p>Lead Carrier is the #1 recommended Lead Distribution software of Advertiser360</p>
         </div>
         <div>
-            <img src="/img/PeterNguyen.jpg" alt="Lead Carrier endorsed by Advertising 360" style="width:160px;float:left;">
-		<div style="float:right;width:280px;">
+            <img src="/img/PeterNguyen.jpg" alt="Lead Carrier endorsed by Advertising 360" style="width:160px;float:left;-webkit-border-radius: 12px;-moz-border-radius: 12px;border-radius: 12px;">
+		<div style="float:right;width:280px;height:270px;">
 		    <h1>Peter Nguyen</h1><br/>
-		    <p style="font-size: 1.2em;">"I recommend Lead Carrier to anyone who wants to launch the next major lead generation company. Lead Carrier is lean yet powerful and is the perfect backend office for a starting lead generation company with plans to grow."</p>
+		    <p style="font-size: 1.2em;line-height: 1.7em;">"I recommend Lead Carrier to anyone who wants to launch the next major lead generation company. Lead Carrier is lean yet powerful and is the perfect backend office for a starting lead generation company with plans to grow."</p>
 		</div>
-		<img src="/img"
+		<a href="http://www.advertiser360.com" target="_blank"><img src="/img/endorsements/a360.png" style="float:left;margin-left:100px;"/></a>
         </div>
     </div>
     <!-- Bigg Boss End -->
