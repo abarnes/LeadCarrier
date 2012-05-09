@@ -90,6 +90,7 @@ function button(action){
             	<ul>
                 	<li class="active"><a href="/admin/companies" class="mws-i-24 i-apartment-building">Companies</a></li>
                 	<li><a href="/admin/users" class="mws-i-24 i-cog-4">Users</a></li>
+			<li><a href="/affiliates" class="mws-i-24 i-link-2">Affiliates</a></li>
                 </ul>
             </div>
             <!-- End Navigation -->

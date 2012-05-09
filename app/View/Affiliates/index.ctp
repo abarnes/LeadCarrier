@@ -19,6 +19,7 @@ $(document).ready(function(){
 		    chk();
 		    return true;
 		 });
+	       
 });
 
 function chk() {
@@ -31,20 +32,22 @@ function chk() {
 	}
 	if (cnt>max) {
 		document.getElementById('edit').style.display='none';
-		document.getElementById('password').style.display='none';
 	} else {
 		document.getElementById('edit').style.display='block';
-		document.getElementById('password').style.display='block';
 	}
 	return false;
 }
 
 function button(action){
 	if (action=='delete') {
-		confirm('Are you sure you want to delete these users?  This cannot be undone.');
+		var answer = confirm('Are you sure you want to delete these affiliates?  This cannot be undone.');
+	} else {
+		var answer = true;
 	}
-	$('#UserAction').val(action);
-	$('#UserSubmitForm').submit();
+	if (answer) {
+		$('#AffiliateAction').val(action);
+		$('#AffiliateSubmitForm').submit();
+	}
 }
 </script>        
 	
@@ -57,12 +60,12 @@ function button(action){
 		</div>-->
 		<br/>		
 		
-            <!-- Main Navigation -->
+             <!-- Main Navigation -->
             <div id="mws-navigation">
             	<ul>
                 	<li><a href="/admin/companies" class="mws-i-24 i-apartment-building">Companies</a></li>
-                	<li class="active"><a href="/admin/users" class="mws-i-24 i-cog-4">Users</a></li>
-			<li><a href="/affiliates" class="mws-i-24 i-link-2">Affiliates</a></li>
+                	<li><a href="/admin/users" class="mws-i-24 i-cog-4">Users</a></li>
+			<li class="active"><a href="/affiliates" class="mws-i-24 i-link-2">Affiliates</a></li>
                 </ul>
             </div>
             <!-- End Navigation -->
@@ -74,53 +77,55 @@ function button(action){
 	    <?php echo $this->Session->flash(); ?>
 
 		<div style="float:left;width:100%;">
-			<h2 style="max-width:500px;float:left;">Admin Panel</h2>
+			<h2 style="max-width:500px;float:left;">Manage Affiliates</h2>
 			<div style="float:right;">
-				<a href="/users/add/<?php echo $current_user['company_id']; ?>"><input type="button" value="Add User" class="mws-button blue mws-i-24 i-plus large"></a>
+				<a href="/affiliates/add"><input type="button" value="Add Affiliate" class="mws-button blue mws-i-24 i-plus large"></a>
 			</div>	
 		</div>
 
-                <!-------user table---->
                 
             	<div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span class="mws-i-24 i-table-1">Users</span>
+                    	<span class="mws-i-24 i-table-1">Affiliates</span>
                     </div>
                     <div class="mws-panel-body">
 			<div class="mws-panel-toolbar top clearfix">
                         	<ul>
-                            	<li><a href="#" onclick="button('delete');" class="mws-ic-16 ic-delete">Delete</a></li>
-				<li id="edit"><a href="#" onclick="button('edit');" id="edit" class="mws-ic-16 ic-page-white-text">Edit</a></li>
-				<li id="password"><a href="#" onclick="button('password');" id="edit" class="mws-ic-16 ic-key">Change Password</a></li>
-                            	<!--<li><a href="#" class="mws-ic-16 ic-arrow-refresh">Renew</a></li>
-                            	<li><a href="#" class="mws-ic-16 ic-edit">Update</a></li>-->
+				<li id="delete"><a href="#" onclick="button('delete');" class="mws-ic-16 ic-delete">Delete</a></li>
+				<li id="edit"><a href="#" onclick="button('edit');" class="mws-ic-16 ic-page-white-text">Edit</a></li>
                             </ul>
                         </div>
-			<?php echo $this->Form->create('User',array('action'=>'submit')); ?>
+			<?php echo $this->Form->create('Affiliate',array('action'=>'submit')); ?>
 			<?php echo $this->Form->input('action',array('type'=>'hidden')); ?>
                         <table class="mws-datatable-fn mws-table">
                             <thead>
                                 <tr>
 				    <th><input type="checkbox" id="master" onclick="chk();"/></th>
-                                    <th>Username</th>
-				    <th>Email</th>
-				    <th>Actions</th>
+                                    <th>Name</th>
+				    <th>Percentage</th>
+				    <th>Link</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-			    <?php foreach ($users as $u) { ?>
+			    <?php foreach ($affiliates as $u) { ?>
 				<tr>
-					<td><?php echo $this->Form->input('check'.$u['User']['id'],array('type'=>'checkbox','label'=>'','class'=>'ck','onclick'=>'chk();')); ?></td>
+				        <td><?php echo $this->Form->input('check'.$u['Affiliate']['id'],array('type'=>'checkbox','label'=>'','class'=>'ck','onclick'=>'chk();')); ?></td>
 					<td>
-					    <?php echo $u['User']['username']; ?>
+					    <a href="/affiliates/view/<?php echo $u['Affiliate']['id']; ?>"><?php echo $u['Affiliate']['name']; ?></a>
 					</td>
 					<td>
-					    <?php echo $u['User']['email']; ?>
+					    <?php echo $u['Affiliate']['percentage']; ?>%
 					</td>
-					<td class="hid" style="width:300px;">
-					    <a href="/users/edit/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" value="Edit" class="mws-button green mws-i-24 small"></a>
-					    <a href="/users/passwordchange/<?php echo $u['User']['id']; ?>" style="text-decoration:none;"><input type="button" value="Change Password" class="mws-button blue mws-i-24 small"></a>
-					    <a href="/users/delete/<?php echo $u['User']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete this?')"><input type="button" value="Delete" class="mws-button red mws-i-24 small"></a>
+					<td>
+						http://leadcarrier.com/a/<?php echo $u['Affiliate']['link']; ?>
+					</td>
+					<td>
+				             <a href="/affiliates/edit/<?php echo $u['Affiliate']['id']; ?>" style="text-decoration:none;"><input type="button" onClick="location.href = '/affiliates/edit/<?php echo $u['Affiliate']['id']; ?>'" value="Edit" class="mws-button green mws-i-24 small">
+					    </a>
+					    <a href="/affiliates/delete/<?php echo $u['Affiliate']['id']; ?>" style="text-decoration:none;" onclick="return confirm('Are you sure you want to delete this affiliate?')">
+						<input type="button" onClick="location.href = '/affiliates/delete/<?php echo $u['Affiliate']['id']; ?>'" value="Delete" class="mws-button red mws-i-24 small">
+					    </a>
 					    
 					    <?php //echo $this->Html->link('Edit',array('action'=>'edit/'.$u['Category']['id'])); ?>
 					    <?php /*echo $this->Html->link(
@@ -130,7 +135,7 @@ function button(action){
 								'Are You Sure You Want To Delete This Category?'
 							);*/ ?>
 					</td>
-				</tr>
+				    </tr>
 			    <?php } ?>
 			    </form>
                             </tbody>
