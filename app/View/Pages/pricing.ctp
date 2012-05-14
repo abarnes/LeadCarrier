@@ -22,7 +22,7 @@
         </script>
         <div class="bloglisting2">
         	<h1 style="float:left;width:50%">Pricing</h1>
-		<h1 style="float:right;width:200px;font-style: italic;font-size: 2.2em;margin-right: 30px;">Start your 14 day trial</h1>
+		<h1 style="float:right;width:250px;font-style: italic;font-weight: 900;font-size: 2.2em;margin-right: 30px;">Start your 14 day trial!</h1>
 		<br/><br/>
         </div>
         
@@ -41,6 +41,7 @@
 					<li class="header_row_2"><h2 class="caption">select <span>your</span> plan</h2></li>
 					<!-- data rows -->
 					<li class="row_style_2"><span>Annual Savings</span></li>
+					<li class="row_style_2"><span>Setup Fee</span></li>
 					<li class="row_style_4"><span>Leads per Month</span></li>
 					<li class="row_style_2"><span>Integrated API Access</span></li>
 					<!--<li class="row_style_4"><span>Mailchimp Integration</span></li>-->
@@ -60,10 +61,11 @@
 				
 				<ul>
 					<!-- column header -->
-					<li class="header_row_1 align_center"><h2 class="col1">monthly</h2></li>
-					<li class="header_row_2 align_center"><h1 class="col1">$<span>499.99</span></h1><h3 class="col1">per month</h3></li>
+					<li class="header_row_1 align_center"><h2 class="col1">14 day Free Trial</h2></li>
+					<li class="header_row_2 align_center"><h1 class="col1"><span>Free</span></h1><h3 class="col1"></h3></li>
 					<!-- data rows -->
 					<li class="row_style_1 align_center"><span>-</span></li>
+					<li class="row_style_1 align_center"><span>$0</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<!--<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>-->
@@ -71,7 +73,7 @@
 					<li class="row_style_3 align_center"><span>Yes</span></li>
 					<li class="row_style_1 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
-					<li class="footer_row"><a href="/companies/register/monthly" class="sign_up radius3">sign up!</a></li>
+					<li class="footer_row"><a href="/companies/register/trial" class="sign_up radius3">sign up!</a></li>
 				</ul>
 			</div>
 			
@@ -83,10 +85,11 @@
 				
 				<ul>
 					<!-- column header -->
-					<li class="header_row_1 align_center"><h2 class="col2">quarterly</h2></li>
+					<li class="header_row_1 align_center"><h2 class="col2">monthly</h2></li>
 					<li class="header_row_2 align_center"><h1 class="col2">$<span>449.99</span></h1><h3 class="col2">per month</h3></li>
 					<!-- data rows -->
-					<li class="row_style_2 align_center"><span>$600</span></li>
+					<li class="row_style_2 align_center"><span> - </span></li>
+					<li class="row_style_1 align_center"><span>$0</span></li>
 					<li class="row_style_4 align_center"><span>unlimited</span></li>
 					<li class="row_style_2 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<!--<li class="row_style_4 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>-->
@@ -94,7 +97,7 @@
 					<li class="row_style_4 align_center"><span>Yes</span></li>
 					<li class="row_style_2 align_center"><span>unlimited</span></li>
 					<!-- column footer -->
-					<li class="footer_row"><a href="/companies/register/quarterly" class="sign_up radius3">sign up!</a></li>
+					<li class="footer_row"><a href="/companies/register/monthly" class="sign_up radius3">sign up!</a></li>
 				</ul>
 			</div>
 			
@@ -109,7 +112,8 @@
 					<li class="header_row_1 align_center radius5_topright"><h2 class="col4">annual</h2></li>
 					<li class="header_row_2 align_center"><h1 class="col4">$<span>399.99</span></h1><h3 class="col4">per month</h3></li>
 					<!-- data rows -->
-					<li class="row_style_1 align_center"><span>$1,200</span></li>
+					<li class="row_style_1 align_center"><span>$600</span></li>
+					<li class="row_style_1 align_center"><span>$0</span></li>
 					<li class="row_style_3 align_center"><span>unlimited</span></li>
 					<li class="row_style_1 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>
 					<!--<li class="row_style_3 align_center"><span><img src="/img/check.png" style="height:20px;"/></span></li>-->

@@ -33,7 +33,7 @@ class CompaniesController extends AppController {
     }
 	
 	public function register($plan) {
-		if (!in_array($plan,array('monthly','quarterly','annual'))) {
+		if (!in_array($plan,array('monthly','quarterly','annual','trial'))) {
 			$this->redirect('/pricing');
 		}
 		$this->layout = 'main';

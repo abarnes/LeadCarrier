@@ -85,6 +85,9 @@
             	<li><h1>Details:</h1><p>
                 Full-featured account<br/>
                     <?php switch ($selected) {
+		        case "trial":
+			    echo 'Free for 14 days, no credit card required<br/>';
+			    break;
                         case "monthly":
                             echo '$749.99 billed monthly<br/>';
                             break;
