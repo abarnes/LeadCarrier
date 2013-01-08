@@ -14,6 +14,7 @@ class CompaniesController extends AppController {
 		'Session',
 		'Password',
 		'Email',
+		'Cookie',
 		'Auth' => array(
 		    'loginRedirect' => array('controller' => 'companies', 'action' => 'index'),
 		    'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')
@@ -32,7 +33,7 @@ class CompaniesController extends AppController {
     }
 	
 	public function register($plan) {
-		if (!in_array($plan,array('monthly','quarterly','annual'))) {
+		if (!in_array($plan,array('monthly','quarterly','annual','trial'))) {
 			$this->redirect('/pricing');
 		}
 		$this->layout = 'main';
@@ -40,6 +41,10 @@ class CompaniesController extends AppController {
 		if (!empty($this->request->data)) {
 			$this->request->data['Company']['api_token'] = $this->Password->__randomPassword('18');
 			$this->request->data['Company']['plan'] = $plan;
+			$cookie = $this->Cookie->read('referral');
+			if ($cookie!="") {
+				$this->request->data['Company']['affiliate_id'] = $cookie;
+			}
 			$this->Company->set($this->request->data);
 			if ($this->Company->validates()) {
 				if ($this->request->data['Company']['address2']=='Address Line 2') {

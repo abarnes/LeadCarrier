@@ -7,6 +7,7 @@
 class Company extends AppModel {
     var $name = 'Company';
     var $hasMany = array('User');
+    var $belongsTo = array('Affiliate');
     var $validate = array(
         'name' => array(
             'rule1'=>array(

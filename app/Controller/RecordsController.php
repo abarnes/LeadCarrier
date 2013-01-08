@@ -237,7 +237,7 @@ class RecordsController extends AppController {
 						$dat[$begin]['date'] = $begin;
 						$dat[$begin]['stamp'] = $begin;
 					}
-					$begin = $begin+86400;
+					$begin = strtotime('+1 day', $begin);
 				} 
 				
 				$sortArray = array(); 

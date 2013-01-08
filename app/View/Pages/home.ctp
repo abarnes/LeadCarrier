@@ -83,7 +83,7 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
 	<div id="slider" class="grid_16">
 	    <img src="img/home.png" style="width:820px;margin-left:60px;margin-right: 60px;margin-top:45px;"/>
 	    <!--<a href="http://demo.leadcarrier.com/users/demo_login" target="_blank"><img src="img/launchdemo.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>-->
-	    <a href="/pricing" target="_blank"><img src="img/trialbutton.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>
+	    <a href="/pricing"><img src="img/trialbutton.png" style="margin-top:-90px;margin-left:70px;width:340px;"/></a>
 	    <a href="http://demo.leadcarrier.com/users/demo_login" target="_blank" style="margin-top:-90px;margin-left:236px;position: relative;bottom: 30px;color:white;font-size: 1.3em;">View Demo</a>
 	</div>
 	<!-- Slider End-->
@@ -280,14 +280,17 @@ else { document.write('<link rel=stylesheet href="./fancybox/jquery.fancybox-1.3
         	<h1>Advertiser360 Official Partner</h1>
         	<p>Lead Carrier is the #1 recommended Lead Distribution software of Advertiser360</p>
         </div>
-        <div class="bussiness-boss">
-            <img src="image/post/biggboss.png" class="bussiness-boss-img" alt="">
-            <div class="bussiness-shadow"><img src="image/theme/bigshadow2.png" alt=""></div>
-            <h1>Peter Nguyen</h1>
-            <p>"I recommend Lead Carrier to anyone who wants to launch the next major lead generation company. Lead Carrier is lean yet powerful and is the perfect backend office for a starting lead generation company with plans to grow."</p>
+        <div>
+            <img src="/img/PeterNguyen.jpg" alt="Lead Carrier endorsed by Advertising 360" style="width:160px;float:left;-webkit-border-radius: 12px;-moz-border-radius: 12px;border-radius: 12px;">
+		<div style="float:right;width:280px;height:270px;">
+		    <h1>Peter Nguyen</h1><br/>
+		    <p style="font-size: 1.2em;line-height: 1.7em;">"I recommend Lead Carrier to anyone who wants to launch the next major lead generation company. Lead Carrier is lean yet powerful and is the perfect backend office for a starting lead generation company with plans to grow."</p>
+		</div>
+		<a href="http://www.advertiser360.com" target="_blank"><img src="/img/endorsements/a360.png" style="float:left;margin-left:100px;"/></a>
         </div>
     </div>
     <!-- Bigg Boss End -->
+    
     
 </div>
 <!-- Container End-->

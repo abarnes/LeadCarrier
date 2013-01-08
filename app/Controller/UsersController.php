@@ -9,7 +9,7 @@ class UsersController extends AppController {
 	var $name = 'Users';
         //var $layout = 'default';
 	var $helpers = array('Html', 'Form');
-	var $uses = array('User','Setting','Client','Bill','Vendor');
+	var $uses = array('User','Setting','Client','Bill','Vendor','Company');
 	public $components = array(
 		'Session',
 		'Cookie',
