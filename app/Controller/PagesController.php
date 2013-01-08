@@ -44,6 +44,7 @@ class PagesController extends AppController {
  * @var array
  */
 	public $helpers = array('Html', 'Session');
+	public $components = array('Cookie');
 
 /**
  * This controller does not use a model
@@ -82,7 +83,7 @@ class PagesController extends AppController {
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		if ($page!='home') {
-			$this->layout = 'main';
+			
 		}
 		$this->render(implode('/', $path));
 	}

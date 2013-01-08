@@ -388,6 +388,7 @@ class UsersController extends AppController {
 						if ($this->request->data['User']['password'] == $p2  && strlen($p2)>='6') {
 							$this->request->data['User']['id'] = $localUserInfo['User']['id'];
 							$this->request->data['User']['password_token'] = NULL;
+							$this->request->data['User']['password'] = Security::hash($p2, NULL, true);
 							if($this->User->save($this->request->data,false)) {
 								$this->Session->setFlash('Password Changed. Please login.');
 								$this->redirect('/users/login');
